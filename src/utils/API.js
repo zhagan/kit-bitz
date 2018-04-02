@@ -92,7 +92,8 @@ export default {
     return axios.delete("/api/parts/" + id);
   },
   // Saves a part to the database
-  savePart: function(partData) {
-    return axios.post("/api/parts", partData);
+  addPart: function(partData) {
+    console.log(axios.post("/api/parts/", partData));
+    return axios.post("/api/parts/", partData);
   }
 };

@@ -1420,7 +1420,7 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-"mkdirp@>=0.5 0", mkdirp@^0.5.1:
+"mkdirp@>= 0.3.4", "mkdirp@>=0.5 0", mkdirp@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
@@ -1439,11 +1439,18 @@ mongodb@3.0.4:
   dependencies:
     mongodb-core "3.0.4"
 
+mongoose-file@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/mongoose-file/-/mongoose-file-0.0.2.tgz#779ce129df074207898c189480472b18267ba5ac"
+  dependencies:
+    mkdirp ">= 0.3.4"
+    mongoose ">= 3.0.1"
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
 
-mongoose@^5.0.11:
+"mongoose@>= 3.0.1", mongoose@^5.0.11:
   version "5.0.12"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.0.12.tgz#608a3829bf2edae47b0078cd1970ede2a033b3a0"
   dependencies:

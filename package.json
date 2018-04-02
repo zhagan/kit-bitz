@@ -24,6 +24,7 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "mongoose": "^5.0.11",
+    "mongoose-file": "0.0.2",
     "unirest": "^0.5.1"
   },
   "proxy": {

@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Gets all books
   getParts: function() {
-    return axios.get("/api/parts");
+    return axios.get("/api/parts/");
   },
 
   searchPart: function(query) {
@@ -45,7 +45,7 @@ export default {
     return axios.delete("/api/parts/" + id);
   },
   // Saves a part to the database
-  savePart: function(partData) {
-    return axios.post("/api/parts", partData);
+  addPart: function(partData) {
+    return axios.post("/api/parts/", partData);
   }
 };

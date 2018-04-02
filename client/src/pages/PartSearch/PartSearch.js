@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
+import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -12,13 +13,21 @@ class PartSearch extends Component {
     PartSearch: [],
     mfrNum: "",
     keyword: "",
+    inventory:[],
 
   };
 
   componentDidMount() {
-    this.loadPartSearch();
+    this.loadInventory();
   }
 
+  loadInventory = () => {
+    API.getParts()
+      .then( res =>
+         this.setState({ inventory: res.data})
+      )
+      .catch(err => console.log(err));
+  };
   loadPartSearch = () => {
     // API.searchPart()
     //   .then(//res =>
@@ -27,9 +36,15 @@ class PartSearch extends Component {
     //   .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadPartSearch())
+  deletePart = id => {
+    API.deletePart(id)
+      .then(res => this.loadInventory())
+      .catch(err => console.log(err));
+  };
+
+  addPart = part => {
+    API.addPart(part)
+      .then(res => this.loadInventory())
       .catch(err => console.log(err));
   };
 
@@ -44,16 +59,8 @@ class PartSearch extends Component {
     event.preventDefault();
     if (this.state.mfrNum || this.state.keyword) {
 
-      if(this.state.mfrNum){
-    //  API.searchPart(this.state.mfrNum)
-      API.searchPart(this.state.mfrNum)
-        .then(res => {
-          this.setState({ PartSearch: res.data });
-          this.loadPartSearch();
-        })
-        .catch(err => console.log(err));
-    }
-    else{
+      if(this.state.keyword){
+
         API.searchPart(this.state.keyword)
         .then(res => {
           this.setState({ PartSearch: res });
@@ -69,17 +76,10 @@ class PartSearch extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
-              <h1>Search Octopart For a Part</h1>
-            </Jumbotron>
+
+              <h3>Search Octopart For a Part</h3>
+
             <form>
-              <Input
-                value={this.state.mfrNum}
-                onChange={this.handleInputChange}
-                name="mfrNum"
-                placeholder="Manufacturer Number (required)"
-              />
-              or <br/>
 
               <Input
                 value={this.state.keyword}
@@ -95,16 +95,19 @@ class PartSearch extends Component {
                 Search Part
               </FormBtn>
             </form>
+            <Row/>
+
             {this.state.PartSearch.length ? (
               <List>
-                {this.state.PartSearch.map(part => (
-                  <ListItem key={part._id}>
-                    <Link to={"/PartSearch/" + part._id}>
+                {this.state.PartSearch.map((part, index) => (
+                  <ListItem key={index}>
+                    <a href={part.item.octopart_url} target="_blank">
                       <strong>
-                        {part.snippet} {part.item.mpn}
+                         {part.item.mpn}
                       </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deletePart(part._id)} />
+                    <p>{part.snippet}</p>
+                    </a>
+                    <AddBtn onClick={() => this.addPart(part)} />
                   </ListItem>
                 ))}
               </List>
@@ -113,16 +116,14 @@ class PartSearch extends Component {
             )}
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Parts in my Inventory</h1>
-            </Jumbotron>
-            {this.state.PartSearch.length ? (
+              <h3>Parts in my Inventory</h3>
+            {this.state.inventory.length ? (
               <List>
-                {this.state.PartSearch.map(part => (
+                {this.state.inventory.map(part => (
                   <ListItem key={part._id}>
                     <Link to={"/PartSearch/" + part._id}>
                       <strong>
-                        {part.mfrNum} {part.keyword}
+                        {part.snippet} {part.item.mfn}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deletePart(part._id)} />

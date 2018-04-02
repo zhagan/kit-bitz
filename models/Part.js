@@ -10,28 +10,13 @@ var PartSchema = new Schema({
   Part: {
     type: String,
     enum: ['resistor', 'capacitor','transistor','diode','trimmer','socket','header','fuse','bead','misc'],
-    required: true
-  },
-  Value: {
-    type: String,
-    required:false
-  },
-  Mfr: {
-    type: String
-  },
-  MfrNum: {
-    type: String
-  },
-  Octapart: {
-    type: Boolean,
-    required: true
-  },
-  OctapartURI: {
-    type: String,
     required: false
   },
-  OctapartObj: {
+  item: {
     type: Object
+  },
+  snippet: {
+    type: String
   }
 
 });
