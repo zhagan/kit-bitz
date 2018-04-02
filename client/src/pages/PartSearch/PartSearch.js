@@ -20,11 +20,11 @@ class PartSearch extends Component {
   }
 
   loadPartSearch = () => {
-    API.getParts()
-      .then(res =>
-        this.setState({ PartSearch: res.data, mfrNum: "", keyword: ""})
-      )
-      .catch(err => console.log(err));
+    // API.searchPart()
+    //   .then(//res =>
+    //     // this.setState({ PartSearch: res.data, mfrNum: "", keyword: ""})
+    //   )
+    //   .catch(err => console.log(err));
   };
 
   deleteBook = id => {
@@ -45,22 +45,21 @@ class PartSearch extends Component {
     if (this.state.mfrNum || this.state.keyword) {
 
       if(this.state.mfrNum){
-      API.searchPart({
-        mfrNum: this.state.mfrNum,
-
-        //synopsis: this.state.synopsis
-      })
-        .then(res => this.loadPartSearch())
+    //  API.searchPart(this.state.mfrNum)
+      API.searchPart(this.state.mfrNum)
+        .then(res => {
+          this.setState({ PartSearch: res.data });
+          this.loadPartSearch();
+        })
         .catch(err => console.log(err));
     }
     else{
-    API.searchPart({
-
-      keyword: this.state.keyword,
-      //synopsis: this.state.synopsis
-    })
-      .then(res => this.loadPartSearch())
-      .catch(err => console.log(err));
+        API.searchPart(this.state.keyword)
+        .then(res => {
+          this.setState({ PartSearch: res });
+          this.loadPartSearch();
+        })
+        .catch(err => console.log(err));
   }
   }
   };
@@ -96,6 +95,22 @@ class PartSearch extends Component {
                 Search Part
               </FormBtn>
             </form>
+            {this.state.PartSearch.length ? (
+              <List>
+                {this.state.PartSearch.map(part => (
+                  <ListItem key={part._id}>
+                    <Link to={"/PartSearch/" + part._id}>
+                      <strong>
+                        {part.snippet} {part.item.mpn}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deletePart(part._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>

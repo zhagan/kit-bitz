@@ -20,7 +20,7 @@ class PartSearch extends Component {
   }
 
   loadPartSearch = () => {
-    API.getPartSearch()
+    API.getParts()
       .then(res =>
         this.setState({ PartSearch: res.data, mfrNum: "", keyword: ""})
       )
@@ -42,15 +42,19 @@ class PartSearch extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.mfrNum && this.state.keyword) {
-      API.saveBook({
-        mfrNum: this.state.mfrNum,
-        keyword: this.state.keyword,
-        synopsis: this.state.synopsis
-      })
+    if (this.state.mfrNum || this.state.keyword) {
+
+      if(this.state.mfrNum){
+      API.searchPart(this.state.mfrNum)
         .then(res => this.loadPartSearch())
         .catch(err => console.log(err));
     }
+    else{
+    API.searchPart(this.state.keyword)
+      .then(res => this.loadPartSearch())
+      .catch(err => console.log(err));
+  }
+  }
   };
 
   render() {
@@ -68,18 +72,20 @@ class PartSearch extends Component {
                 name="mfrNum"
                 placeholder="Manufacturer Number (required)"
               />
+              or <br/>
+
               <Input
                 value={this.state.keyword}
                 onChange={this.handleInputChange}
                 name="keyword"
-                placeholder="Keyword (required)"
-               />
+                placeholder="Keywords (required)"
+              />
 
               <FormBtn
-                disabled={!(this.state.keyword && this.state.mfrNum)}
+                disabled={!(this.state.keyword || this.state.mfrNum)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Search Part
               </FormBtn>
             </form>
           </Col>
