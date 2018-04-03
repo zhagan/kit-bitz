@@ -6,41 +6,62 @@ import API from "../../utils/API";
 
 class Detail extends Component {
   state = {
-    book: {}
+    part: {
+
+      _id:"",
+      item:{
+        imagesets:[{
+          small_image:{
+            url:"",
+          },
+          medium_image:{
+            url:"",
+          }
+        }],
+      },
+      snippet:""
+    }
   };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+  // When this component mounts, grab the part with the _id of this.props.match.params.id
+  // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getBook(this.props.match.params.id)
-      .then(res => this.setState({ book: res.data }))
+    API.getPart(this.props.match.params.id)
+      .then(res => {
+        this.setState({ part: res.data});
+        console.log(this.state);
+      })
       .catch(err => console.log(err));
   }
 
   render() {
     return (
+
       <Container fluid>
         <Row>
           <Col size="md-12">
             <Jumbotron>
+
               <h1>
-                {this.state.book.title} by {this.state.book.author}
+                {this.state.part.item.mpn}
+                <img src={this.state.part.item.imagesets[0].medium_image.url} alt=""></img>
               </h1>
+
             </Jumbotron>
           </Col>
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>Synopsis</h1>
+              <h1>Item</h1>
               <p>
-                {this.state.book.synopsis}
+                {this.state.part.snippet}
               </p>
             </article>
           </Col>
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Back to Parts</Link>
           </Col>
         </Row>
       </Container>

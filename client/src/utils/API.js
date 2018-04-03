@@ -17,6 +17,10 @@ export default {
     var url = "http://octopart.com/api/v3/parts/search?";
     url += '&apikey=d7585fa3';
     url += '&include[]=specs';
+    url += '&include[]=imagesets';
+    url += '&include[]=category_uids';
+
+
 
     return axios.get(url, {
       params: question

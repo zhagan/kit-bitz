@@ -67,8 +67,8 @@ class PartSearch extends Component {
           this.loadPartSearch();
         })
         .catch(err => console.log(err));
-  }
-  }
+      }
+    }
   };
 
   render() {
@@ -101,6 +101,7 @@ class PartSearch extends Component {
               <List>
                 {this.state.PartSearch.map((part, index) => (
                   <ListItem key={index}>
+                    <img src={part.item.imagesets[0].small_image.url} alt=""></img>
                     <a href={part.item.octopart_url} target="_blank">
                       <strong>
                          {part.item.mpn}
@@ -108,6 +109,7 @@ class PartSearch extends Component {
                     <p>{part.snippet}</p>
                     </a>
                     <AddBtn onClick={() => this.addPart(part)} />
+                    <Input name="qty"></Input>
                   </ListItem>
                 ))}
               </List>
@@ -121,7 +123,7 @@ class PartSearch extends Component {
               <List>
                 {this.state.inventory.map(part => (
                   <ListItem key={part._id}>
-                    <Link to={"/PartSearch/" + part._id}>
+                    <Link to={"/parts/" + part._id}>
                       <strong>
                         {part.snippet} {part.item.mfn}
                       </strong>
