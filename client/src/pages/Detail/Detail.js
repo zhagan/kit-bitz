@@ -42,9 +42,14 @@ class Detail extends Component {
             <Jumbotron>
 
               <h1>
-                {this.state.part.item.mpn}
-                <img src={this.state.part.item.imagesets[0].medium_image.url} alt=""></img>
+                {this.state.part.item.imagesets[0].medium_image &&
+                  <img src={this.state.part.item.imagesets[0].medium_image.url} alt=""></img>
+                }
+                  {this.state.part.item.mpn}
               </h1>
+
+
+
 
             </Jumbotron>
           </Col>

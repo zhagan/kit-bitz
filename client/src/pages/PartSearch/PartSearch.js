@@ -100,8 +100,11 @@ class PartSearch extends Component {
             {this.state.PartSearch.length ? (
               <List>
                 {this.state.PartSearch.map((part, index) => (
+
                   <ListItem key={index}>
+                  {part.item.imagesets.length > 0 &&
                     <img src={part.item.imagesets[0].small_image.url} alt=""></img>
+                  }
                     <a href={part.item.octopart_url} target="_blank">
                       <strong>
                          {part.item.mpn}
