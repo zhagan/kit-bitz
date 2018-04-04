@@ -10,12 +10,18 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cors()); // allow cross origin requests
+
 // Serve up static assets
 app.use(express.static("client/build"));
+
+// use passport
+require('./passport')(app);
+
+
 // Add routes, both API and view
 app.use(routes);
 
-app.use(cors()); // allow cross origin requests
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/kit-bitzDB");
