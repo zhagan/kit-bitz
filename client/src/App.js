@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 import { withUser, update } from './services/withUser';
 
+import Login from "./pages/Login";
 import PartSearch from "./pages/PartSearch";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
@@ -28,6 +29,8 @@ class App extends Component {
         }
       });
   }
+
+
   render() {
     const { user } = this.props;
     return (
@@ -35,7 +38,15 @@ class App extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" component={PartSearch} />
+            <Route exact path="/" render={() => (
+                this.props.user ? (
+                  <Redirect to="/parts"/>
+                ) : (
+                  <Redirect to="/login" />
+
+                )
+            )}/>
+            <Route exact path="/login" component={Login} />
             <Route exact path="/parts" component={PartSearch} />
             <Route exact path="/parts/:id" component={Detail} />
             <Route component={NoMatch} />
