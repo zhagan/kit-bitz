@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Axios from 'axios';
 
 class PartSearch extends Component {
   state = {
@@ -61,9 +62,9 @@ class PartSearch extends Component {
 
       if(this.state.keyword){
 
-        API.searchPart(this.state.keyword)
+        Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
-          this.setState({ PartSearch: res });
+          this.setState({ PartSearch: res.data.results });
           this.loadPartSearch();
         })
         .catch(err => console.log(err));

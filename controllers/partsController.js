@@ -18,11 +18,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-  //  console.log("create");
-    db.Part
-      .create(req.body)
+    console.log(req);
+    db.Part.create(req.body)
+      .then( dbPart => {
+        return db.User.findOneAndUpdate({"_id":req}, {$push: {"inventory":req.body}});
+      })
+    //db.User.findOneAndUpdate({_id:req.user.id}, inventory:req.body)
+      // .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        res.status(422).json(err);
+        console.log(err);
+      });
   },
   update: function(req, res) {
     db.Part

@@ -13,7 +13,7 @@ const WORK_FACTOR = 10;
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  
+
   username: {
     type: String,
     required: true,
@@ -26,10 +26,10 @@ var UserSchema = new Schema({
   createdAt: Date,
   kitsCreated: Array,
 
-  inventory: {
+  inventory: [{
     type: Schema.Types.ObjectId,
     ref: "Inventory"
-  }
+  }]
 });
 
 UserSchema.pre('save', function(next) {
