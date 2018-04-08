@@ -26,10 +26,11 @@ var UserSchema = new Schema({
   createdAt: Date,
   kitsCreated: Array,
 
-  inventory: [{
+  inventory: {
     type: Schema.Types.ObjectId,
-    ref: "Inventory"
-  }]
+    ref: "Inventory",
+    default: null
+  }
 });
 
 UserSchema.pre('save', function(next) {
@@ -64,6 +65,8 @@ UserSchema.methods.validatePassword = function (candidatePassword) {
     });
   });
 };
+
+
 
 // This creates our model from the above schema, using mongoose's model method
 var User = mongoose.model("User", UserSchema);

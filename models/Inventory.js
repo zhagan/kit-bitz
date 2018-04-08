@@ -9,7 +9,8 @@ var InventorySchema = new Schema({
   
   parts: [{
     type: Schema.Types.ObjectId,
-    ref: "Part"
+    ref: "Part",
+    default: []
   }],
 
 });
