@@ -13,7 +13,7 @@ const WORK_FACTOR = 10;
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  
+
   username: {
     type: String,
     required: true,
@@ -28,7 +28,8 @@ var UserSchema = new Schema({
 
   inventory: {
     type: Schema.Types.ObjectId,
-    ref: "Inventory"
+    ref: "Inventory",
+    default: null
   }
 });
 
@@ -64,6 +65,8 @@ UserSchema.methods.validatePassword = function (candidatePassword) {
     });
   });
 };
+
+
 
 // This creates our model from the above schema, using mongoose's model method
 var User = mongoose.model("User", UserSchema);

@@ -79,10 +79,9 @@ class Login extends Component {
         email: this.state.email
       }).then(user => {
         update(user.data);
-
         console.log(user);
       }).catch(err =>{
-          this.setState({});
+          this.setState(this.initState);
          //return login account failed
 
       });
