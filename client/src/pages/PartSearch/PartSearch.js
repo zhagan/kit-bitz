@@ -113,7 +113,6 @@ class PartSearch extends Component {
                     <p>{part.snippet}</p>
                     </a>
                     <AddBtn onClick={() => this.addPart(part)} />
-                    <Input name="qty"></Input>
                   </ListItem>
                 ))}
               </List>

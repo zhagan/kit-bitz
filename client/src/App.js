@@ -9,6 +9,7 @@ import PartSearch from "./pages/PartSearch";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import CreateKit from "./pages/CreateKit";
 
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/parts" component={PartSearch} />
             <Route exact path="/parts/:id" component={Detail} />
+            <Route exact path="/createkit" component={CreateKit} />
             <Route component={NoMatch} />
           </Switch>
         </div>
