@@ -10,7 +10,7 @@ function getKits(req, res){
 }
 
 router.route("/")
-//  .get(kitsController.findAll)
+  .get(kitsController.findAll)
   .post(kitsController.create);
 
 router.route("/search/")
