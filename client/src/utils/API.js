@@ -16,5 +16,25 @@ export default {
   // Saves a part to the database
   addPart: function(partData) {
     return axios.post("/api/parts/", partData);
+  },
+  getMyKits: function() {
+    return axios.get("/api/createkit/");
+  },
+  // Gets the kit with the given id
+  getKit: function(id) {
+    return axios.get("/api/createkit/" + id);
+  },
+  // Deletes the kit with the given id
+  deleteKit: function(id) {
+    return axios.delete("/api/createkit/" + id);
+  },
+  // Saves a kit to the database
+  addKit: function(kitData) {
+   const config = {
+       headers: {
+           'content-type': 'multipart/form-data'
+       }
+     };
+    return axios.post("/api/createkit/", kitData, config);
   }
 };

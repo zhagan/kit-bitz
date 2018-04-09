@@ -3,7 +3,6 @@
 module.exports = {
   Inventory: require("./Inventory"),
   Part: require("./Part"),
-  Bom: require("./Bom"),
   Kit: require("./Kit"),
   User: require("./User")
 };

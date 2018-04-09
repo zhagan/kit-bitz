@@ -4,18 +4,11 @@ var Schema = mongoose.Schema;
 
 var BOMSchema = new Schema({
   // `title` is of type String
-  newbom: String,
-  designer: String,
-  kitUrl: String,
-  pcbUrl: String,
-  faceplateUrl: String,
-  fileUpload: Object,
+  kitName: String,
+  fileUpload: Object
   //octopartBom: Object,
   // `body` is of type String
-  components: {
-    type: Schema.Types.ObjectId,
-    ref: "Component"
-  }
+
   //throughHole: Boolean
 
 });

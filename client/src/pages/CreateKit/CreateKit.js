@@ -13,18 +13,17 @@ class CreateKit extends Component {
   state = {
     MyKits: [],
     kitName: "",
-
-
+    file: null
   };
 
   componentDidMount() {
-  //  this.loadInventory();
+    this.loadKits();
   }
 
-  loadInventory = () => {
-    API.getParts()
+  loadKits = () => {
+    API.getMyKits()
       .then( res =>
-         this.setState({ inventory: res.data})
+         this.setState({ MyKits: res.data})
       )
       .catch(err => console.log(err));
   };
@@ -57,10 +56,27 @@ class CreateKit extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(
-      `Selected file - ${this.bomFileInput.files[0].name}`
-    );
+  //  const url = 'http://example.com/file-upload';
+    const formData = new FormData();
+    formData.append('kitName',this.state.kitName)
+    formData.append('file',this.state.file);
+    console.log(formData.get('kitName'));
+    API.addKit(
+      formData
+
+       // {kitName: this.state.kitName,
+       // bom: this.state.bom}
+    )
+      .then(res => this.loadKits())
+      .catch(err => console.log(err));
+    // alert(
+    //   `Selected file - ${this.bomFileInput.files[0].name}`
+    // );
   };
+
+  onChangeFile = event => {
+    this.setState({file:event.target.files[0]})
+  }
 
   render() {
     return (
@@ -81,9 +97,8 @@ class CreateKit extends Component {
                 Upload file:
                 <input
                   type="file"
-                  ref={input => {
-                    this.bomFileInput = input;
-                  }}
+                  name="file"
+                  onChange={this.onChangeFile}
                 />
               </label>
               <br />
@@ -91,7 +106,7 @@ class CreateKit extends Component {
                 disabled={!(this.state.kitName)}
                 onClick={this.handleFormSubmit}
               >
-                Search Part
+              Create Kit
               </FormBtn>
             </form>
             <Row/>
@@ -103,10 +118,13 @@ class CreateKit extends Component {
               {this.state.MyKits.length ? (
                 <List>
                   {this.state.MyKits.map((kit, index) => (
-
                     <ListItem key={index}>
-
-                    //kit list
+                    <Link to={"/mykits/" + kit._id}>
+                      <strong>
+                        {kit.kitName} {JSON.stringify(kit.bom)}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deleteKit(kit._id)} />
                     </ListItem>
                   ))}
                 </List>
