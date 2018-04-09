@@ -121,7 +121,7 @@ class CreateKit extends Component {
                     <ListItem key={index}>
                     <Link to={"/mykits/" + kit._id}>
                       <strong>
-                        {kit.kitName} {JSON.stringify(kit.bom)}
+                        {kit.kitName} created by {kit.createdBy.username}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteKit(kit._id)} />

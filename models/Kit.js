@@ -8,7 +8,10 @@ var Schema = mongoose.Schema;
 var KitSchema = new Schema({
   // `title` is of type String
   kitName: String,
-  createdBy: String,
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    default: null},
   designer: String,
   kitUrl: String,
   pcbUrl: String,

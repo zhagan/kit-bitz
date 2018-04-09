@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     console.log("getiing all of my kits");
-    db.Kit.find({ createdBy: req.user.id }).then( dbKit => {
+    db.Kit.find({ createdBy: req.user.id }).populate('createdBy').then( dbKit => {
     //  db.Kit.findById({createdBy: dbUser.inventory}).populate('kits')
       // .then(dbInventory => {
       //   res.json(dbInventory.parts);
@@ -36,15 +36,15 @@ module.exports = {
   create: function(req, res) {
     // console.log(req);
     var kitId;
-    console.log(req.user.id + " USER ID");
+    //console.log(req.user.id + " USER ID");
     //console.log(req.file);
     // var kitData = {
     //     kitName: req.body.get('kitName'),
     //     bom: req.body.get('file')
     // };
 
-    console.log(req.body);
-    db.Kit.create(req.files)
+    //console.log(req.body);
+    db.Kit.create(req.body)
       .then( dbKit => {
         // return db.User.findOneAndUpdate({"_id":req.user.id}, {$push: {"inventory":dbPart._id}});
         kitId = dbKit.id;
