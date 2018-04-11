@@ -8,6 +8,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
+import Papa from 'papaparse';
 
 class CreateKit extends Component {
   state = {
@@ -79,7 +80,18 @@ class CreateKit extends Component {
   };
 
   onChangeFile = event => {
-    this.setState({file:event.target.files[0]})
+    this.setState({file:event.target.files[0]});
+    console.log('test');
+    console.log(this.state.file);
+
+    // Grab the file DOM object and pass to papaparse
+    // header: true creates an object for each row where keys = first row of csv
+    Papa.parse(event.target.files[0], {
+      header: true,
+      complete: function(results) {
+        console.log("Finished:", results.data);
+      }
+    })
   }
 
   render() {
