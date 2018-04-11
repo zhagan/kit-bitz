@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import AddBtn from "../../components/AddBtn";
+import QtyBox from "../../components/QtyBox";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -29,16 +30,15 @@ class PartSearch extends Component {
       )
       .catch(err => console.log(err));
   };
-  loadPartSearch = () => {
-    // API.searchPart()
-    //   .then(//res =>
-    //     // this.setState({ PartSearch: res.data, mfrNum: "", keyword: ""})
-    //   )
-    //   .catch(err => console.log(err));
-  };
 
   deletePart = id => {
     API.deletePart(id)
+      .then(res => this.loadInventory())
+      .catch(err => console.log(err));
+  };
+
+  changeQtyPart = id => {
+    API.changeQtyPart(id)
       .then(res => this.loadInventory())
       .catch(err => console.log(err));
   };
@@ -65,7 +65,7 @@ class PartSearch extends Component {
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
           this.setState({ PartSearch: res.data.results });
-          this.loadPartSearch();
+        //  this.loadPartSearch();
         })
         .catch(err => console.log(err));
       }
@@ -131,6 +131,7 @@ class PartSearch extends Component {
                         {part.snippet} {part.item.mfn}
                       </strong>
                     </Link>
+                    <QtyBox onChange={() => this.changeQtyPart(part._id)} />
                     <DeleteBtn onClick={() => this.deletePart(part._id)} />
                   </ListItem>
                 ))}

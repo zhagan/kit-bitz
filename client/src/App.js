@@ -7,6 +7,7 @@ import { withUser, update } from './services/withUser';
 import Login from "./pages/Login";
 import PartSearch from "./pages/PartSearch";
 import Detail from "./pages/Detail";
+import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
@@ -41,9 +42,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => (
                 this.props.user ? (
-                  <Redirect to="/parts"/>
+                  <Redirect to="/login"/>
                 ) : (
-                  <Redirect to="/login" />
+                  <Redirect to="/parts" />
 
                 )
             )}/>
@@ -51,6 +52,7 @@ class App extends Component {
             <Route exact path="/parts" component={PartSearch} />
             <Route exact path="/parts/:id" component={Detail} />
             <Route exact path="/createkit" component={CreateKit} />
+            <Route exact path="/createkit/:id" component={KitDetail} />
             <Route component={NoMatch} />
           </Switch>
         </div>

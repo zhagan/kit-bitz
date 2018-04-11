@@ -17,8 +17,11 @@ var PartSchema = new Schema({
   },
   snippet: {
     type: String
+  },
+  quantity: {
+    type: Number,
+    default: 1
   }
-
 });
 
 // This creates our model from the above schema, using mongoose's model method

@@ -13,7 +13,12 @@ class CreateKit extends Component {
   state = {
     MyKits: [],
     kitName: "",
-    file: null
+    file: null,
+    designer: "",
+    kitUrl: "",
+    pcbUrl: "",
+    faceplateUrl: ""
+
   };
 
   componentDidMount() {
@@ -36,9 +41,9 @@ class CreateKit extends Component {
   };
 
   deleteKit = id => {
-    // API.deletePart(id)
-    //   .then(res => this.loadInventory())
-    //   .catch(err => console.log(err));
+    API.deleteKit(id)
+      .then(res => this.loadKits())
+      .catch(err => console.log(err));
   };
 
   addKit = kit => {
@@ -58,20 +63,19 @@ class CreateKit extends Component {
     event.preventDefault();
   //  const url = 'http://example.com/file-upload';
     const formData = new FormData();
-    formData.append('kitName',this.state.kitName)
-    formData.append('file',this.state.file);
-    console.log(formData.get('kitName'));
-    API.addKit(
-      formData
 
-       // {kitName: this.state.kitName,
-       // bom: this.state.bom}
-    )
+    formData.append('kitName',this.state.kitName);
+    formData.append('file',this.state.file);
+    formData.append('designer',this.state.designer);
+    formData.append('kitUrl',this.state.kitUrl);
+    formData.append('pcbUrl',this.state.pcbUrl);
+    formData.append('faceplateUrl',this.state.faceplateUrl);
+
+    console.log(formData.get('kitName'));
+
+    API.addKit(formData)
       .then(res => this.loadKits())
       .catch(err => console.log(err));
-    // alert(
-    //   `Selected file - ${this.bomFileInput.files[0].name}`
-    // );
   };
 
   onChangeFile = event => {
@@ -93,11 +97,44 @@ class CreateKit extends Component {
                 name="kitName"
                 placeholder="Kit Name (required)"
               />
+              <Input
+                value={this.state.designer}
+                onChange={this.handleInputChange}
+                name="designer"
+                placeholder="Designer Name"
+              />
+              <Input
+                value={this.state.kitUrl}
+                onChange={this.handleInputChange}
+                name="kitUrl"
+                placeholder="Kit Url"
+              />
+              <Input
+                value={this.state.pcbUrl}
+                onChange={this.handleInputChange}
+                name="pcbUrl"
+                placeholder="PCB Url"
+              />
+              <Input
+                value={this.state.faceplateUrl}
+                onChange={this.handleInputChange}
+                name="faceplateUrl"
+                placeholder="Faceplate Url"
+              />
               <label>
-                Upload file:
+                Upload BOM:
                 <input
                   type="file"
                   name="file"
+                  onChange={this.onChangeFile}
+                />
+              </label>
+              <br />
+              <label>
+                Upload Kit Image:
+                <input
+                  type="file"
+                  name="imgFile"
                   onChange={this.onChangeFile}
                 />
               </label>
@@ -119,7 +156,7 @@ class CreateKit extends Component {
                 <List>
                   {this.state.MyKits.map((kit, index) => (
                     <ListItem key={index}>
-                    <Link to={"/mykits/" + kit._id}>
+                    <Link to={"/createkit/" + kit._id}>
                       <strong>
                         {kit.kitName} created by {kit.createdBy.username}
                       </strong>

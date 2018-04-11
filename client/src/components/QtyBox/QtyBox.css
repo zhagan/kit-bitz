@@ -1,0 +1,11 @@
+.qty-box {
+
+  float: right;
+  width: 50px;
+    /* color: #e74944; */
+}
+.qty-div {
+  padding-left: 6px;
+  float: right;
+  /* color: #e74944; */
+}

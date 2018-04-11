@@ -16,6 +16,7 @@ var KitSchema = new Schema({
   kitUrl: String,
   pcbUrl: String,
   faceplateUrl: String,
+  kitImg: Object,
   //octopartBom: Object,
   // `body` is of type String
   bom: Object
