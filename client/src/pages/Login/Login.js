@@ -10,6 +10,9 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from "axios";
 import {update} from '../../services/withUser';
 
+import { withRouter } from 'react-router-dom';
+
+
 class Login extends Component {
   state = {
 
@@ -78,7 +81,9 @@ class Login extends Component {
         password: this.state.password,
         email: this.state.email
       }).then(user => {
+        // successful login
         update(user.data);
+        this.props.history.push('/parts');
         console.log(user);
       }).catch(err =>{
           this.setState(this.initState);
@@ -177,4 +182,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

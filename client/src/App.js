@@ -42,9 +42,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => (
                 this.props.user ? (
-                  <Redirect to="/login"/>
+                  <Redirect to="/parts"/>
                 ) : (
-                  <Redirect to="/parts" />
+                  <Redirect to="/login" />
 
                 )
             )}/>
