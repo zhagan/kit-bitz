@@ -3,6 +3,8 @@ const partsController = require("../../controllers/partsController");
 const octopartjs = require('octopartjs');
 const Axios = require('axios');
 
+const mustBeLoggedIn = require('../../middleware/mustBeLoggedIn');
+
 // Matches with "/api/books"
 
 function getParts(req, res){
@@ -42,8 +44,8 @@ function getParts(req, res){
 }
 
 router.route("/")
-  .get(partsController.findAll)
-  .post(partsController.create);
+  .get(mustBeLoggedIn(), partsController.findAll)
+  .post(mustBeLoggedIn(), partsController.create);
 
 router.route("/search/")
   .post(getParts);
@@ -52,8 +54,8 @@ router.route("/search/")
 // Matches with "/api/parts/:id"
 router
   .route("/:id")
-  .get(partsController.findById)
-  .put(partsController.update)
-  .delete(partsController.remove);
+  .get(mustBeLoggedIn(), partsController.findById)
+  .put(mustBeLoggedIn(), partsController.update)
+  .delete(mustBeLoggedIn(), partsController.remove);
 
 module.exports = router;
