@@ -10,7 +10,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from "axios";
 import {update} from '../../services/withUser';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -20,7 +20,8 @@ class Login extends Component {
     password:"",
     newUserName:"",
     newPassword:"",
-    email:""
+    email:"",
+    loginFailed: false
 
   };
 
@@ -30,7 +31,8 @@ class Login extends Component {
     password:"",
     newUserName:"",
     newPassword:"",
-    email:""
+    email:"",
+    loginFailed: false
 
   };
 
@@ -83,10 +85,12 @@ class Login extends Component {
       }).then(user => {
         // successful login
         update(user.data);
-        this.props.history.push('/parts');
         console.log(user);
+        this.props.history.push('/parts');
       }).catch(err =>{
           this.setState(this.initState);
+          this.setState({ loginFailed: true});
+          console.log('login failed');
          //return login account failed
 
       });
@@ -124,6 +128,7 @@ class Login extends Component {
               <h3>Login to Kit-Bitz</h3>
 
             <form>
+              {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
