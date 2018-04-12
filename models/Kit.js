@@ -19,7 +19,7 @@ var KitSchema = new Schema({
   kitImg: Object,
   //octopartBom: Object,
   // `body` is of type String
-  bom: Object
+  bom: Array
   //throughHole: Boolean
 
 });

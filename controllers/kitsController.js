@@ -25,8 +25,10 @@ module.exports = {
       //  kitId = dbKit.id;
         return db.Kit.findOne({ _id: dbKit.id });
       })
-      .then( dbKit => {
-        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:req.files});
+      .then(dbKit => {
+        // parse BOM string to store in database
+        const BOM = JSON.parse(req.body.file);
+        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:BOM});
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => {
