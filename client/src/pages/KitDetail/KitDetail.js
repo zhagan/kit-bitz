@@ -27,6 +27,11 @@ class Detail extends Component {
       .catch(err => console.log(err));
   }
 
+  compareInventory() {
+    // get inventory
+    console.log(this.state.kit.bom);
+  }
+
   render() {
     return (
 
@@ -44,7 +49,11 @@ class Detail extends Component {
             This Kit is Designed By {this.state.kit.designer}<br/>
             <a href={this.state.kit.kitUrl} target="_blank">Kit Link</a><br/>
             <a href={this.state.kit.pcbUrl} target="_blank">PCB Link</a><br/>
-            <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a><br/>
+            <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a>
+              <br />
+              <button
+                onClick={this.compareInventory}
+              > Compare to Inventory</button>  
             </p>
           </Col>
         </Row>
