@@ -17,7 +17,7 @@ class CreateKit extends Component {
   state = {
     MyKits: [],
     kitName: "",
-    file: null,
+    BOM: null,
     designer: "",
     kitUrl: "",
     pcbUrl: "",
@@ -69,14 +69,13 @@ class CreateKit extends Component {
     const formData = new FormData();
 
     formData.append('kitName', this.state.kitName);
-    formData.append('file', JSON.stringify(parsedBOM)); // send BOM as a string
+    formData.append('BOM', JSON.stringify(parsedBOM)); // send BOM as a string
     formData.append('designer', this.state.designer);
     formData.append('kitUrl', this.state.kitUrl);
     formData.append('pcbUrl', this.state.pcbUrl);
     formData.append('faceplateUrl', this.state.faceplateUrl);
 
     console.log(formData.get('kitName'));
-    // console.log(formData.get('file'));
 
     API.addKit(formData)
       .then(res => this.loadKits())
@@ -94,7 +93,7 @@ class CreateKit extends Component {
       header: true,
       complete: function (results) {
         // Store parsed data in global variable
-        parsedBOM = results.data;
+        parsedBOM = results.data.splice(1, results.data.length - 1);
       }
     })
   }
