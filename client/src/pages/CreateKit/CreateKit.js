@@ -10,11 +10,14 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import Papa from 'papaparse';
 
+//variable to store parsed BOM from file upload
+let parsedBOM;
+
 class CreateKit extends Component {
   state = {
     MyKits: [],
     kitName: "",
-    file: null,
+    BOM: null,
     designer: "",
     kitUrl: "",
     pcbUrl: "",
@@ -28,8 +31,8 @@ class CreateKit extends Component {
 
   loadKits = () => {
     API.getMyKits()
-      .then( res =>
-         this.setState({ MyKits: res.data})
+      .then(res =>
+        this.setState({ MyKits: res.data })
       )
       .catch(err => console.log(err));
   };
@@ -62,15 +65,15 @@ class CreateKit extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-  //  const url = 'http://example.com/file-upload';
+    //  const url = 'http://example.com/file-upload';
     const formData = new FormData();
 
-    formData.append('kitName',this.state.kitName);
-    formData.append('file',this.state.file);
-    formData.append('designer',this.state.designer);
-    formData.append('kitUrl',this.state.kitUrl);
-    formData.append('pcbUrl',this.state.pcbUrl);
-    formData.append('faceplateUrl',this.state.faceplateUrl);
+    formData.append('kitName', this.state.kitName);
+    formData.append('BOM', JSON.stringify(parsedBOM)); // send BOM as a string
+    formData.append('designer', this.state.designer);
+    formData.append('kitUrl', this.state.kitUrl);
+    formData.append('pcbUrl', this.state.pcbUrl);
+    formData.append('faceplateUrl', this.state.faceplateUrl);
 
     console.log(formData.get('kitName'));
 
@@ -80,7 +83,7 @@ class CreateKit extends Component {
   };
 
   onChangeFile = event => {
-    this.setState({file:event.target.files[0]});
+    this.setState({ file: event.target.files[0] });
     console.log('test');
     console.log(this.state.file);
 
@@ -88,8 +91,9 @@ class CreateKit extends Component {
     // header: true creates an object for each row where keys = first row of csv
     Papa.parse(event.target.files[0], {
       header: true,
-      complete: function(results) {
-        console.log("Finished:", results.data);
+      complete: function (results) {
+        // Store parsed data in global variable
+        parsedBOM = results.data.splice(1, results.data.length - 1);
       }
     })
   }
@@ -100,7 +104,7 @@ class CreateKit extends Component {
         <Row>
           <Col size="md-6">
 
-              <h3>Create a Kit</h3>
+            <h3>Create a Kit</h3>
 
             <form>
               <Input
@@ -155,29 +159,29 @@ class CreateKit extends Component {
                 disabled={!(this.state.kitName)}
                 onClick={this.handleFormSubmit}
               >
-              Create Kit
+                Create Kit
               </FormBtn>
             </form>
-            <Row/>
+            <Row />
 
 
           </Col>
           <Col size="md-6 sm-12">
-              <h3>My Kits</h3>
-              {this.state.MyKits.length ? (
-                <List>
-                  {this.state.MyKits.map((kit, index) => (
-                    <ListItem key={index}>
+            <h3>My Kits</h3>
+            {this.state.MyKits.length ? (
+              <List>
+                {this.state.MyKits.map((kit, index) => (
+                  <ListItem key={index}>
                     <Link to={"/createkit/" + kit._id}>
                       <strong>
                         {kit.kitName} created by {kit.createdBy.username}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteKit(kit._id)} />
-                    </ListItem>
-                  ))}
-                </List>
-              ) : (
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
                 <h3>No Results to Display</h3>
               )}
           </Col>
