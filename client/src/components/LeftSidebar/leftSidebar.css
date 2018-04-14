@@ -26,3 +26,8 @@
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
 }
+
+.icon {
+    color: green;
+    size: 2x;
+}
