@@ -1,6 +1,6 @@
 .hero {
     margin: 100px auto;
-    height: 100%;
+    height: auto;
     width: 90%;
     padding: 0 5%;
     background-color: white;
@@ -10,7 +10,7 @@
 }
 
 #bugsImage {
-    height: 100%;
+    float: right;
     z-index: 2;
 }
 
@@ -24,7 +24,14 @@ h3{
 
 
 .form-box {
-    margin-top: 100px;
+    margin-top: 5%;
     padding: 10%;
    
 }
+
+@media only screen and (max-width:768px){
+    #bugsImage{
+     visibility: hidden;
+       }
+   }
+

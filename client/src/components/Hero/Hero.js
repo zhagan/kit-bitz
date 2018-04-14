@@ -9,7 +9,7 @@ const Hero = ({ children }) => (
         <Col size="md-4">
         {children}
         </Col>
-        <Col size="md-8">
+        <Col id="imageCol" size="md-8">
         <img src={image} id="bugsImage" />
         </Col>
     </Row>
