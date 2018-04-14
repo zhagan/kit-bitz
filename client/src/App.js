@@ -11,8 +11,10 @@ import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
-import Home from './pages/Home';
 
+import LeftSidebar from "./components/LeftSidebar";
+
+import Home from './pages/Home';
 
 class App extends Component {
   componentDidMount() {
@@ -40,6 +42,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+          <LeftSidebar />
           <Switch>
             <Route exact path="/" render={() => (
                 this.props.user ? (
