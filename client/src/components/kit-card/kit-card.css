@@ -1,0 +1,14 @@
+.kit-card {
+    display: inline-block;
+    margin: 25px;
+    padding: 25px;
+    width: 300px;
+
+    -webkit-box-shadow: 0px 7px 14px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 7px 14px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 7px 14px 0px rgba(50, 50, 50, 0.75);
+}
+
+.kit-card img {
+    width: 100%;
+}
