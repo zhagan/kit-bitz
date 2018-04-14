@@ -125,44 +125,40 @@ class Login extends Component {
       <CenterContainer fluid>
         <Row>
         <Hero>
+        <Link className="btn btn-default" type="button" to="/login">Login</Link>
         <div className="form-box">
-        <h3>New User? Create an account.</h3>
-        <Link className="btn btn-default" type="button" to="/register">Register</Link>
-        <br/>
-        <h3>Login to Kit-Bitz</h3>
-
+        <h3>Create New Account</h3>
         <form>
-          {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
           <Input
-            value={this.state.username}
+            value={this.state.newUserName}
             onChange={this.handleInputChange}
-            name="username"
+            name="newUserName"
             placeholder="User Name (required)"
           />
           <Input
             type="password"
-            value={this.state.password}
+            value={this.state.newPassword}
             onChange={this.handleInputChange}
-            name="password"
+            name="newPassword"
             placeholder="Password (required)"
           />
+          <Input
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            name="email"
+            placeholder="Email (required)"
+          />
           <FormBtn
-            disabled={!(this.state.username && this.state.password)}
-            onClick={this.handleFormSubmit}
+            disabled={!(this.state.newUserName && this.state.newPassword)}
+            onClick={this.handleFormSubmitNewUser}
           >
-            Login
+            Create Account
           </FormBtn>
-          
         </form>
+
         </div>
         </Hero>
-        
-
-        
-    
-       
-     
-        </Row>
+       </Row>
       </CenterContainer>
     );
   }

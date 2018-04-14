@@ -11,6 +11,7 @@ import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
+import Registration from "./pages/Registration";
 
 import LeftSidebar from "./components/LeftSidebar";
 
@@ -54,6 +55,7 @@ class App extends Component {
             )}/>
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Registration} />
             <Route exact path="/parts" component={PartSearch} />
             <Route exact path="/parts/:id" component={Detail} />
             <Route exact path="/createkit" component={CreateKit} />

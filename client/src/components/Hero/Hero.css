@@ -2,7 +2,7 @@
     margin: 100px auto;
     height: auto;
     width: 90%;
-    padding: 0 5%;
+    
     background-color: white;
     clear: both;
     z-index: 1;
@@ -14,20 +14,13 @@
     z-index: 2;
 }
 
-#row{
-    
-}
-
-h3{
-    
-}
-
-
 .form-box {
     margin-top: 5%;
     padding: 10%;
    
 }
+
+/* MEDIA QUERIES ====================================== */
 
 @media only screen and (max-width:768px){
     #bugsImage{
