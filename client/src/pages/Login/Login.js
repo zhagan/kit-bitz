@@ -4,7 +4,8 @@ import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
+import Hero from "../../components/Hero";
+import { Col, Row, CenterContainer } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from "axios";
@@ -121,68 +122,45 @@ class Login extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <CenterContainer fluid>
         <Row>
-          <Col size="md-6">
+        <Hero>
+        <div className="form-box">
+        <h3>Login to Kit-Bitz</h3>
 
-              <h3>Login to Kit-Bitz</h3>
+        <form>
+          {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
+          <Input
+            value={this.state.username}
+            onChange={this.handleInputChange}
+            name="username"
+            placeholder="User Name (required)"
+          />
+          <Input
+            type="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            name="password"
+            placeholder="Password (required)"
+          />
+          <FormBtn
+            disabled={!(this.state.username && this.state.password)}
+            onClick={this.handleFormSubmit}
+          >
+            Login
+          </FormBtn>
+          
+        </form>
+        </div>
+        </Hero>
+        
 
-            <form>
-              {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
-              <Input
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                name="username"
-                placeholder="User Name (required)"
-              />
-              <Input
-                type="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                name="password"
-                placeholder="Password (required)"
-              />
-              <FormBtn
-                disabled={!(this.state.username && this.state.password)}
-                onClick={this.handleFormSubmit}
-              >
-                Login
-              </FormBtn>
-            </form>
-            <Row/>
-          </Col>
-          <Col size="md-6 sm-12">
-              <h3>Create new Account</h3>
-              <form>
-                <Input
-                  value={this.state.newUserName}
-                  onChange={this.handleInputChange}
-                  name="newUserName"
-                  placeholder="User Name (required)"
-                />
-                <Input
-                  type="password"
-                  value={this.state.newPassword}
-                  onChange={this.handleInputChange}
-                  name="newPassword"
-                  placeholder="Password (required)"
-                />
-                <Input
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  name="email"
-                  placeholder="Email (required)"
-                />
-                <FormBtn
-                  disabled={!(this.state.newUserName && this.state.newPassword)}
-                  onClick={this.handleFormSubmitNewUser}
-                >
-                  Create Account
-                </FormBtn>
-              </form>
-          </Col>
+        
+    
+       
+     
         </Row>
-      </Container>
+      </CenterContainer>
     );
   }
 }
