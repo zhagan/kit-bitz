@@ -4,7 +4,7 @@ import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import Hero from "../../components/Hero";
+
 import { Col, Row, CenterContainer } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
@@ -124,7 +124,7 @@ class Login extends Component {
     return (
       <CenterContainer fluid>
         <Row>
-        <Hero>
+        
         <div className="form-box">
         <h3>New User? Create an account.</h3>
         <Link className="btn btn-default" type="button" to="/register">Register</Link>
@@ -155,7 +155,7 @@ class Login extends Component {
           
         </form>
         </div>
-        </Hero>
+  
         
 
         

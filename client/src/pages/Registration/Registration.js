@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import AddBtn from "../../components/AddBtn";
-import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import Hero from "../../components/Hero";
 import { Col, Row, CenterContainer } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from "axios";
-import {update} from '../../services/withUser';
+import {update} from "../../services/withUser";
+import { withRouter, Redirect } from "react-router-dom";
+import "./Registration.css";
+import image from "./bugsSide.png";
 
-import { withRouter, Redirect } from 'react-router-dom';
 
 
-class Login extends Component {
+
+
+class Registration extends Component {
   state = {
 
     username: "",
@@ -122,46 +122,57 @@ class Login extends Component {
 
   render() {
     return (
+
       <CenterContainer fluid>
+       
         <Row>
-        <Hero>
-        <Link className="btn btn-default" type="button" to="/login">Login</Link>
+        <Col size="md-4">
+       
         <div className="form-box">
         <h3>Create New Account</h3>
-        <form>
-          <Input
-            value={this.state.newUserName}
-            onChange={this.handleInputChange}
-            name="newUserName"
-            placeholder="User Name (required)"
-          />
-          <Input
-            type="password"
-            value={this.state.newPassword}
-            onChange={this.handleInputChange}
-            name="newPassword"
-            placeholder="Password (required)"
-          />
-          <Input
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            name="email"
-            placeholder="Email (required)"
-          />
-          <FormBtn
-            disabled={!(this.state.newUserName && this.state.newPassword)}
-            onClick={this.handleFormSubmitNewUser}
-          >
-            Create Account
-          </FormBtn>
-        </form>
-
+            <form>
+              <Input
+                value={this.state.newUserName}
+                onChange={this.handleInputChange}
+                name="newUserName"
+                placeholder="User Name (required)"
+              />
+              <Input
+                type="password"
+                value={this.state.newPassword}
+                onChange={this.handleInputChange}
+                name="newPassword"
+                placeholder="Password (required)"
+              />
+              <Input
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                name="email"
+                placeholder="Email (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.newUserName && this.state.newPassword)}
+                onClick={this.handleFormSubmitNewUser}
+              >
+                Create Account
+              </FormBtn>
+            </form>
         </div>
-        </Hero>
-       </Row>
+        </Col>
+
+        <Col size="md-8">
+          <img src="{image}" alt="bugs" style={{ height: 100 }}/>
+          
+            
+       
+          
+        </Col>
+      </Row>
+
       </CenterContainer>
-    );
+     
+    ); 
   }
 }
 
-export default withRouter(Login);
+export default withRouter(Registration);
