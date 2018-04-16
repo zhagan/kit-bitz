@@ -29,7 +29,7 @@ class Login extends Component {
   };
 
   initState = {
-
+    show: false,
     username: "",
     password:"",
     newUserName:"",
@@ -40,10 +40,14 @@ class Login extends Component {
   };
 
   showModal = () => {
-    this.setState({
-      ...this.state,
-      show: !this.state.show
-    });
+    // this.setState({
+    //   ...this.state,
+    //   show: !this.state.show
+    // });
+    this.setState((prevState) => ({
+      show: !prevState.show
+    }));
+    
   }
 
 
@@ -102,7 +106,7 @@ class Login extends Component {
           this.setState(this.initState);
           this.setState({ loginFailed: true});
           console.log('login failed');
-         //return login account failed
+          //return login account failed
 
       });
         // do something for login
@@ -124,17 +128,17 @@ class Login extends Component {
             <h4><span className="pop"><i className="fas fa-user-circle"></i>&nbsp;New User?</span> Create an account.</h4>
             <button className="btn btn-info" type="button" id="inputBtn"
             onClick={this.showModal}
-            value="Register">Register&nbsp;<i class="fas fa-angle-double-right"></i></button>
+            value="Register">Register&nbsp;<i className="fas fa-angle-double-right"></i></button>
             
             
             </div>
         </div>
-     
+    
         </Row>
 
         <Row>
         <div className="col-md-12">
-          <h3><i class="fas fa-sign-in-alt"></i>&nbsp;Login to Kit-Bitz</h3>
+          <h3><i className="fas fa-sign-in-alt"></i>&nbsp;Login to Kit-Bitz</h3>
 
             <form>
               {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
