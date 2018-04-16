@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import KitCard from './KitCard/KitCard';
+import KitCard from './components/kit-card';
 
 class Home extends Component {
   constructor(props) {

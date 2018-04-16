@@ -13,7 +13,8 @@ import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
 
 import LeftSidebar from "./components/LeftSidebar";
-
+import SearchBar from "./components/searchBar";
+import TitleBar from "./components/titleBar";
 import Home from './pages/Home';
 
 class App extends Component {
@@ -42,6 +43,8 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+          <TitleBar />
+          <SearchBar />
           <LeftSidebar />
           <Switch>
             <Route exact path="/" render={() => (
