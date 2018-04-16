@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import PropTypes from 'prop-types';
-import bugs from './bugs.png';
+import { Input, TextArea, FormBtn } from "../../components/Form";
+import Axios from "axios";
+import {update} from "../../services/withUser";
+import { withRouter, Redirect } from "react-router-dom";
+
+
 
 // gray background
 const backdropStyle = {
@@ -11,21 +15,11 @@ const backdropStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     padding: 50
 }
 
-const modalStyle = {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    maxWidth: 750,
-    maxHeight: 'auto',
-    margin: 'auto',
-    padding: 10,
-    position: "relative",
-    
-   
-};
+
 
 const footerStyle = {
     position: "absolute",
@@ -43,7 +37,56 @@ export default class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.el = document.createElement("div");
+        this.state = {
+
+            username: "",
+            password:"",
+            newUserName:"",
+            newPassword:"",
+            email:"",
+            loginFailed: false
+        
+          };
+        
+          this.initState = {
+        
+            username: "",
+            password:"",
+            newUserName:"",
+            newPassword:"",
+            email:"",
+            loginFailed: false
+        
+          };
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+      };
+
+      handleFormSubmitNewUser = event => {
+        event.preventDefault();
+        if (this.state.newUserName && this.state.newPassword && this.state.email) {
+            // do something for create
+            Axios.post('/api/users', {
+              username: this.state.newUserName,
+              password: this.state.newPassword,
+              email: this.state.email
+            }).then(user => {
+            //  update(user.data);
+              console.log(user);
+            }).catch(err =>{
+    
+               //return create account failed
+    
+            });
+    
+        }
+      };
+
     onClose = (e) => {
         console.log("BUTTON CLICKED");
         e.stopPropagation ();
@@ -70,41 +113,49 @@ export default class Modal extends React.Component {
     render() {
         var modalUI = (
             <div style={backdropStyle}>
-                <div style={modalStyle}>
-                        <div className="col s12 m7">
-                            
-                            <div className="card horizontal">
-                            <div className="card-image">
-                            
-                                <img src={bugs} style={imageStyle}/>
-                            </div>
-                            <div className="card-stacked">
-                                <div className="card-content">
-                                {this.props.children}
-                                 
-                                <form className="col s12">
-                                <div className="row">
-                                  <div className="input-field col s12">
-                                    <input id="first_name" type="text" className="validate" />
-                                    <label for="first_name">Username (testform)</label>
-                                  </div>
-                                  <div className="input-field col s12">
-                                    <input id="last_name" type="text" className="validate" />
-                                    <label for="last_name">Password (testform)</label>
-                                  </div>
-                                </div>
-                                 </form>
+                <div className="modal-box">
+                                            
+                        <button type="button" className="close" aria-label="Close" onClick={(e) => { this.onClose(e)}}><span aria-hidden="true">&times;</span></button>
 
-                                </div>
-                                <div className="card-action">
-                                <a onClick={(e) => { this.onClose(e)}} class="waves-effect waves-teal btn-flat"><i className="material-icons left">close</i>Close</a>
-                                </div>
-                            </div>
-                            </div>
+                        <div className="col-md-12">
+                            {this.props.children}
+                        </div>
+
+                        <h3><i className="fas fa-user-circle"></i>&nbsp;Create New Account</h3>
+                            <form>
+                              <Input
+                                value={this.state.newUserName}
+                                onChange={this.handleInputChange}
+                                name="newUserName"
+                                placeholder="User Name (required)"
+                              />
+                              <Input
+                                type="password"
+                                value={this.state.newPassword}
+                                onChange={this.handleInputChange}
+                                name="newPassword"
+                                placeholder="Password (required)"
+                              />
+                              <Input
+                                value={this.state.email}
+                                onChange={this.handleInputChange}
+                                name="email"
+                                placeholder="Email (required)"
+                              />
+                              <FormBtn
+                                disabled={!(this.state.newUserName && this.state.newPassword)}
+                                onClick={this.handleFormSubmitNewUser}
+                              >
+                                Create Account
+                              </FormBtn>
+                            </form>
+                    
+
+             
                         </div>
 
                 </div>
-            </div>
+            
         );
         if (!this.props.show) {
             return null;

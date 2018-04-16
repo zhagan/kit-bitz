@@ -1,0 +1,51 @@
+
+
+.form-box {
+    width: 85%;
+    height: auto;
+    background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+}
+
+#registerBox {
+    padding-top: 3%;
+    
+    float: right;  
+    margin-bottom: 10%;
+}
+
+#registerBox h4{
+    float: left;
+    color: #101648;
+    font-size: 1.2em;
+    padding-bottom: 1em;
+    padding-right: 15px;
+}
+
+h3 {
+    color: #101648;
+}
+
+.pop {
+    color: #ee433f;
+}
+
+.modal-box {
+   position: relative;
+   margin: auto;
+   padding: 5%;
+   height: 80%;
+   width: 80%;
+    background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+}
+
+
+
+/* MEDIA QUERIES ====================================== */
+
+@media only screen and (max-width:980px){
+    #bugsImage{
+     visibility: hidden;
+       }
+   }

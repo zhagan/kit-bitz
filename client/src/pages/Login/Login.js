@@ -4,25 +4,27 @@ import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-
 import { Col, Row, CenterContainer } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Modal from '../../components/Modal/Modal';
+import './Login.css';
 import Axios from "axios";
 import {update} from '../../services/withUser';
-
 import { withRouter, Redirect } from 'react-router-dom';
+
 
 
 class Login extends Component {
   state = {
-
+    show: false,
     username: "",
     password:"",
     newUserName:"",
     newPassword:"",
     email:"",
-    loginFailed: false
+    loginFailed: false,
+  
 
   };
 
@@ -36,6 +38,14 @@ class Login extends Component {
     loginFailed: false
 
   };
+
+  showModal = () => {
+    this.setState({
+      ...this.state,
+      show: !this.state.show
+    });
+  }
+
 
   componentDidMount() {
   //  this.loadInventory();
@@ -100,70 +110,67 @@ class Login extends Component {
     }
   };
 
-  handleFormSubmitNewUser = event => {
-    event.preventDefault();
-    if (this.state.newUserName && this.state.newPassword && this.state.email) {
-        // do something for create
-        Axios.post('/api/users', {
-          username: this.state.newUserName,
-          password: this.state.newPassword,
-          email: this.state.email
-        }).then(user => {
-        //  update(user.data);
-          console.log(user);
-        }).catch(err =>{
-
-           //return create account failed
-
-        });
-
-    }
-  };
 
   render() {
     return (
+      <div>
       <CenterContainer fluid>
-        <Row>
-        
         <div className="form-box">
-        <h3>New User? Create an account.</h3>
-        <Link className="btn btn-default" type="button" to="/register">Register</Link>
-        <br/>
-        <h3>Login to Kit-Bitz</h3>
-
-        <form>
-          {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
-          <Input
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            name="username"
-            placeholder="User Name (required)"
-          />
-          <Input
-            type="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            name="password"
-            placeholder="Password (required)"
-          />
-          <FormBtn
-            disabled={!(this.state.username && this.state.password)}
-            onClick={this.handleFormSubmit}
-          >
-            Login
-          </FormBtn>
+        <Row>
           
-        </form>
+        <div className="col-md-12">
+        <div className="col-md-7" id="registerBox">
+            
+            <h4><span className="pop"><i className="fas fa-user-circle"></i>&nbsp;New User?</span> Create an account.</h4>
+            <button className="btn btn-info" type="button" id="inputBtn"
+            onClick={this.showModal}
+            value="Register">Register&nbsp;<i class="fas fa-angle-double-right"></i></button>
+            
+            
+            </div>
         </div>
-  
-        
-
-        
-    
-       
      
         </Row>
+
+        <Row>
+        <div className="col-md-12">
+          <h3><i class="fas fa-sign-in-alt"></i>&nbsp;Login to Kit-Bitz</h3>
+
+            <form>
+              {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
+              <Input
+                value={this.state.username}
+                onChange={this.handleInputChange}
+                name="username"
+                placeholder="User Name (required)"
+              />
+              <Input
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                name="password"
+                placeholder="Password (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.username && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+                Login
+              </FormBtn>
+              
+            </form>
+            </div>
+        </Row>
+
+
+
+        
+        </div>
       </CenterContainer>
+      <Modal onClose={this.showModal} show={this.state.show}>
+      
+      </Modal>
+      </div>
     );
   }
 }
