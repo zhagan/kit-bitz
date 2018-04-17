@@ -1,11 +1,20 @@
 
+.side-title {
+    background-color: #253447;
+    width: 180px;
+    height: 90px;
+    position: absolute;
+    top: 62px;
+    left: 0;
+}
+
 .leftsidebar {
     height: 100%;
-    width: 160px;
+    width: 180px;
     position: absolute;
-    top: 62px;;
+    top: 160px;
     left: 0;
-    background-color: #111;
+    background-color: #253447;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -28,6 +37,10 @@
 }
 
 .icon {
-    color: green;
+    color: white;
     size: 2x;
+}
+
+input[type=checkbox] {
+   display: none;
 }

@@ -11,7 +11,6 @@ import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
-
 import LeftSidebar from "./components/LeftSidebar";
 import SearchBar from "./components/searchBar";
 import TitleBar from "./components/titleBar";
@@ -44,7 +43,6 @@ class App extends Component {
         <div>
           <Nav />
           <TitleBar />
-          <SearchBar />
           <LeftSidebar />
           <Switch>
             <Route exact path="/" render={() => (
