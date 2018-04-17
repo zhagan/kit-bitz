@@ -1,4 +1,6 @@
 .titlebar {
     float: right;
-    color: red;
+    height: 90px;
+    background-color: black;
+    color: green;
 }
