@@ -6,6 +6,7 @@ import { withUser, update } from './services/withUser';
 
 import Login from "./pages/Login";
 import PartSearch from "./pages/PartSearch";
+import Inventory from "./pages/Inventory";
 import Detail from "./pages/Detail";
 import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
@@ -41,10 +42,10 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Router>
-        <div>
+        <div id="sketch-holder">
         <Nav user={user}/>
 
-        <div className="container-fluid">
+        <div className="container-fluid" >
           <Switch>
             <Route exact path="/" render={() => (
                 this.props.user ? (
@@ -60,6 +61,7 @@ class App extends Component {
             <Route exact path="/parts/:id" component={Detail} />
             <Route exact path="/createkit" component={CreateKit} />
             <Route exact path="/createkit/:id" component={KitDetail} />
+            <Route exact path="/inventory" component={Inventory} />
             <Route component={NoMatch} />
           </Switch>
           </div>

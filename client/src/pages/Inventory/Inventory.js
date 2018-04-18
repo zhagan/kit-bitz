@@ -14,13 +14,11 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
 
-class PartSearch extends Component {
+class Inventory extends Component {
   state = {
-    PartSearch: [],
     mfrNum: "",
     keyword: "",
     inventory:[],
-
   };
 
   componentDidMount() {
@@ -66,30 +64,24 @@ class PartSearch extends Component {
       if(this.state.keyword){
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
-          this.setState({ PartSearch: res.data.results });
-        //  this.loadPartSearch();
+          this.setState({ Inventory: res.data.results });
+        //  this.loadInventory();
         })
         .catch(err => console.log(err));
       }
     }
   };
 
-
-   cellEditProp = event => {
-      mode: 'dbclick'
-    };
-
-
   render() {
     const columns = [{
        dataField: 'quantity',
-       text: 'Product ID'
+       text: 'Qty'
      }, {
        dataField: 'mpn',
-       text: 'Product Name'
+       text: 'MPN'
      }, {
        dataField: 'snippet',
-       text: 'Product Price'
+       text: 'Description'
      }];
 
     return (
@@ -101,46 +93,6 @@ class PartSearch extends Component {
 
           <Col size="md-9">
 
-              <h3>Search Octopart For a Part</h3>
-
-            <form>
-
-              <Input
-                value={this.state.keyword}
-                onChange={this.handleInputChange}
-                name="keyword"
-                placeholder="Keywords (required)"
-              />
-              <br />
-              <FormBtn
-                disabled={!(this.state.keyword || this.state.mfrNum)}
-                onClick={this.handleFormSubmit}
-              >  Search Part
-              </FormBtn>
-            </form>
-
-
-            {this.state.PartSearch.length ? (
-              <List>
-                {this.state.PartSearch.map((part, index) => (
-
-                  <ListItem key={index}>
-                  {part.item.imagesets.length > 0 &&
-                    <img src={part.item.imagesets[0].small_image.url} alt=""></img>
-                  }
-                    <a href={part.item.octopart_url} target="_blank">
-                      <strong>
-                         {part.item.mpn}
-                      </strong>
-                    <p>{part.snippet}</p>
-                    </a>
-                    <AddBtn onClick={() => this.addPart(part)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
               <h3>Parts in my Inventory</h3>
             {this.state.inventory.length ? (
               <BootstrapTable keyField='_id'
@@ -157,4 +109,4 @@ class PartSearch extends Component {
   }
 }
 
-export default PartSearch;
+export default Inventory;

@@ -2,26 +2,34 @@ import React from 'react';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import SvgIcon from 'react-icons-kit';
 import FontAwesome from "react-fontawesome";
-import "./searchBar.css";
+import "./SideBar.css";
 import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
 import { ic_business } from 'react-icons-kit/md/ic_business';
 
 
 //specify the base color/background of the parent container if needed
-const SearchBar = () => (
-    <div style={{background: '#2c3e50', color: '#FFF', width: 220}}>
+const SideBar = () => (
+    <div >
         <SideNav highlightColor='#E91E63' highlightBgColor='#00bcd4' defaultSelected='sales'>
-            <Nav id='dashboard'>
+            <Nav id='inventory'>
                 <NavIcon><SvgIcon size={20} icon={ic_aspect_ratio}/></NavIcon>
-                <NavText> Dashboard </NavText>
+                <NavText> Inventory </NavText>
             </Nav>
-            <Nav id='sales'>
+            <Nav id='kits'>
                 <NavIcon><SvgIcon size={20} icon={ic_business}/></NavIcon>
-                <NavText> Sales </NavText>
+                <NavText> Kits </NavText>
+            </Nav>
+            <Nav id='ceateKits'>
+                <NavIcon><SvgIcon size={20} icon={ic_business}/></NavIcon>
+                <NavText> Create Kits </NavText>
+            </Nav>
+            <Nav id='parts'>
+                <NavIcon><SvgIcon size={20} icon={ic_business}/></NavIcon>
+                <NavText> Parts </NavText>
             </Nav>
         </SideNav>
     </div>
 )
 
 
-export default SearchBar;
+export default SideBar;
