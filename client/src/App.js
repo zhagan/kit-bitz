@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <Nav />
+        <Nav user={user}/>
 
         <div className="container-fluid">
           <Switch>
