@@ -15,6 +15,7 @@ import LeftSidebar from "./components/LeftSidebar";
 import SearchBar from "./components/searchBar";
 import TitleBar from "./components/titleBar";
 import Home from './pages/Home';
+import { Col, Row, Container } from "./components/Grid";
 
 class App extends Component {
   componentDidMount() {
@@ -41,9 +42,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
-          <TitleBar />
-          <LeftSidebar />
+        <Nav />
+
+        <div className="container-fluid">
           <Switch>
             <Route exact path="/" render={() => (
                 this.props.user ? (
@@ -61,6 +62,8 @@ class App extends Component {
             <Route exact path="/createkit/:id" component={KitDetail} />
             <Route component={NoMatch} />
           </Switch>
+          </div>
+
         </div>
       </Router>
     );

@@ -6,7 +6,7 @@ import FontAwesome from "react-fontawesome";
 class TitleBar extends Component {
     render() {
         return (
-            <div className="titlebar">
+           <div className="titlebar container-fluid">
                 Title Bar
             </div>
         );
