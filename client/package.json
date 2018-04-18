@@ -8,10 +8,13 @@
     "papaparse": "^4.3.7",
     "react": "^16.0.0",
     "react-bootstrap": "^0.32.1",
+    "react-bootstrap-sidebar": "^0.0.1",
     "react-dom": "^16.0.0",
     "react-fontawesome": "^1.6.1",
+    "react-icons-kit": "^1.0.7",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.14",
+    "react-sidenav": "^2.1.2",
     "unirest": "^0.5.1"
   },
   "scripts": {

@@ -9,6 +9,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
+import SearchBar from "../../components/searchBar";
 
 class PartSearch extends Component {
   state = {
@@ -75,8 +76,12 @@ class PartSearch extends Component {
   render() {
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-6">
+      <Col size="md-3">
+      <SearchBar />
+      </Col>
+
+
+          <Col size="md-9">
 
               <h3>Search Octopart For a Part</h3>
 
@@ -88,15 +93,14 @@ class PartSearch extends Component {
                 name="keyword"
                 placeholder="Keywords (required)"
               />
-
+              <br />
               <FormBtn
                 disabled={!(this.state.keyword || this.state.mfrNum)}
                 onClick={this.handleFormSubmit}
-              >
-                Search Part
+              >  Search Part
               </FormBtn>
             </form>
-            <Row/>
+
 
             {this.state.PartSearch.length ? (
               <List>
@@ -119,8 +123,6 @@ class PartSearch extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-          </Col>
-          <Col size="md-6 sm-12">
               <h3>Parts in my Inventory</h3>
             {this.state.inventory.length ? (
               <List>
@@ -140,7 +142,7 @@ class PartSearch extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+
       </Container>
     );
   }
