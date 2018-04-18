@@ -10,6 +10,8 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import SearchBar from "../../components/searchBar";
+import BootstrapTable from 'react-bootstrap-table-next';
+
 
 class PartSearch extends Component {
   state = {
@@ -60,9 +62,7 @@ class PartSearch extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.mfrNum || this.state.keyword) {
-
       if(this.state.keyword){
-
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
           this.setState({ PartSearch: res.data.results });
@@ -73,7 +73,24 @@ class PartSearch extends Component {
     }
   };
 
+
+   cellEditProp = event => {
+      mode: 'dbclick'
+    };
+
+
   render() {
+    const columns = [{
+       dataField: 'quantity',
+       text: 'Product ID'
+     }, {
+       dataField: 'mpn',
+       text: 'Product Name'
+     }, {
+       dataField: 'snippet',
+       text: 'Product Price'
+     }];
+
     return (
       <Container fluid>
       <Col size="md-3">
@@ -125,19 +142,7 @@ class PartSearch extends Component {
             )}
               <h3>Parts in my Inventory</h3>
             {this.state.inventory.length ? (
-              <List>
-                {this.state.inventory.map(part => (
-                  <ListItem key={part._id}>
-                    <Link to={"/parts/" + part._id}>
-                      <strong>
-                        {part.snippet} {part.item.mfn}
-                      </strong>
-                    </Link>
-                    <QtyBox onChange={() => this.changeQtyPart(part._id)} />
-                    <DeleteBtn onClick={() => this.deletePart(part._id)} />
-                  </ListItem>
-                ))}
-              </List>
+              <BootstrapTable keyField='id' data={ this.state.inventory } columns={ columns } />
             ) : (
               <h3>No Results to Display</h3>
             )}
