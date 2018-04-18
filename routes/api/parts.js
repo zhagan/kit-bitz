@@ -5,42 +5,37 @@ const Axios = require('axios');
 
 const mustBeLoggedIn = require('../../middleware/mustBeLoggedIn');
 
-// Matches with "/api/books"
-
-function getParts(req, res){
-  //res.json("get ppappapapaparts");
+function getParts(req, res) {
 
   var keyword = req.body.keyword;
 
-    var  question = {
-            q: keyword,
-            start: 0,
-            limit: 10
-        };
+  var question = {
+    q: keyword,
+    start: 0,
+    limit: 10
+  };
 
-    var url = "http://octopart.com/api/v3/parts/search?";
-    url += '&apikey=d7585fa3';
-    url += '&include[]=specs';
-    url += '&include[]=imagesets';
-    url += '&include[]=category_uids';
+  var url = "http://octopart.com/api/v3/parts/search?";
+  url += '&apikey=d7585fa3';
+  url += '&include[]=specs';
+  url += '&include[]=imagesets';
+  url += '&include[]=category_uids';
 
-    return Axios.get(url, {
-      params: question
-    })
-      .then(response => {
-        response.data.results.forEach( result => {
+  return Axios.get(url, {
+    params: question
+  })
+    .then(response => {
+      response.data.results.forEach(result => {
 
-          console.log(result.item);
+        console.log(result.item);
 
-        });
-        //console.log(response.body);
-        res.send(response.data);
-      })
-      .catch(error => {
-        res.json(error);
       });
 
-    // return axios.get("/api/parts");
+      res.send(response.data);
+    })
+    .catch(error => {
+      res.json(error);
+    });
 }
 
 router.route("/")

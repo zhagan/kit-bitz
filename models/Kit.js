@@ -6,7 +6,7 @@ var filePlugin = filePluginLib.filePlugin;
 var Schema = mongoose.Schema;
 
 var KitSchema = new Schema({
-  // `title` is of type String
+  
   kitName: String,
   createdBy: {
     type: Schema.Types.ObjectId,
@@ -17,11 +17,7 @@ var KitSchema = new Schema({
   pcbUrl: String,
   faceplateUrl: String,
   kitImg: Object,
-  //octopartBom: Object,
-  // `body` is of type String
   bom: Array
-  //throughHole: Boolean
-
 });
 
 // This creates our model from the above schema, using mongoose's model method
