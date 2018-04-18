@@ -19,8 +19,6 @@ const backdropStyle = {
     padding: 50
 }
 
-
-
 const footerStyle = {
     position: "absolute",
     bottom: 20,

@@ -123,7 +123,7 @@ class Login extends Component {
         <Row>
 
         <div className="col-md-12">
-        <div className="col-md-7" id="registerBox">
+          <div className="col-md-7" id="registerBox">
 
             <h4><span className="pop"><i className="fas fa-user-circle"></i>&nbsp;New User?</span> Create an account.</h4>
             <button className="btn btn-info" type="button" id="inputBtn"
