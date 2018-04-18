@@ -5,31 +5,20 @@ module.exports = {
   findAll: function (req, res) {
     console.log("getting all parts");
     db.User.findById({ _id: req.user.id })
-      .populate('parts')
-      .then(console.log())
 
-
-    // .then( dbUser => {
-    //   console.log(dbUser);
-    //   dbUser.inventory.find({}).populate('parts')
-    //   .then( dbParts => {
-    //     console.log(dbParts);
-    //   });
-    //   console.log(dbUser);
-    // })
-    // db.Part
-    //   .find({})Inventory
-    // //.sort({ date: -1 })
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(err => res.status(422).json(err));
+      .then(dbUser => {
+        res.json(dbUser.inventory);
+      })
   },
+
   findById: function (req, res) {
-    //  console.log("get PAAAAART");
+
     db.Part
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   create: function (req, res) {
 
     let partData = req.body;
@@ -47,17 +36,26 @@ module.exports = {
     })
       .then(dbModel => res.json(dbModel));
   },
+
   update: function (req, res) {
     db.Part
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   remove: function (req, res) {
-    db.Part
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+    console.log("MPN: " + req.params.id);
+    console.log("User: " + req.user.id);
+    db.User
+      .findOneAndUpdate({ _id: req.user.id }, {
+        $pull: {
+          inventory: {
+            MPN: req.params.id
+      }}})
+      
+    //   .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    //   .catch(err => res.status(422).json(err));
   }
 };

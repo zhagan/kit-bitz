@@ -125,14 +125,15 @@ class PartSearch extends Component {
             {this.state.inventory.length ? (
               <List>
                 {this.state.inventory.map(part => (
-                  <ListItem key={part._id}>
-                    <Link to={"/parts/" + part._id}>
+                  <ListItem key={part.MPN}>
+                    <Link to={"/parts/" + part.MPN}>
                       <strong>
-                        {part.snippet} {part.item.mfn}
+                         {part.MPN}
                       </strong>
                     </Link>
-                    <QtyBox onChange={() => this.changeQtyPart(part._id)} />
-                    <DeleteBtn onClick={() => this.deletePart(part._id)} />
+                    <p>{part.Snippet}</p>
+                    <QtyBox onChange={() => this.changeQtyPart(part.MPN)} />
+                    <DeleteBtn onClick={() => this.deletePart(part.MPN)} />
                   </ListItem>
                 ))}
               </List>
