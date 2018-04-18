@@ -118,7 +118,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-      <CenterContainer fluid>
+      <CenterContainer>
         <div className="form-box">
         <Row>
 

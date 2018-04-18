@@ -2,13 +2,14 @@
 .form-box {
     width: 85%;
     height: auto;
+    margin: auto;
+    padding: 3%;
     background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
     box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
 }
 
 #registerBox {
     padding-top: 3%;
-
     float: right;
     margin-bottom: 10%;
 }
