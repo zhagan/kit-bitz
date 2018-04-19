@@ -86,7 +86,7 @@ class Kits extends Component {
               <List>
                 {this.state.kits.map((kit, index) => (
                   <ListItem key={index}>
-                    <Link to={"/kits/" + kit._id}>
+                    <Link to={"/createkit/" + kit._id}>
                       <strong>
                         {kit.kitName} created by {kit.createdBy.username}
                       </strong>
