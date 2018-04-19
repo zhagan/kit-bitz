@@ -28,9 +28,9 @@ render () {
 
     return (
 
-    <div >
+    <div id="sideBar">
 
-        <SideNav highlightColor='#00498B' highlightBgColor='#000B2A'
+        <SideNav 
           onItemSelection={ this.itemSelected}>
 
 

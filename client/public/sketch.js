@@ -39,9 +39,9 @@ function draw() {
   generate();
   for ( var i = 0; i < columns;i++) {
     for ( var j = 0; j < rows;j++) {
-      if ((board[i][j] == 1)) fill(155);
+      if ((board[i][j] == 1)) fill(220);
       else fill(255);
-      stroke(200);
+      stroke(240);
       rect(i*w, j*w, w-1, w-1);
     }
   }

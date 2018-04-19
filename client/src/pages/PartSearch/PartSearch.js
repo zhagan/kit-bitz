@@ -24,7 +24,7 @@ class PartSearch extends Component {
   };
 
   componentDidMount() {
-    this.loadInventory();
+  //  this.loadInventory();
   }
 
   loadInventory = () => {

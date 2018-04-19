@@ -13,7 +13,7 @@ import SideBar from "../../components/SideBar";
 import BootstrapTable from 'react-bootstrap-table-next';
 import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-
+import './Inventory.css';
 
 class Inventory extends Component {
   state = {
@@ -113,7 +113,7 @@ class Inventory extends Component {
 
               <h3>Parts in my Inventory</h3>
             {this.state.inventory.length ? (
-
+              <div id='inventoryTable'>
               <BootstrapTable keyField='_id'
                 data={ this.state.inventory }
                 columns={ columns }
@@ -122,6 +122,7 @@ class Inventory extends Component {
                   dataField='button'
                   dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
                 </BootstrapTable>
+                </div>
             ) : (
               <h3>No Results to Display</h3>
             )}
