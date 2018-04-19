@@ -1,5 +1,6 @@
 #form-btn {
-  float: right;
-  color: #000000;
+  float: top;
+  color: white;
   background-color: #00498B;
+  border-color: #00498B;
 }

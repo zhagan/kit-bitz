@@ -12,7 +12,7 @@ import Axios from 'axios';
 import SideBar from "../../components/SideBar";
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-
+import './PartSearch.css';
 
 class PartSearch extends Component {
   state = {
@@ -100,10 +100,10 @@ class PartSearch extends Component {
 
 
           <Col size="md-9">
-
+            <div id='inputeSeacrForm'>
               <h3>Search Octopart For a Part</h3>
 
-            <form>
+            <form style={{padding:'0px 0px 25px 0px'}}>
 
               <Input
                 value={this.state.keyword}
@@ -111,17 +111,19 @@ class PartSearch extends Component {
                 name="keyword"
                 placeholder="Keywords (required)"
               />
-              <br />
+
               <FormBtn
                 disabled={!(this.state.keyword || this.state.mfrNum)}
                 onClick={this.handleFormSubmit}
               >  Search Part
               </FormBtn>
+                <br />
             </form>
+            </div>
 
-
+            <div id='searchResults'>
             {this.state.PartSearch.length ? (
-              <List>
+              <List id='searchResultsList'>
                 {this.state.PartSearch.map((part, index) => (
 
                   <ListItem key={index}>
@@ -141,7 +143,7 @@ class PartSearch extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-
+            </div>
           </Col>
 
       </Container>
