@@ -12,3 +12,11 @@
     color: #ffffff;
     background-color: #000B2A;
 }
+
+.navbar-brand {
+    float: left;
+    padding: 5px 15px;
+    font-size: 19px;
+    line-height: 21px;
+    height: 60px;
+}

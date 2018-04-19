@@ -10,6 +10,8 @@ import { update } from '../../services/withUser';
 import axios from 'axios';
 
 import "./Nav.css";
+import logo from './kit-bitz-logo.png';
+
 
 class KBNav extends Component {
   handleLogoutClick = (e) => {
@@ -34,7 +36,16 @@ class KBNav extends Component {
         <Navbar.Header>
           <Navbar.Brand>
             <LinkContainer to="/">
-              <a href="#">Kit Bitz</a>
+            <a href="#">
+            <img
+               src={logo}
+               alt="Kit-Bitz"
+               style={{height:'50px',
+                        align:'top',
+                        padding:'0px',
+                        border:'0px'}}
+             />
+            </a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />

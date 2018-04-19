@@ -8,8 +8,6 @@ import { ic_business } from 'react-icons-kit/md/ic_business';
 import { withRouter,  } from 'react-router-dom';
 
 
-
-
 //specify the base color/background of the parent container if needed
 class SideBar extends Component{
 
@@ -25,6 +23,7 @@ render () {
     return (
 
     <div >
+
         <SideNav highlightColor='#00498B' highlightBgColor='#000B2A' defaultSelected='parts'
           onItemSelection={ this.itemSelected}>
 
