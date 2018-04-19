@@ -11,6 +11,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import SideBar from "../../components/SideBar";
 import BootstrapTable from 'react-bootstrap-table-next';
+import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
 
@@ -72,6 +73,19 @@ class Inventory extends Component {
     }
   };
 
+  cellButton(cell, row, enumObject, rowIndex) {
+   return (
+      <button
+         type="button"
+         onClick={() =>
+         this.onClickProductSelected(cell, row, rowIndex)}
+      >
+      Click me { rowIndex }
+      </button>
+   )
+ }
+
+
   render() {
     const columns = [{
        dataField: 'quantity',
@@ -82,7 +96,11 @@ class Inventory extends Component {
      }, {
        dataField: 'snippet',
        text: 'Description'
-     }];
+     }, {
+       dataField:'button',
+       dataFormat: this.cellButton,
+       text: 'x'
+    }];
 
     return (
       <Container fluid>
@@ -95,10 +113,15 @@ class Inventory extends Component {
 
               <h3>Parts in my Inventory</h3>
             {this.state.inventory.length ? (
+
               <BootstrapTable keyField='_id'
                 data={ this.state.inventory }
                 columns={ columns }
-                cellEdit={ cellEditFactory({ mode: 'click' })}/>
+                >
+                <TableHeaderColumn
+                  dataField='button'
+                  dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
+                </BootstrapTable>
             ) : (
               <h3>No Results to Display</h3>
             )}

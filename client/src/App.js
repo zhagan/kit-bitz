@@ -12,9 +12,6 @@ import KitDetail from "./pages/KitDetail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
-import LeftSidebar from "./components/LeftSidebar";
-import SearchBar from "./components/searchBar";
-import TitleBar from "./components/titleBar";
 import Home from './pages/Home';
 import { Col, Row, Container } from "./components/Grid";
 

@@ -141,15 +141,7 @@ class PartSearch extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-              <h3>Parts in my Inventory</h3>
-            {this.state.inventory.length ? (
-              <BootstrapTable keyField='_id'
-                data={ this.state.inventory }
-                columns={ columns }
-                cellEdit={ cellEditFactory({ mode: 'click' })}/>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+
           </Col>
 
       </Container>

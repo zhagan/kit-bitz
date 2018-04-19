@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { withRouter,  } from 'react-router-dom';
 
-
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -52,12 +51,12 @@ class KBNav extends Component {
                 Kits
               </NavItem>
             </LinkContainer>
-            
+
           </Nav>
           <Nav pullRight>
             {
               user
-              ? 
+              ?
               <NavDropdown eventKey={3} title={`Logged in as: ${user.username}`} id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1} onClick={this.handleLogoutClick}>Logout</MenuItem>
               </NavDropdown>
