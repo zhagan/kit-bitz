@@ -11,16 +11,15 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import SideBar from "../../components/SideBar";
 import BootstrapTable from 'react-bootstrap-table-next';
+import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-import './PartSearch.css';
 
-class PartSearch extends Component {
+
+class Inventory extends Component {
   state = {
-    PartSearch: [],
     mfrNum: "",
     keyword: "",
     inventory:[],
-
   };
 
   componentDidMount() {
@@ -66,31 +65,42 @@ class PartSearch extends Component {
       if(this.state.keyword){
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
-          this.setState({ PartSearch: res.data.results });
-        //  this.loadPartSearch();
+          this.setState({ Inventory: res.data.results });
+        //  this.loadInventory();
         })
         .catch(err => console.log(err));
       }
     }
   };
 
-
-   cellEditProp = event => {
-      mode: 'dbclick'
-    };
+  cellButton(cell, row, enumObject, rowIndex) {
+   return (
+      <button
+         type="button"
+         onClick={() =>
+         this.onClickProductSelected(cell, row, rowIndex)}
+      >
+      Click me { rowIndex }
+      </button>
+   )
+ }
 
 
   render() {
     const columns = [{
        dataField: 'quantity',
-       text: 'Product ID'
+       text: 'Qty'
      }, {
        dataField: 'mpn',
-       text: 'Product Name'
+       text: 'MPN'
      }, {
        dataField: 'snippet',
-       text: 'Product Price'
-     }];
+       text: 'Description'
+     }, {
+       dataField:'button',
+       dataFormat: this.cellButton,
+       text: 'x'
+    }];
 
     return (
       <Container fluid>
@@ -100,50 +110,21 @@ class PartSearch extends Component {
 
 
           <Col size="md-9">
-            <div id='inputeSeacrForm'>
-              <h3>Search Octopart For a Part</h3>
 
-            <form style={{padding:'0px 0px 25px 0px'}}>
+              <h3>Parts in my Inventory</h3>
+            {this.state.inventory.length ? (
 
-              <Input
-                value={this.state.keyword}
-                onChange={this.handleInputChange}
-                name="keyword"
-                placeholder="Keywords (required)"
-              />
-
-              <FormBtn
-                disabled={!(this.state.keyword || this.state.mfrNum)}
-                onClick={this.handleFormSubmit}
-              >  Search Part
-              </FormBtn>
-                <br />
-            </form>
-            </div>
-
-            <div id='searchResults'>
-            {this.state.PartSearch.length ? (
-              <List id='searchResultsList'>
-                {this.state.PartSearch.map((part, index) => (
-
-                  <ListItem key={index}>
-                  {part.item.imagesets.length > 0 &&
-                    <img src={part.item.imagesets[0].small_image.url} alt=""></img>
-                  }
-                    <a href={part.item.octopart_url} target="_blank">
-                      <strong>
-                         {part.item.mpn}
-                      </strong>
-                    <p>{part.snippet}</p>
-                    </a>
-                    <AddBtn onClick={() => this.addPart(part)} />
-                  </ListItem>
-                ))}
-              </List>
+              <BootstrapTable keyField='_id'
+                data={ this.state.inventory }
+                columns={ columns }
+                >
+                <TableHeaderColumn
+                  dataField='button'
+                  dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
+                </BootstrapTable>
             ) : (
               <h3>No Results to Display</h3>
             )}
-            </div>
           </Col>
 
       </Container>
@@ -151,4 +132,4 @@ class PartSearch extends Component {
   }
 }
 
-export default PartSearch;
+export default Inventory;

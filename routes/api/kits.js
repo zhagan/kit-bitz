@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const createKitController = require("../../controllers/createKitController");
+const kitsController = require("../../controllers/kitsController");
 const octopartjs = require('octopartjs');
 const Axios = require('axios');
 
@@ -10,8 +10,8 @@ function getKits(req, res){
 }
 
 router.route("/")
-  .get(createKitController.findAll)
-  .post(createKitController.create);
+  .get(kitsController.findAll)
+  .post(kitsController.create);
 
 router.route("/search/")
   .post(getKits);
@@ -20,8 +20,8 @@ router.route("/search/")
 // Matches with "/api/kits/:id"
 router
   .route("/:id")
-  .get(createKitController.findById)
-  .put(createKitController.update)
-  .delete(createKitController.remove);
+  .get(kitsController.findById)
+  .put(kitsController.update)
+  .delete(kitsController.remove);
 
 module.exports = router;

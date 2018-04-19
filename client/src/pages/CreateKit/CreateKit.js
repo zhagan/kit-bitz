@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
+import SideBar from "../../components/SideBar";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -101,8 +102,12 @@ class CreateKit extends Component {
   render() {
     return (
       <Container fluid>
+        <Col size="md-2">
+          <SideBar />
+        </Col>
+
         <Row>
-          <Col size="md-6">
+          <Col size="md-4">
 
             <h3>Create a Kit</h3>
 
@@ -166,7 +171,7 @@ class CreateKit extends Component {
 
 
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-5 sm-10">
             <h3>My Kits</h3>
             {this.state.MyKits.length ? (
               <List>
