@@ -34,7 +34,13 @@ module.exports = {
         }
       }
     })
-      .then(dbModel => res.json(dbModel));
+      .then(dbModel => res.json(dbModel))
+      .then(
+        // console.log(partData._id)
+      db.Part.findOneAndUpdate({ _id: partData._id }, partData, { upsert: true }, () => {
+        console.log(partData._id)
+      })
+      )
   },
 
   update: function (req, res) {
@@ -52,9 +58,11 @@ module.exports = {
         $pull: {
           inventory: {
             MPN: req.params.id
-      }}})
-      
-    //   .then(dbModel => dbModel.remove())
+          }
+        }
+      })
+
+      //   .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
     //   .catch(err => res.status(422).json(err));
   }
