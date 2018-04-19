@@ -10,7 +10,7 @@ import { update } from '../../services/withUser';
 import axios from 'axios';
 
 import "./Nav.css";
-import logo from './kit-bitz-logo.png';
+import logo from './kit-bitz-logo-white.png';
 
 
 class KBNav extends Component {

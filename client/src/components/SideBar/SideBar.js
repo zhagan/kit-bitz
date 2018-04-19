@@ -24,7 +24,7 @@ render () {
 
     <div >
 
-        <SideNav highlightColor='#00498B' highlightBgColor='#000B2A' defaultSelected='parts'
+        <SideNav highlightColor='#00498B' highlightBgColor='#000B2A'
           onItemSelection={ this.itemSelected}>
 
 
