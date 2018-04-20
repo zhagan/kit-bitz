@@ -10,7 +10,11 @@
 }
 
 #sideBar {
-
-  background-color: #00498B;
+  background: linear-gradient(to bottom,#101648 0%, #F5F5F5 100%);
+  box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.17), 0 7px 20px 0 rgba(0,0,0, 0.10);  
+  border-radius: 5px;
   color: white;
+  margin-top: 20px;
+  line-height: 2.0;
+  
 }

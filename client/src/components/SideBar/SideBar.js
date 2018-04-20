@@ -28,13 +28,12 @@ render () {
 
     return (
 
-    <div id="sideBar">
+    <div style={{height: 400}} id="sideBar">
 
-        <SideNav 
+        <SideNav highlightColor='#18a279' highlightBgColor='#B7B9C8'
           onItemSelection={ this.itemSelected}>
 
-
-            <Nav id='parts' >
+            <Nav bsStyle="pills" stacked id='parts'>
                 <NavIcon><SvgIcon size={20} icon={ic_search}/></NavIcon>
                 <NavText> Parts </NavText>
 
@@ -53,7 +52,10 @@ render () {
             <Nav id='createkit'>
                 <NavIcon><SvgIcon size={20} icon={plusCircle}/></NavIcon>
                 <NavText> Create Kits </NavText>
+                
             </Nav>
+            <hr style={{width: 200}}/>
+
         </SideNav>
     </div>
 )
