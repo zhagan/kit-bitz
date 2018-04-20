@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
+import KitCard from "../../components/KitCard";
 import API from "../../utils/API";
 import './Kits.css';
 import { List, ListItem } from "../../components/List";
@@ -85,13 +86,7 @@ class Kits extends Component {
             {this.state.kits.length ? (
               <List>
                 {this.state.kits.map((kit, index) => (
-                  <ListItem key={index}>
-                    <Link to={"/createkit/" + kit._id}>
-                      <strong>
-                        {kit.kitName} created by {kit.createdBy.username}
-                      </strong>
-                    </Link>
-                  </ListItem>
+                <KitCard kit={kit} />
                 ))}
               </List>
             ) : (
