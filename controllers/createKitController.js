@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     console.log("getting all of my kits");
-    db.Kit.find({ }).populate('createdBy').then( dbKit => {
+    db.Kit.find({ createdBy: req.user.id }).populate('createdBy').then( dbKit => {
 
       res.json(dbKit);
     });

@@ -27,6 +27,10 @@ export default {
   getKit: function(id) {
     return axios.get("/api/createkit/" + id);
   },
+
+  getKits: function() {
+    return axios.get("/api/kits/");
+  },
   // Deletes the kit with the given id
   deleteKit: function(id) {
     return axios.delete("/api/createkit/" + id);

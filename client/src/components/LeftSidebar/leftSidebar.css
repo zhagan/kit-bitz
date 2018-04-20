@@ -1,0 +1,46 @@
+
+.side-title {
+    background-color: #253447;
+    width: 180px;
+    height: 90px;
+    position: absolute;
+    top: 62px;
+    left: 0;
+}
+
+.leftsidebar {
+    height: 100%;
+    width: 180px;
+    position: absolute;
+    top: 160px;
+    left: 0;
+    background-color: #253447;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.leftsidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+}
+
+.leftsidebar a:hover {
+    color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
+
+.icon {
+    color: white;
+    size: 2x;
+}
+
+input[type=checkbox] {
+   display: none;
+}

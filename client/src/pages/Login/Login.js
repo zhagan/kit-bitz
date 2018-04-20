@@ -4,29 +4,32 @@ import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
+import { Col, Row, CenterContainer } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Modal from '../../components/Modal/Modal';
+import './Login.css';
 import Axios from "axios";
 import {update} from '../../services/withUser';
-
 import { withRouter, Redirect } from 'react-router-dom';
+
 
 
 class Login extends Component {
   state = {
-
+    show: false,
     username: "",
     password:"",
     newUserName:"",
     newPassword:"",
     email:"",
-    loginFailed: false
+    loginFailed: false,
+
 
   };
 
   initState = {
-
+    show: false,
     username: "",
     password:"",
     newUserName:"",
@@ -35,6 +38,18 @@ class Login extends Component {
     loginFailed: false
 
   };
+
+  showModal = () => {
+    // this.setState({
+    //   ...this.state,
+    //   show: !this.state.show
+    // });
+    this.setState((prevState) => ({
+      show: !prevState.show
+    }));
+
+  }
+
 
   componentDidMount() {
   //  this.loadInventory();
@@ -91,7 +106,7 @@ class Login extends Component {
           this.setState(this.initState);
           this.setState({ loginFailed: true});
           console.log('login failed');
-         //return login account failed
+          //return login account failed
 
       });
         // do something for login
@@ -99,33 +114,31 @@ class Login extends Component {
     }
   };
 
-  handleFormSubmitNewUser = event => {
-    event.preventDefault();
-    if (this.state.newUserName && this.state.newPassword && this.state.email) {
-        // do something for create
-        Axios.post('/api/users', {
-          username: this.state.newUserName,
-          password: this.state.newPassword,
-          email: this.state.email
-        }).then(user => {
-        //  update(user.data);
-          console.log(user);
-        }).catch(err =>{
-
-           //return create account failed
-
-        });
-
-    }
-  };
 
   render() {
     return (
-      <Container fluid>
+      <div>
+      <CenterContainer>
+        <div className="form-box">
         <Row>
-          <Col size="md-6">
 
-              <h3>Login to Kit-Bitz</h3>
+        <div className="col-md-12">
+          <div className="col-md-7" id="registerBox">
+
+            <h4><span className="pop"><i className="fas fa-user-circle"></i>&nbsp;New User?</span> Create an account.</h4>
+            <button className="btn btn-info" type="button" id="inputBtn"
+            onClick={this.showModal}
+            value="Register">Register&nbsp;<i className="fas fa-angle-double-right"></i></button>
+
+
+            </div>
+        </div>
+
+        </Row>
+
+        <Row>
+        <div className="col-md-12">
+          <h3><i className="fas fa-sign-in-alt"></i>&nbsp;Login to Kit-Bitz</h3>
 
             <form>
               {this.state.loginFailed ? <p style={{color: 'red'}}>Login Failed</p> : null }
@@ -148,41 +161,20 @@ class Login extends Component {
               >
                 Login
               </FormBtn>
+
             </form>
-            <Row/>
-          </Col>
-          <Col size="md-6 sm-12">
-              <h3>Create new Account</h3>
-              <form>
-                <Input
-                  value={this.state.newUserName}
-                  onChange={this.handleInputChange}
-                  name="newUserName"
-                  placeholder="User Name (required)"
-                />
-                <Input
-                  type="password"
-                  value={this.state.newPassword}
-                  onChange={this.handleInputChange}
-                  name="newPassword"
-                  placeholder="Password (required)"
-                />
-                <Input
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  name="email"
-                  placeholder="Email (required)"
-                />
-                <FormBtn
-                  disabled={!(this.state.newUserName && this.state.newPassword)}
-                  onClick={this.handleFormSubmitNewUser}
-                >
-                  Create Account
-                </FormBtn>
-              </form>
-          </Col>
+            </div>
         </Row>
-      </Container>
+
+
+
+
+        </div>
+      </CenterContainer>
+      <Modal onClose={this.showModal} show={this.state.show}>
+
+      </Modal>
+      </div>
     );
   }
 }

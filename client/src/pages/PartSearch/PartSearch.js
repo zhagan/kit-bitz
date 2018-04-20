@@ -9,6 +9,10 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
+import SideBar from "../../components/SideBar";
+import BootstrapTable from 'react-bootstrap-table-next';
+import cellEditFactory from 'react-bootstrap-table2-editor';
+import './PartSearch.css';
 
 class PartSearch extends Component {
   state = {
@@ -20,7 +24,7 @@ class PartSearch extends Component {
   };
 
   componentDidMount() {
-    this.loadInventory();
+  //  this.loadInventory();
   }
 
   loadInventory = () => {
@@ -63,9 +67,7 @@ class PartSearch extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.mfrNum || this.state.keyword) {
-
       if(this.state.keyword){
-
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
         .then(res => {
           this.setState({ PartSearch: res.data.results });
@@ -76,15 +78,36 @@ class PartSearch extends Component {
     }
   };
 
+
+   cellEditProp = event => {
+      mode: 'dbclick'
+    };
+
+
   render() {
+    const columns = [{
+       dataField: 'quantity',
+       text: 'Product ID'
+     }, {
+       dataField: 'mpn',
+       text: 'Product Name'
+     }, {
+       dataField: 'snippet',
+       text: 'Product Price'
+     }];
+
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-6">
+      <Col size="md-2">
+      <SideBar />
+      </Col>
 
+
+          <Col size="md-9">
+            <div id='inputeSeacrForm'>
               <h3>Search Octopart For a Part</h3>
 
-            <form>
+            <form style={{padding:'0px 0px 25px 0px'}}>
 
               <Input
                 value={this.state.keyword}
@@ -96,14 +119,15 @@ class PartSearch extends Component {
               <FormBtn
                 disabled={!(this.state.keyword || this.state.mfrNum)}
                 onClick={this.handleFormSubmit}
-              >
-                Search Part
+              >  Search Part
               </FormBtn>
+                <br />
             </form>
-            <Row/>
+            </div>
 
+            <div id='searchResults'>
             {this.state.PartSearch.length ? (
-              <List>
+              <List id='searchResultsList'>
                 {this.state.PartSearch.map((part, index) => (
 
                   <ListItem key={index}>
@@ -123,29 +147,8 @@ class PartSearch extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            </div>
           </Col>
-          <Col size="md-6 sm-12">
-              <h3>Parts in my Inventory</h3>
-            {this.state.inventory.length ? (
-              <List>
-                {this.state.inventory.map(part => (
-                  <ListItem key={part.MPN}>
-                    <Link to={"/parts/" + part.MPN}>
-                      <strong>
-                         {part.MPN}
-                      </strong>
-                    </Link>
-                    <p>{part.Snippet}</p>
-                    <QtyBox onChange={() => this.changeQtyPart(part.MPN)} value={this.state.setQty} />
-                    <DeleteBtn onClick={() => this.deletePart(part.MPN)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
       </Container>
     );
   }
