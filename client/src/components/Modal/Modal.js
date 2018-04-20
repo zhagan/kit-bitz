@@ -5,6 +5,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from "axios";
 import {update} from "../../services/withUser";
 import { withRouter, Redirect } from "react-router-dom";
+import './Modal.css';
 
 
 
@@ -15,7 +16,7 @@ const backdropStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     padding: 50
 }
 
@@ -24,10 +25,7 @@ const footerStyle = {
     bottom: 20,
 };
 
-const imageStyle = {
-    maxHeight: 400
 
-};
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -119,7 +117,7 @@ export default class Modal extends React.Component {
                             {this.props.children}
                         </div>
 
-                        <h3><i className="fas fa-user-circle"></i>&nbsp;Create New Account</h3>
+                        <h3><span className="pop"><i className="fas fa-user-circle"></i></span>&nbsp;Create New Account</h3>
                             <form>
                               <Input
                                 value={this.state.newUserName}
