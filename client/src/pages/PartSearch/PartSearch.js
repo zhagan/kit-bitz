@@ -16,7 +16,7 @@ class PartSearch extends Component {
     mfrNum: "",
     keyword: "",
     inventory:[],
-
+    setQty: ""
   };
 
   componentDidMount() {
@@ -37,10 +37,14 @@ class PartSearch extends Component {
       .catch(err => console.log(err));
   };
 
-  changeQtyPart = id => {
-    API.changeQtyPart(id)
-      .then(res => this.loadInventory())
-      .catch(err => console.log(err));
+  changeQtyPart = (id) => {
+    // let newQty = this.target.value;
+    // console.log(newQty);
+
+    // this.setState({ setQty: newQty });
+    // API.changeQtyPart(id, newQty)
+    //   .then(res => this.loadInventory())
+    //   .catch(err => console.log(err));
   };
 
   addPart = part => {
@@ -132,7 +136,7 @@ class PartSearch extends Component {
                       </strong>
                     </Link>
                     <p>{part.Snippet}</p>
-                    <QtyBox onChange={() => this.changeQtyPart(part.MPN)} />
+                    <QtyBox onChange={() => this.changeQtyPart(part.MPN)} value={this.state.setQty} />
                     <DeleteBtn onClick={() => this.deletePart(part.MPN)} />
                   </ListItem>
                 ))}

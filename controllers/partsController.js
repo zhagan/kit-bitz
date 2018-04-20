@@ -12,7 +12,7 @@ module.exports = {
   },
 
   findById: function (req, res) {
-
+    console.log(req.params.id);
     db.Part
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
@@ -37,9 +37,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .then(
         // console.log(partData._id)
-      db.Part.findOneAndUpdate({ _id: partData._id }, partData, { upsert: true }, () => {
-        console.log(partData._id)
-      })
+        db.Part.findOneAndUpdate({ _id: partData._id }, partData, { upsert: true }, () => {
+          console.log(partData._id)
+        })
       )
   },
 
