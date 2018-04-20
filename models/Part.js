@@ -7,6 +7,9 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var PartSchema = new Schema({
   // `title` is of type String
+  _id: {
+    type: String
+  },
   Part: {
     type: String,
     enum: ['resistor', 'capacitor','transistor','diode','trimmer','socket','header','fuse','bead','misc'],
@@ -17,10 +20,6 @@ var PartSchema = new Schema({
   },
   snippet: {
     type: String
-  },
-  quantity: {
-    type: Number,
-    default: 1
   }
 });
 

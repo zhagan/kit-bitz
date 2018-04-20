@@ -26,11 +26,13 @@ var UserSchema = new Schema({
   createdAt: Date,
   kitsCreated: Array,
 
-  inventory: {
-    type: Schema.Types.ObjectId,
-    ref: "Inventory",
-    default: null
-  }
+  inventory: [{
+    _id: false,
+    MPN: { type: String, index: { unique: true } },
+    Qty: Number,
+    Snippet: String,
+    Img: String
+  }]
 });
 
 UserSchema.pre('save', function(next) {

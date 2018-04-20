@@ -17,6 +17,9 @@ export default {
   addPart: function(partData) {
     return axios.post("/api/parts/", partData);
   },
+  changeQtyPart: function(id) {
+    return axios.post("/api/parts/", id);
+  },
   getMyKits: function() {
     return axios.get("/api/createkit/");
   },

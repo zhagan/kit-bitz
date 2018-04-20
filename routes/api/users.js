@@ -6,10 +6,7 @@ router.route('/')
   .post((req, res, next) => {
     db.User.create(req.body)
       .then(user => {
-        db.Inventory.create({}).then( dbInventory => {
-          user.inventory = dbInventory.id;
-          user.save();
-        });
+        
         const { id, username } = user;
         res.json({
           id, username
