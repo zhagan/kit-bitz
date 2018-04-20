@@ -19,7 +19,7 @@ class Inventory extends Component {
   state = {
     mfrNum: "",
     keyword: "",
-    inventory:[],
+    inventory: [],
   };
 
   componentDidMount() {
@@ -28,9 +28,10 @@ class Inventory extends Component {
 
   loadInventory = () => {
     API.getParts()
-      .then( res =>
-         this.setState({ inventory: res.data})
+      .then(res =>
+        this.setState({ inventory: res.data })
       )
+      .then(console.log(this.state.inventory))
       .catch(err => console.log(err));
   };
 
@@ -62,71 +63,71 @@ class Inventory extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.mfrNum || this.state.keyword) {
-      if(this.state.keyword){
+      if (this.state.keyword) {
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
-        .then(res => {
-          this.setState({ Inventory: res.data.results });
-        //  this.loadInventory();
-        })
-        .catch(err => console.log(err));
+          .then(res => {
+            this.setState({ Inventory: res.data.results });
+            //  this.loadInventory();
+          })
+          .catch(err => console.log(err));
       }
     }
   };
 
   cellButton(cell, row, enumObject, rowIndex) {
-   return (
+    return (
       <button
-         type="button"
-         onClick={() =>
-         this.onClickProductSelected(cell, row, rowIndex)}
+        type="button"
+        onClick={() =>
+          this.onClickProductSelected(cell, row, rowIndex)}
       >
-      Click me { rowIndex }
+        Click me {rowIndex}
       </button>
-   )
- }
+    )
+  }
 
 
   render() {
     const columns = [{
-       dataField: 'quantity',
-       text: 'Qty'
-     }, {
-       dataField: 'mpn',
-       text: 'MPN'
-     }, {
-       dataField: 'snippet',
-       text: 'Description'
-     }, {
-       dataField:'button',
-       dataFormat: this.cellButton,
-       text: 'x'
+      dataField: 'Qty',
+      text: 'Qty'
+    }, {
+      dataField: 'MPN',
+      text: 'MPN'
+    }, {
+      dataField: 'Snippet',
+      text: 'Description'
+    }, {
+      dataField: 'button',
+      dataFormat: this.cellButton,
+      text: 'x'
     }];
 
     return (
       <Container fluid>
-      <Col size="md-2">
-      <SideBar />
-      </Col>
+        <Col size="md-2">
+          <SideBar />
+        </Col>
 
 
-          <Col size="md-9">
+        <Col size="md-9">
 
-              <h3>Parts in my Inventory</h3>
-            {this.state.inventory.length ? (
-              <div id='inventoryTable'>
+          <h3>Parts in my Inventory</h3>
+          {this.state.inventory.length ? (
+            <div id='inventoryTable'>
               <BootstrapTable keyField='_id'
-                data={ this.state.inventory }
-                columns={ columns }
-                >
+                data={this.state.inventory}
+                columns={columns}
+              >
                 <TableHeaderColumn
                   dataField='button'
                   dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
-                </BootstrapTable>
-                </div>
-            ) : (
+              </BootstrapTable>
+            </div>
+          ) : (
               <h3>No Results to Display</h3>
             )}
-          </Col>
+        </Col>
 
       </Container>
     );

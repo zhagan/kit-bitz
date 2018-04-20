@@ -55,7 +55,7 @@ class Detail extends Component {
 
     // store inventory MPN's in array
     this.state.inventory.forEach(element => {
-      INVarray.push(element.item.mpn);
+      INVarray.push(element.MPN);
     });
 
     // if MPN in both inventory and BOM push to matchedArray
