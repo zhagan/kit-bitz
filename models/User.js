@@ -28,7 +28,7 @@ var UserSchema = new Schema({
 
   inventory: [{
     _id: false,
-    MPN: { type: String, index: { unique: true } },
+    MPN: { type: String },
     Qty: Number,
     Snippet: String,
     Img: String

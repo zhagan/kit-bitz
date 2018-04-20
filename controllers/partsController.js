@@ -23,7 +23,12 @@ module.exports = {
 
     let partData = req.body;
     partData._id = req.body.item.mpn;
-
+  //db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
+  db.User.find( { $and: [ { _id: req.user.id },{ inventory:{$elemMatch: {MPN:partData._id}}} ] }).count().then(
+    count => {
+  if(count > 0){
+    console.log("part exists");
+  }else{
     db.User.findOneAndUpdate({ _id: req.user.id }, {
       $push: {
         inventory: {
@@ -40,8 +45,10 @@ module.exports = {
         db.Part.findOneAndUpdate({ _id: partData._id }, partData, { upsert: true }, () => {
           console.log(partData._id)
         })
-      )
-  },
+        )
+      }
+      });
+    },
 
   update: function (req, res) {
     db.Part
