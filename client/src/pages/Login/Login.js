@@ -155,19 +155,18 @@ class Login extends Component {
                     name="password"
                     placeholder="Password (required)"
                   />
-                  <FormBtn 
-                    disabled={!(this.state.username && this.state.password)}
-                    onClick={this.handleFormSubmit}
-                  >
-                  
-                    Login
-                  </FormBtn>
-                  <p>or</p>
+                  <div className="button-section">
+                    <FormBtn 
+                      disabled={!(this.state.username && this.state.password)}
+                      onClick={this.handleFormSubmit}
+                    >Login</FormBtn>
 
-                  <button className="btn btn-info form-btn" type="button" id="inputBtn"
-                onClick={this.showModal}
-                value="Register">Register&nbsp;<i className="fas fa-angle-double-right"></i></button>
+                    
 
+                    <button className="btn btn-info form-btn" type="button" id="inputBtn"
+                    onClick={this.showModal}
+                    value="Register">Or Register&nbsp;<i className="fas fa-angle-double-right"></i></button>
+                  </div>
                 </form>
               </div>
 
