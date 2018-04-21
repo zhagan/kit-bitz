@@ -17,6 +17,7 @@ import kitbitzname from './Kit-Bitz-name.png';
 
 
 
+
 class Login extends Component {
   state = {
     show: false,
@@ -171,14 +172,11 @@ class Login extends Component {
               </div>
 
         </Row>
-
-
-
-
       </div>
       </CenterContainer>
-      <Modal onClose={this.showModal} show={this.state.show}>
 
+      <Modal onClose={this.showModal} show={this.state.show}>
+      
       </Modal>
       </div>
     );
