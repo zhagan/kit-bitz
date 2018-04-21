@@ -19,6 +19,8 @@ module.exports = {
   },
   create: function(req, res) {
     //var kitId;
+
+    console.log("file " + req.files);
     db.Kit.create(req.body)
       .then( dbKit => {
         // return db.User.findOneAndUpdate({"_id":req.user.id}, {$push: {"inventory":dbPart._id}});
@@ -28,7 +30,7 @@ module.exports = {
       .then(dbKit => {
         // parse BOM string to store in database
         const BOM = JSON.parse(req.body.BOM);
-        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:BOM});
+        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:BOM, kitImg:req.files});
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => {

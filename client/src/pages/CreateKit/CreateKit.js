@@ -22,7 +22,8 @@ class CreateKit extends Component {
     designer: "",
     kitUrl: "",
     pcbUrl: "",
-    faceplateUrl: ""
+    faceplateUrl: "",
+    imgFile: {}
 
   };
 
@@ -75,6 +76,9 @@ class CreateKit extends Component {
     formData.append('kitUrl', this.state.kitUrl);
     formData.append('pcbUrl', this.state.pcbUrl);
     formData.append('faceplateUrl', this.state.faceplateUrl);
+    formData.append('file', this.state.imgFile);
+
+
 
     console.log(formData.get('kitName'));
 
@@ -84,9 +88,9 @@ class CreateKit extends Component {
   };
 
   onChangeFile = event => {
-    this.setState({ file: event.target.files[0] });
-    console.log('test');
-    console.log(this.state.file);
+    //this.setState({ file: event.target.files[0] });
+    //console.log('test');
+    //console.log(this.state.file);
 
     // Grab the file DOM object and pass to papaparse
     // header: true creates an object for each row where keys = first row of csv
@@ -97,6 +101,15 @@ class CreateKit extends Component {
         parsedBOM = results.data.splice(1, results.data.length - 1);
       }
     })
+  }
+
+  onChangeImgFile = event => {
+    this.setState({ imgFile: event.target.files[0] });
+    console.log(this.state.file);
+
+    // Grab the file DOM object and pass to papaparse
+    // header: true creates an object for each row where keys = first row of csv
+
   }
 
   render() {
@@ -156,7 +169,7 @@ class CreateKit extends Component {
                 <input
                   type="file"
                   name="imgFile"
-                  onChange={this.onChangeFile}
+                  onChange={this.onChangeImgFile}
                 />
               </label>
               <br />

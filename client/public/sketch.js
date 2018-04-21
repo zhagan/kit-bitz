@@ -11,7 +11,7 @@ var board;
 var next;
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  setup();
 }
 
 function setup() {
