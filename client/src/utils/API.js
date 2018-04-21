@@ -17,8 +17,12 @@ export default {
   addPart: function(partData) {
     return axios.post("/api/parts/", partData);
   },
-  changeQtyPart: function(id) {
-    return axios.post("/api/parts/", id);
+  changeQtyPart: function(id, newQty) {
+    let data = {
+      id: id,
+      qty: newQty
+    }
+    return axios.put("/api/parts/" + id, data);
   },
   getMyKits: function() {
     return axios.get("/api/createkit/");
