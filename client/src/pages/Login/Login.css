@@ -1,16 +1,37 @@
 
+.loginpic {
+    float: right;
+    width: 65%;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.login-info-box {
+    float: left;
+    width: 35%;
+    padding-left: 5%;
+    padding-top: 5%; 
+}
+
+.kitbitzname {
+    width: 150px;
+    margin: -10px 20px 25px; 
+}
+
 .form-box {
-    width: 85%;
+    width: 95%;
+    max-width: 700px;
     height: auto;
+    max-height: 400px;
     margin: auto;
-    padding: 3%;
+    margin-top: 10%;
     border-radius: 5px;
-    background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
+    background-color: rgb(247, 245, 245); 
     box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
 }
 
 #registerBox {
-    padding-top: 3%;
+    padding-top: 20%;
     float: right;
     margin-bottom: 10%;
 }
@@ -24,7 +45,8 @@
 }
 
 h3 {
-    color: #101648;
+    color: #7e8196;
+    font-size: 25px;
 }
 
 h4 {
@@ -45,9 +67,29 @@ h4 {
    padding: 5%;
    height: 80%;
    width: 80%;
-   
-    background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
-    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+   background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
+   box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+}
+
+.input {
+    width: 215px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 5px 2px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+    border-style: none;
+    font-size: 12px;
+    padding: 3px;
+}
+
+.form-btn {
+    background: rgba(11, 14, 48, 0);
+    color: black;
+    padding: 1px;
+}
+
+.form-btn:hover {
+    background: rgba(243, 123, 123, 0.925);
+    padding: 1px;
 }
 
 
@@ -58,4 +100,22 @@ h4 {
     #bugsImage{
      visibility: hidden;
        }
+   }
+
+   @media only screen and (max-width:650px){
+
+    .loginpic {
+        visibility: hidden;
+    }
+
+    .form-box {
+        background-image: url(login-page-small.png);
+        background-repeat: no-repeat;
+        background-size: 530px 800px;
+        height: 800px;
+        max-height: 700px;
+        max-width: 530px;
+        min-width: 530px;
+        margin-top: 0px;
+    }
    }
