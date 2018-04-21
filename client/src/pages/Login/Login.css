@@ -94,6 +94,16 @@ h4 {
     padding: 1px;
 }
 
+.modalpic {
+    float: right;
+    width: 65%;
+    max-height: 100px;
+    min-height: 100px;
+}
+
+.close {
+    color: #7e8196;
+}
 
 
 /* MEDIA QUERIES ====================================== */
