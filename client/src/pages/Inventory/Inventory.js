@@ -41,8 +41,8 @@ class Inventory extends Component {
       .catch(err => console.log(err));
   };
 
-  changeQtyPart = id => {
-    API.changeQtyPart(id)
+  changeQtyPart = (id, newQty) => {
+    API.changeQtyPart(id, newQty)
       .then(res => this.loadInventory())
       .catch(err => console.log(err));
   };
@@ -86,6 +86,22 @@ class Inventory extends Component {
     )
   }
 
+  handleQtyInputChange = (event) => {
+    event.preventDefault();
+
+    // grab new value of number input
+    let newQty = event.target.value;
+
+    // grab MPN for part
+    let itemMPN = event.target.dataset.partId;
+
+    // make request to update part quantity in user's inventory
+    API.changeQtyPart(itemMPN, newQty).then( response => {
+      console.log(response.data);
+      this.loadInventory();
+    })
+  }
+
 
   render() {
     const columns = [{
@@ -115,14 +131,38 @@ class Inventory extends Component {
           <h3>Parts in my Inventory</h3>
           {this.state.inventory.length ? (
             <div id='inventoryTable'>
-              <BootstrapTable keyField='_id'
-                data={this.state.inventory}
-                columns={columns}
-              >
-                <TableHeaderColumn
-                  dataField='button'
-                  dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
-              </BootstrapTable>
+              <div className="table-responsive">
+                <table className="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>MPN</th>
+                      <th>Snippet</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      this.state.inventory.map( item => {
+                        return (
+                          <tr>
+                            <td>
+                              <input type="number" className="form-control text-center"
+                              defaultValue={item.Qty}
+                              onChange={this.handleQtyInputChange}
+                              data-part-id={item.MPN}
+                              />
+                            </td>
+                            <td>{item.MPN}</td>
+                            <td>{item.Snippet}</td>
+                            <td><button onClick={() => this.deletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
               <h3>No Results to Display</h3>
