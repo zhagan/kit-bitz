@@ -115,14 +115,30 @@ class Inventory extends Component {
           <h3>Parts in my Inventory</h3>
           {this.state.inventory.length ? (
             <div id='inventoryTable'>
-              <BootstrapTable keyField='_id'
-                data={this.state.inventory}
-                columns={columns}
-              >
-                <TableHeaderColumn
-                  dataField='button'
-                  dataFormat={this.cellButton.bind(this)}>x</TableHeaderColumn>
-              </BootstrapTable>
+              <div className="table-responsive">
+                <table className="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>MPN</th>
+                      <th>Snippet</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      this.state.inventory.map( item => {
+                        return (
+                          <tr>
+                            <td>{item.Qty}</td>
+                            <td>{item.MPN}</td>
+                            <td>{item.Snippet}</td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
               <h3>No Results to Display</h3>
