@@ -73,7 +73,11 @@ class Kits extends Component {
     return (
 
       <Container fluid>
+        <div className="card-list">
+
+        
         <Row>
+        
           <Col size="md-12">
             <h1>
               Kits
@@ -100,6 +104,7 @@ class Kits extends Component {
             <Link to="/createKit">← Back to Create Kit</Link>
           </Col>
         </Row>
+        </div>
       </Container>
     );
   }

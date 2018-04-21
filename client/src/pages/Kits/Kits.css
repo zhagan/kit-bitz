@@ -1,0 +1,27 @@
+.card-list
+
+.kit-card {
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-table;
+    margin: 8px;
+    overflow: hidden;
+    width: 288px;
+    color: #7e8196;
+}
+
+.kit-card .img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 240px;
+    max-height: 180px;
+}
+
+
+
+   background-color: rgb(247, 245, 245); 
