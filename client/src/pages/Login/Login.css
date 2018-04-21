@@ -24,7 +24,7 @@
     height: auto;
     max-height: 400px;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 4%;
     border-radius: 5px;
     background-color: rgb(247, 245, 245); 
     box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
@@ -65,11 +65,13 @@ h4 {
    position: relative;
    margin: auto;
    padding: 5%;
-   height: 80%;
+   height: 500px;
    width: 80%;
-   background: linear-gradient(to bottom,#7EADCF 0%, #F5F5F5 100%);
+   color: #7e8196;
+   background-color: rgb(247, 245, 245); 
    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
 }
+
 
 .input {
     width: 215px;
@@ -100,6 +102,13 @@ h4 {
     #bugsImage{
      visibility: hidden;
        }
+    
+    #modal-box{
+        width: 80%;
+        min-height: 300px;     
+    }  
+    
+
    }
 
    @media only screen and (max-width:650px){
@@ -118,4 +127,13 @@ h4 {
         min-width: 530px;
         margin-top: 0px;
     }
+
+    h3 {
+        text-align: center;
+    }
+
+   .pop-white {
+        font-size: 15px;     
+    }
+   
    }

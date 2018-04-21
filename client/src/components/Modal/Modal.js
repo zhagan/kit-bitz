@@ -6,6 +6,7 @@ import Axios from "axios";
 import {update} from "../../services/withUser";
 import { withRouter, Redirect } from "react-router-dom";
 import './Modal.css';
+import bottomimage from './login-page-bottomonly.jpg';
 
 
 
@@ -117,7 +118,7 @@ export default class Modal extends React.Component {
                             {this.props.children}
                         </div>
 
-                        <h3><span className="pop"><i className="fas fa-user-circle"></i></span>&nbsp;Create New Account</h3>
+                        <h3><span className="pop"><i className="fas fa-user-circle"></i></span>&nbsp;&nbsp;Create New Account</h3>
                             <form>
                               <Input
                                 value={this.state.newUserName}
