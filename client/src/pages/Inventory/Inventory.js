@@ -41,8 +41,8 @@ class Inventory extends Component {
       .catch(err => console.log(err));
   };
 
-  changeQtyPart = id => {
-    API.changeQtyPart(id)
+  changeQtyPart = (id, newQty) => {
+    API.changeQtyPart(id, newQty)
       .then(res => this.loadInventory())
       .catch(err => console.log(err));
   };
@@ -88,7 +88,18 @@ class Inventory extends Component {
 
   handleQtyInputChange = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
+
+    // grab new value of number input
+    let newQty = event.target.value;
+
+    // grab MPN for part
+    let itemMPN = event.target.dataset.partId;
+
+    // make request to update part quantity in user's inventory
+    API.changeQtyPart(itemMPN, newQty).then( response => {
+      console.log(response.data);
+      this.loadInventory();
+    })
   }
 
 
@@ -139,6 +150,7 @@ class Inventory extends Component {
                               <input type="number" className="form-control text-center"
                               defaultValue={item.Qty}
                               onChange={this.handleQtyInputChange}
+                              data-part-id={item.MPN}
                               />
                             </td>
                             <td>{item.MPN}</td>
