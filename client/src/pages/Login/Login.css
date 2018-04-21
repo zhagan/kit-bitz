@@ -61,17 +61,6 @@ h4 {
     color: #ffffff;
 }
 
-.modal-box {
-   position: relative;
-   margin: auto;
-   padding: 5%;
-   height: 500px;
-   width: 80%;
-   color: #7e8196;
-   background-color: rgb(247, 245, 245); 
-   box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
-}
-
 
 .input {
     width: 215px;
@@ -92,13 +81,6 @@ h4 {
 .form-btn:hover {
     background: rgba(243, 123, 123, 0.925);
     padding: 1px;
-}
-
-.modalpic {
-    float: right;
-    width: 65%;
-    max-height: 100px;
-    min-height: 100px;
 }
 
 .close {

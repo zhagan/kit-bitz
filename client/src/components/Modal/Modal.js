@@ -6,7 +6,7 @@ import Axios from "axios";
 import {update} from "../../services/withUser";
 import { withRouter, Redirect } from "react-router-dom";
 import './Modal.css';
-
+import modalimage from './kit-bitz-modal.png';
 
 
 
@@ -112,43 +112,50 @@ export default class Modal extends React.Component {
             <div style={backdropStyle}>
                 <div className="modal-box">
 
-                        <button type="button" className="close" aria-label="Close" onClick={(e) => { this.onClose(e)}}><span aria-hidden="true">&times;</span></button>
+                            <button type="button" className="close" aria-label="Close" onClick={(e) => { this.onClose(e)}}><span aria-hidden="true">&times;</span></button>
 
-                        <div className="col-md-12">
-                            {this.props.children}
-                        </div>
+                            <div className="col-md-12">
+                                {this.props.children}
+                            </div>
 
-                        <h3><span className="pop"><i className="fas fa-user-circle"></i></span>&nbsp;&nbsp;Create New Account</h3>
-                            <form>
-                              <Input
-                                value={this.state.newUserName}
-                                onChange={this.handleInputChange}
-                                name="newUserName"
-                                placeholder="User Name (required)"
-                              />
-                              <Input
-                                type="password"
-                                value={this.state.newPassword}
-                                onChange={this.handleInputChange}
-                                name="newPassword"
-                                placeholder="Password (required)"
-                              />
-                              <Input
-                                value={this.state.email}
-                                onChange={this.handleInputChange}
-                                name="email"
-                                placeholder="Email (required)"
-                              />
-                              <FormBtn
-                                disabled={!(this.state.newUserName && this.state.newPassword)}
-                                onClick={this.handleFormSubmitNewUser}
-                              >
-                                Create Account
-                              </FormBtn>
-                            </form>
+                        <div className="modal-form">
+                            <h3><span className="pop"><i className="fas fa-user-circle"></i></span>&nbsp;&nbsp;Create New Account</h3>
+                                <form>
+                                <Input
+                                    value={this.state.newUserName}
+                                    onChange={this.handleInputChange}
+                                    name="newUserName"
+                                    placeholder="User Name (required)"
+                                />
+                                <Input
+                                    type="password"
+                                    value={this.state.newPassword}
+                                    onChange={this.handleInputChange}
+                                    name="newPassword"
+                                    placeholder="Password (required)"
+                                />
+                                <Input
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange}
+                                    name="email"
+                                    placeholder="Email (required)"
+                                />
+                                <FormBtn
+                                    disabled={!(this.state.newUserName && this.state.newPassword)}
+                                    onClick={this.handleFormSubmitNewUser}
+                                >
+                                    Create Account
+                                </FormBtn>
+                                </form>
+                            </div>
 
-
-                        </div>
+                            <img
+                                src={modalimage}
+                                alt="Kit-Bitz"
+                                className="modalimage"
+                                />
+                </div>
+                   
 
                 </div>
 
