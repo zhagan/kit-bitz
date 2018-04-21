@@ -86,6 +86,11 @@ class Inventory extends Component {
     )
   }
 
+  handleQtyInputChange = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+  }
+
 
   render() {
     const columns = [{
@@ -122,6 +127,7 @@ class Inventory extends Component {
                       <th>Qty</th>
                       <th>MPN</th>
                       <th>Snippet</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -129,9 +135,15 @@ class Inventory extends Component {
                       this.state.inventory.map( item => {
                         return (
                           <tr>
-                            <td>{item.Qty}</td>
+                            <td>
+                              <input type="number" className="form-control text-center"
+                              defaultValue={item.Qty}
+                              onChange={this.handleQtyInputChange}
+                              />
+                            </td>
                             <td>{item.MPN}</td>
                             <td>{item.Snippet}</td>
+                            <td><button onClick={() => this.deletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
                           </tr>
                         )
                       })
