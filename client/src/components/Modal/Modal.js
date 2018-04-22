@@ -75,6 +75,7 @@ export default class Modal extends React.Component {
             }).then(user => {
             //  update(user.data);
               console.log(user);
+
             }).catch(err =>{
 
                //return create account failed
@@ -155,7 +156,7 @@ export default class Modal extends React.Component {
                                 className="modalimage"
                                 />
                 </div>
-                   
+
 
                 </div>
 

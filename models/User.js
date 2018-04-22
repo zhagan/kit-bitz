@@ -22,7 +22,21 @@ var UserSchema = new Schema({
   email: String,
   password: String,
   website: String,
-  userImg: Object,
+  userImgPath: {
+        path: {
+          type: String,
+         //required: true,
+          trim: true
+        },
+        name: {
+          type: String
+        //  required: true
+        },
+        originalname: {
+          type: String
+      //  required: true
+        }
+  },
   createdAt: Date,
   kitsCreated: Array,
 

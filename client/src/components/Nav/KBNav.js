@@ -28,6 +28,13 @@ class KBNav extends Component {
     });
   }
 
+  handleAccountClick = (e) => {
+    e.preventDefault();
+
+      this.props.history.push('/UserInfo')
+
+  }
+
   render() {
     const { user } = this.props;
 
@@ -70,6 +77,7 @@ class KBNav extends Component {
               ?
               <NavDropdown eventKey={3} title={`Logged in as: ${user.username}`} id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1} onClick={this.handleLogoutClick}>Logout</MenuItem>
+                <MenuItem eventKey={3.2} onClick={this.handleAccountClick}>Account</MenuItem>
               </NavDropdown>
               :
               <LinkContainer to="/login">
