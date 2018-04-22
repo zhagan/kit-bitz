@@ -1,4 +1,10 @@
 const db = require("../models");
+var fs = require('fs');
+var uuid = require('node-uuid');
+
+// Generate a v4 (random) UUID
+
+
 
 // Defining methods for the booksController
 module.exports = {
@@ -21,6 +27,35 @@ module.exports = {
     //var kitId;
 
     console.log("file " + req.files);
+
+    //save files to server upload folder
+
+    var imgFile = req.files;
+    var uniqueName = uuid.v4() + '.' + imgFile.file.name.split('.').pop();
+    console.log(uniqueName);
+    var imgPath = './uploads/kit-pics/' + uniqueName;
+    imgFile.file.mv(imgPath, function(err) {
+    if (err)
+      return res.status(500).send(err);
+
+    console.log('File uploaded!');
+    });
+    // fs.writeFile("/"+imgFile.name, imgFile, function(err) {
+    //     if(err) {
+    //         return console.log(err);
+    //     }
+    //
+    //     console.log("The file was saved!");
+    // });
+
+     var kitImg = {};
+
+         kitImg['path'] = imgPath;
+         kitImg['name'] = uniqueName;
+         kitImg['originalname'] = imgFile.file.name;
+
+
+
     db.Kit.create(req.body)
       .then( dbKit => {
         // return db.User.findOneAndUpdate({"_id":req.user.id}, {$push: {"inventory":dbPart._id}});
@@ -30,7 +65,7 @@ module.exports = {
       .then(dbKit => {
         // parse BOM string to store in database
         const BOM = JSON.parse(req.body.BOM);
-        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:BOM, kitImg:req.files});
+        return db.Kit.findOneAndUpdate( { _id : dbKit.id},{ createdBy: req.user.id, bom:BOM, kitImgPath:kitImg});
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => {

@@ -6,7 +6,7 @@ var filePlugin = filePluginLib.filePlugin;
 var Schema = mongoose.Schema;
 
 var KitSchema = new Schema({
-  
+
   kitName: String,
   createdBy: {
     type: Schema.Types.ObjectId,
@@ -16,7 +16,21 @@ var KitSchema = new Schema({
   kitUrl: String,
   pcbUrl: String,
   faceplateUrl: String,
-  kitImg: Object,
+  kitImgPath: {
+        path: {
+          type: String,
+         //required: true,
+          trim: true
+        },
+        name: {
+          type: String
+        //  required: true
+        },
+        originalname: {
+          type: String
+      //  required: true
+        }
+  },
   bom: Array
 });
 
