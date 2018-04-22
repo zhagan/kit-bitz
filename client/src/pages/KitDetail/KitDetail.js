@@ -78,7 +78,7 @@ class Detail extends Component {
     return (
 
       <Container fluid>
-        
+        <Thumbnail>
           <div className="kit-card">
             <div className="kit-image-container">
               <img src="boards/github.com/8BitMixtape/8BitmixtapeNEO_BerlinerSchule_SZ-RDY/images/top.png" class="img" style="transition: opacity 1s; opacity: 1;" />
@@ -109,7 +109,7 @@ class Detail extends Component {
             </div>
           </div>
 
-
+        </Thumbnail>
         
         <Row>
           <Col size="md-2">

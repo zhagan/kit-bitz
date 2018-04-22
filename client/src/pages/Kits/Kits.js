@@ -73,7 +73,7 @@ class Kits extends Component {
     return (
 
       <Container fluid>
-        <div className="card-list">
+        <div className="card-list-container">
 
         
         <Row>
