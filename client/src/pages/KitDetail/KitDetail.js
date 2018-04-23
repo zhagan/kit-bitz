@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+// import { Thumbnail } from "react-bootstrap";
 
 class Detail extends Component {
   state = {
@@ -76,47 +77,34 @@ class Detail extends Component {
 
   render() {
     return (
-
       <Container fluid>
-        <Thumbnail>
-          <div className="kit-card">
-            <div className="kit-image-container">
-              <img src="boards/github.com/8BitMixtape/8BitmixtapeNEO_BerlinerSchule_SZ-RDY/images/top.png" class="img" style="transition: opacity 1s; opacity: 1;" />
-            </div>
-            <div className="kit-title">
-             {this.state.kit.kitName}
-            </div>
-            <div className="kit-owner">
-              <p>
-              Created by {this.state.kit.createdBy.username}
-              </p>
-            </div>
-            <div className="kit-designer">
-              <p>
-              This Kit is Designed By {this.state.kit.designer}<br />
-              <a href={this.state.kit.kitUrl} target="_blank">Kit Link</a><br />
-              <a href={this.state.kit.pcbUrl} target="_blank">PCB Link</a><br />
-              <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a>
-              <br />
-              <button
-                onClick={this.compareInventory}
-              > Compare to Inventory</button>
-              </p>
-            </div>
-            
-            <div className="kit-summary">
-            <p>The key feature of the new 8Bit Mixtape is the easiness of uploading new codes using an audio communication protocol, means just playing a .wav sound file from your computer/smart phone (or walkman). A specific bootloader (TinyAudioBoot) has to be installed on the chip to be able to do so.</p>
-            </div>
-          </div>
-
-        </Thumbnail>
-        
-        <Row>
-          <Col size="md-2">
-            <Link to="/createKit">← Back to Create Kit</Link>
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col size="md-12">
+          <h1>
+            {this.state.kit.kitName} created by {this.state.kit.createdBy.username}
+          </h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col size="md-10 md-offset-1">
+          <p>
+            This Kit is Designed By {this.state.kit.designer}<br />
+            <a href={this.state.kit.kitUrl} target="_blank">Kit Link</a><br />
+            <a href={this.state.kit.pcbUrl} target="_blank">PCB Link</a><br />
+            <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a>
+            <br />
+            <button
+              onClick={this.compareInventory}
+            > Compare to Inventory</button>
+          </p>
+        </Col>
+      </Row>
+      <Row>
+        <Col size="md-2">
+          <Link to="/createKit">← Back to Create Kit</Link>
+        </Col>
+      </Row>
+    </Container>
     );
   }
 }

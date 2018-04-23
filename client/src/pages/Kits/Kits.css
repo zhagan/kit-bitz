@@ -1,31 +1,80 @@
+.main-center {
+    margin: auto;
+    width: 90%;
+    padding: 20px;
+    background-color: #7e8196;
+    border-radius: 5px;
+    
+}
 .card-list-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
 
+/* card dimensions 290x380 */
 .kit-card {
     border: 1px solid #cfcfcf;
     border-radius: 4px;
     cursor: pointer;
-    display: inline-table;
     margin: 8px;
-    overflow: hidden;
-    width: 288px;
+    text-overflow: ellipsis;
+    height: 370px;
+    width: 290px;
     color: #7e8196;
+    background-color: rgb(247, 245, 245); 
+    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
 }
 
-.kit-card .img {
+/* card image dimensions 290x210 */
+.kit-image-container {
+    background-color:  rgb(247, 245, 245); 
+    padding-bottom: 16px;
+    margin: 0;
+    height: 200px;
+    vertical-align: top;
+    position: relative;
+}
+
+.kit-image-container .img {
+    
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 240px;
-    max-height: 180px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.kit-title {
+    padding: 0 4% 0 4%;
+    color: #373737;
+    font-size: 22px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    opacity: 1;  
+    text-align: left;
+    vertical-align: bottom;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 286px;
+    white-space: nowrap;
+}
+
+p {
+    padding: 0 4% 0 4%;
+    color: #7e8196; 
+    text-overflow: ellipsis;
+}
+
+small {
+    color: #373737;
+    text-overflow: ellipsis;
 }
 
 
 
-   background-color: rgb(247, 245, 245); 

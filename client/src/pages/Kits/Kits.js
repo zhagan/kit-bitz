@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
+import { Col, Row, Container, CenterContainer } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import KitCard from "../../components/KitCard";
+
 import API from "../../utils/API";
-import './Kits.css';
-import { List, ListItem } from "../../components/List";
+import { ListCard, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
+import './Kits.css';
 
 
 class Kits extends Component {
@@ -71,41 +72,29 @@ class Kits extends Component {
 
   render() {
     return (
-
-      <Container fluid>
+      <Row>
+      <Col size="md-12">
+       <div className="main-center">
         <div className="card-list-container">
-
+        {this.state.kits.length ? (
+          <ListCard>
+            {this.state.kits.map((kit, index) => (
+            <KitCard kit={kit} />
+            ))}
+          </ListCard>
+        ) : (
+            <h3>No Results to Display</h3>
+          )}
+          </div>
         
-        <Row>
-        
-          <Col size="md-12">
-            <h1>
-              Kits
-            </h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-
-            {this.state.kits.length ? (
-              <List>
-                {this.state.kits.map((kit, index) => (
-                <KitCard kit={kit} />
-                ))}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
-
-          </Col>
-        </Row>
-        <Row>
           <Col size="md-2">
             <Link to="/createKit">← Back to Create Kit</Link>
           </Col>
-        </Row>
-        </div>
-      </Container>
+      </div>
+    </Col>
+    </Row>
+       
+     
     );
   }
 }
