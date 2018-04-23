@@ -19,7 +19,7 @@
 }
 
 .form-box {
-    width: 95%;
+    width: 97%;
     max-width: 700px;
     height: auto;
     max-height: 400px;
@@ -61,44 +61,44 @@ h4 {
     color: #ffffff;
 }
 
-.modal-box {
-   position: relative;
-   margin: auto;
-   padding: 5%;
-   height: 500px;
-   width: 80%;
-   color: #7e8196;
-   background-color: rgb(247, 245, 245); 
-   box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+.position-left {
+    float: left;
 }
-
 
 .input {
     width: 215px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 2px 5px 2px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
-    border-style: none;
+    border-radius: 0px;
+    box-shadow: .5vw .5vw 0 #cacbd4;
+    border-style: solid;
+    border-color: #bcbfd1;
+    border-width: 1px;
     font-size: 12px;
     padding: 3px;
+    -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.input:hover {
+    box-shadow: 0.2vw 0.2vw 0 #9ea1b8;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .form-btn {
     background: rgba(11, 14, 48, 0);
-    color: black;
+    color: rgb(109, 109, 109);
     padding: 1px;
+    border: none;
+    margin: 10px;
 }
 
 .form-btn:hover {
-    background: rgba(243, 123, 123, 0.925);
+    color: black;
     padding: 1px;
-}
-
-.modalpic {
-    float: right;
-    width: 65%;
-    max-height: 100px;
-    min-height: 100px;
+    background: none;
 }
 
 .close {
@@ -121,7 +121,7 @@ h4 {
 
    }
 
-   @media only screen and (max-width:650px){
+   @media only screen and (max-width:700px){
 
     .loginpic {
         visibility: hidden;

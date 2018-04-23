@@ -74,18 +74,6 @@ class Inventory extends Component {
     }
   };
 
-  cellButton(cell, row, enumObject, rowIndex) {
-    return (
-      <button
-        type="button"
-        onClick={() =>
-          this.onClickProductSelected(cell, row, rowIndex)}
-      >
-        Click me {rowIndex}
-      </button>
-    )
-  }
-
   handleQtyInputChange = (event) => {
     event.preventDefault();
 

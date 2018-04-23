@@ -17,7 +17,7 @@ router.route("/search/")
   .post(getKits);
 
 
-// Matches with "/api/kits/:id"
+// Matches with "/api/createkit/:id"
 router
   .route("/:id")
   .get(createKitController.findById)

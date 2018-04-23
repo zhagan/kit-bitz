@@ -68,6 +68,12 @@ class Kits extends Component {
       console.log("State: " + this.state.unmatchedPart);
     });
   }
+  
+  importAll = (r) => {
+      let images = {};
+      r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+      return images;
+    }
 
 
   render() {

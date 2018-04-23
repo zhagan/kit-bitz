@@ -1,4 +1,36 @@
 
 .modal-box {
     color: #7e8196;
+    padding: 0%;
+}
+
+.modal-box {
+    position: relative;
+    margin: auto;
+    height: 550px;
+    width: 80%;
+    min-width: 500px;
+    color: #7e8196;
+    background-color: rgb(247, 245, 245); 
+    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+ }
+
+ .modal-form {
+     padding: 5%;
+ }
+
+.modalimage {
+    width: 500px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    float: right;
+}
+
+.row {
+    height: 50%;
+}
+
+.fa-user-circle {
+    color: rgb(1, 161, 161);
 }

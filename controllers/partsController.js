@@ -28,6 +28,7 @@ module.exports = {
     count => {
   if(count > 0){
     console.log("part exists");
+    res.json({ msg : "part exists"});
   }else{
     db.User.findOneAndUpdate({ _id: req.user.id }, {
       $push: {
@@ -51,31 +52,10 @@ module.exports = {
     },
 
   update: function (req, res) {
-    console.log('Update part route hit');
-    // db.User.findById(req.user.id).then( dbUser => {
-    //   console.log('request:'. req.body.data);
-    // })
-    var partId = req.body.id;
-    var newQty = req.body.qty;
-    
-    db.User.findById(req.user.id).then(dbUser => {
-      dbUser.inventory.forEach( item => {
-        if (item.MPN === partId) {
-          item.Qty = newQty;
-        }
-      });
-
-      dbUser.save();
-      res.json({msg: 'Qty updated'});
-    })
-    .catch( error => {
-      res.json({error: 'failed'});
-    })
-    
-    // db.Part
-    //   .findOneAndUpdate({ _id: req.params.id }, req.body)
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(err => res.status(422).json(err));
+    db.Part
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
 
   remove: function (req, res) {

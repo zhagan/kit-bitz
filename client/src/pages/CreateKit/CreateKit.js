@@ -105,7 +105,7 @@ class CreateKit extends Component {
 
   onChangeImgFile = event => {
     this.setState({ imgFile: event.target.files[0] });
-    console.log(this.state.file);
+    //console.log(this.state.file);
 
     // Grab the file DOM object and pass to papaparse
     // header: true creates an object for each row where keys = first row of csv
