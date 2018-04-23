@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container, CenterContainer } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+
 import KitCard from "../../components/KitCard";
 
 import API from "../../utils/API";
@@ -72,28 +72,34 @@ class Kits extends Component {
 
   render() {
     return (
+      <Container>
       <Row>
       <Col size="md-12">
-       <div className="main-center">
+       
         <div className="card-list-container">
-        {this.state.kits.length ? (
-          <ListCard>
-            {this.state.kits.map((kit, index) => (
-            <KitCard kit={kit} />
-            ))}
-          </ListCard>
-        ) : (
-            <h3>No Results to Display</h3>
-          )}
+            {this.state.kits.length ? (
+              <ListCard>
+                {this.state.kits.map((kit, index) => (
+                <KitCard kit={kit} />
+                ))}
+              </ListCard>
+            ) : (
+                <h3>No Results to Display</h3>
+              )}
           </div>
         
-          <Col size="md-2">
-            <Link to="/createKit">← Back to Create Kit</Link>
-          </Col>
-      </div>
-    </Col>
-    </Row>
+         
+        </Col> 
+        </Row>
+
+        <Row>
+        <Col size="md-2">
+                <Link to="/createKit">← Back to Create Kit</Link>
+        </Col>
+        </Row>
+        
        
+       </Container>
      
     );
   }

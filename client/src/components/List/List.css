@@ -6,9 +6,8 @@
   overflow-x: hidden;
 }
 
-.list-overflow-container {
-  
-  /* border: 1px #DDDDDD solid; */
+.listcard-overflow-container {
+  /* display: flex; */
   border-radius: 4px;
   overflow: none;
 }

@@ -26,12 +26,12 @@ class KitCard extends Component
                 </div>
                 <div className="kit-owner">
                      <p>
-                    Created by {this.props.kit.createdBy.username} 
+                    Created by <span id="pop-blue">{this.props.kit.createdBy.username} </span>
                     </p>
                 </div>
                 <div className="kit-designer">
                     <p>
-                    This Kit is Designed By {this.props.kit.createdBy.designer} 
+                    Kit designed by <span id="pop-blue">{this.props.kit.createdBy.designer} </span>
                     </p>
                 </div>
                     
