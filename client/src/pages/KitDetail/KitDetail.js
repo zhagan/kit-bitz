@@ -67,18 +67,22 @@ class Detail extends Component {
     });
 
     // if MPN in both inventory and BOM push to matchedArray
-    BOMarray.forEach((BOMelement, index) => {
-      if (INVarray.includes(BOMelement)) {
-        matchedArray.push(BOMelement);
-      } else {
-        unmatchedArray.push(BOMelement);
-      }
-    });
-    
-    this.setState({ matchedPart: matchedArray, unmatchedPart: unmatchedArray }, () => {
-      console.log("State: " + this.state.matchedPart);
-      console.log("State: " + this.state.unmatchedPart);
-    });
+    // BOMarray.forEach((BOMelement, index) => {
+    //   if (INVarray.includes(BOMelement)) {
+    //     matchedArray.push(BOMelement);
+    //   } else {
+    //     unmatchedArray.push(BOMelement);
+    //   }
+    // });
+
+    BOMarray.forEach(BOMelement => {
+      console.log(INVarray.find(INVelement => { BOMelement.MPN == INVelement.MPN }))
+    })
+
+    // this.setState({ matchedPart: matchedArray, unmatchedPart: unmatchedArray }, () => {
+    //   console.log("State: " + this.state.matchedPart);
+    //   console.log("State: " + this.state.unmatchedPart);
+    // });
   }
 
 
