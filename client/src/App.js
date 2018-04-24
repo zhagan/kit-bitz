@@ -16,6 +16,7 @@ import Nav from "./components/Nav";
 import CreateKit from "./pages/CreateKit";
 import Home from './pages/Home';
 import { Col, Row, Container } from "./components/Grid";
+import './App.css';
 
 class App extends Component {
   componentDidMount() {

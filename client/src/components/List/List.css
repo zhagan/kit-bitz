@@ -6,6 +6,12 @@
   overflow-x: hidden;
 }
 
+.listcard-overflow-container {
+  /* display: flex; */
+  border-radius: 4px;
+  overflow: none;
+}
+
 .list-overflow-container ul {
   margin: 0;
 }
@@ -31,3 +37,5 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+
+
