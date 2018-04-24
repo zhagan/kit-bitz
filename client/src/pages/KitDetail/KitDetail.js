@@ -49,13 +49,21 @@ class Detail extends Component {
     let unmatchedArray = [];
 
     // store BOM MPN's in array
-    this.state.kit.bom.forEach(element => {
-      BOMarray.push(element.MPN);
+    this.state.kit.bom.map(element => {
+      let BOMobject = {
+        MPN: element.MPN,
+        Qty: element.Qty
+      };
+      BOMarray.push(BOMobject);
     });
 
     // store inventory MPN's in array
-    this.state.inventory.forEach(element => {
-      INVarray.push(element.MPN);
+    this.state.inventory.map(element => {
+      let INVobject = {
+        MPN: element.MPN,
+        Qty: element.Qty
+      };
+      INVarray.push(INVobject);
     });
 
     // if MPN in both inventory and BOM push to matchedArray
