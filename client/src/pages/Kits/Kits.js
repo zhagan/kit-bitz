@@ -68,7 +68,7 @@ class Kits extends Component {
       console.log("State: " + this.state.unmatchedPart);
     });
   }
-  
+
   importAll = (r) => {
       let images = {};
       r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -78,10 +78,10 @@ class Kits extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid>
       <Row>
       <Col size="md-12">
-       
+
         <div className="card-list-container">
             {this.state.kits.length ? (
               <ListCard>
@@ -93,9 +93,9 @@ class Kits extends Component {
                 <h3>No Results to Display</h3>
               )}
           </div>
-        
-         
-        </Col> 
+
+
+        </Col>
         </Row>
 
         <Row>
@@ -103,10 +103,10 @@ class Kits extends Component {
                 <Link to="/createKit">← Back to Create Kit</Link>
         </Col>
         </Row>
-        
-       
+
+
        </Container>
-     
+
     );
   }
 }

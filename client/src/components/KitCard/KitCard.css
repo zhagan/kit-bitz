@@ -10,7 +10,17 @@
     height: 370px;
     width: 290px;
     color: #7e8196;
-    background-color: rgb(247, 245, 245); 
+    background-color: rgb(247, 245, 245);
     box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
 }
 
+.kit-image-div {
+  margin: 10px 10px 25px 10px;
+  height: 180px;
+  text-align: center;
+}
+
+#kitImage {
+
+    width:100%;
+}

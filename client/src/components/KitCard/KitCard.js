@@ -21,15 +21,18 @@ class KitCard extends Component
         return (
             <Link to={"/createkit/" + this.props.kit._id}>
               <div className="kit-card">
-                <div className="kit-image-container">
+                <div className="kit-image-div">
                         <img
-                        src={cardImage}
+                        id="kitImage"
+                        src={images[this.props.kit.kitImgPath.name]}
                         alt="Kit-Bitz"
                         />
                 </div>
-                
+
                 <div className="kit-title">
+                    <p>
                     {this.props.kit.kitName}
+                    </p>
                 </div>
                 <div className="kit-owner">
                      <p>
@@ -41,18 +44,18 @@ class KitCard extends Component
                     Kit designed by <span id="pop-blue">{this.props.kit.createdBy.designer} </span>
                     </p>
                 </div>
-                    
+
                 <div className="kit-summary">
                     <p><small>A specific bootloader (TinyAudioBoot) has to be installed on the chip to be able to do so.</small></p>
                 </div>
 
-             
-                
-                
+
+
+
 
               </div>
             </Link>
- 
+
         );
     }
 }
