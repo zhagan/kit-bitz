@@ -5,7 +5,7 @@ import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Button } from 'react-bootstrap';
 import './KitDetail.css';
-import cardImage from '../../components/KitCard/kit-image-1.jpg';
+// import cardImage from '../../components/KitCard/kit-image-1.jpg';
 
 class Detail extends Component {
   state = {
@@ -17,6 +17,12 @@ class Detail extends Component {
       pcbUrl: "",
       faceplateUrl: "",
       createdBy: "",
+      kitImgPath: {
+        path: "",
+        name: "",
+        originalname: ""
+      }
+
     },
     inventory: "",
     matchedPart: [],
@@ -76,8 +82,15 @@ class Detail extends Component {
     });
   }
 
+  importAll = (r) => {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
+
 
   render() {
+    const images = this.importAll(require.context('../../../../uploads/kit-pics', false, /\.(png|jpe?g|svg)$/));
     return (
       <CenterContainer>
 
@@ -85,14 +98,15 @@ class Detail extends Component {
       <Col size="md-12">
         <div className="details-center">
         <div className="details-title">
-          <h1>{this.state.kit.kitName} </h1>
+          <h1>{this.state.kitName} </h1>
           
           <h5>Created by <span id="pop-blue">{this.state.kit.createdBy.username}</span></h5>
           </div>
 
           <div className="details-image-container">
                         <img
-                        src={cardImage}
+                        id="kit-details-image"
+                        src={images[this.state.kit.kitImgPath.name]}
                         alt="Kit-Bitz"
                         />
           </div>
