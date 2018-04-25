@@ -57,12 +57,12 @@ class App extends Component {
             )}/>
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/parts" component={PartSearch} />
+            <Route exact path="/parts" component={(props) => <PartSearch user={user} {...props}/>} />
             <Route exact path="/parts/:id" component={Detail} />
             <Route exact path="/createkit" component={CreateKit} />
-            <Route exact path="/createkit/:id" component={KitDetail} />
+            <Route exact path="/createkit/:id" render={(props) => <KitDetail user={user} {...props}/>} />
             <Route exact path="/inventory" component={Inventory} />
-            <Route exact path="/kits" component={Kits} />
+            <Route exact path="/kits" component={(props) => <Kits user={user} {...props}/>} />
             <Route exact path="/userinfo" component={UserInfo} />
             <Route component={NoMatch} />
           </Switch>
