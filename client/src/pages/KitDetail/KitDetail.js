@@ -45,8 +45,6 @@ class Detail extends Component {
     // set empty arrays
     let BOMarray = [];
     let INVarray = [];
-    let matchedArray = [];
-    let unmatchedArray = [];
 
     // store BOM MPN's in array
     this.state.kit.bom.map(element => {
@@ -66,23 +64,16 @@ class Detail extends Component {
       INVarray.push(INVobject);
     });
 
-    // if MPN in both inventory and BOM push to matchedArray
-    // BOMarray.forEach((BOMelement, index) => {
-    //   if (INVarray.includes(BOMelement)) {
-    //     matchedArray.push(BOMelement);
-    //   } else {
-    //     unmatchedArray.push(BOMelement);
-    //   }
-    // });
+    // return BOM with 
+    const itemsNeedToFulfill = BOMarray.map(BOMitem => {
+      return {
+        MPN: BOMitem.MPN,
+        Qty: ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0) - BOMitem.Qty
+      };
+    });
 
-    BOMarray.forEach(BOMelement => {
-      console.log(INVarray.find(INVelement => { BOMelement.MPN == INVelement.MPN }))
-    })
 
-    // this.setState({ matchedPart: matchedArray, unmatchedPart: unmatchedArray }, () => {
-    //   console.log("State: " + this.state.matchedPart);
-    //   console.log("State: " + this.state.unmatchedPart);
-    // });
+    console.log(itemsNeedToFulfill);
   }
 
 
