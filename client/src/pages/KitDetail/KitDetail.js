@@ -15,7 +15,8 @@ class Detail extends Component {
       faceplateUrl: "",
       createdBy: "",
     },
-    inventory: ""
+    inventory: "",
+    bomComparisonArray: []
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
@@ -70,7 +71,9 @@ class Detail extends Component {
       };
     });
 
-    console.log(itemsNeedToFulfill);
+    this.setState({ bomComparisonArray: itemsNeedToFulfill }, () => {
+      console.log(this.state.bomComparisonArray)
+    })
   }
 
 
@@ -102,6 +105,40 @@ class Detail extends Component {
         <Row>
           <Col size="md-2">
             <Link to="/createKit">← Back to Create Kit</Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-9">
+
+            <h3>Parts I have in this kit</h3>
+            {this.state.bomComparisonArray.length ? (
+              <div id='comparisonTable'>
+                <div className="table-responsive">
+                  <table className="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>MPN</th>
+                        <th>Qty</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        this.state.bomComparisonArray.map(item => {
+                          return (
+                            <tr>
+                              <td>{item.MPN}</td>
+                              <td>{item.Qty}</td>
+                            </tr>
+                          )
+                        })
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+                <h3>No Results to Display</h3>
+              )}
           </Col>
         </Row>
       </Container>
