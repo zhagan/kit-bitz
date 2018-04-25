@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import { Col, Row, Container, CenterContainer } from "../../components/Grid";
+
 import KitCard from "../../components/KitCard";
+
 import API from "../../utils/API";
-import './Kits.css';
-import { List, ListItem } from "../../components/List";
+import { ListCard, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
+import './Kits.css';
 
 
 class Kits extends Component {
@@ -67,7 +68,7 @@ class Kits extends Component {
       console.log("State: " + this.state.unmatchedPart);
     });
   }
-  
+
   importAll = (r) => {
       let images = {};
       r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -77,36 +78,35 @@ class Kits extends Component {
 
   render() {
     return (
-
       <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <h1>
-              Kits
-            </h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
+      <Row>
+      <Col size="md-12">
 
+        <div className="card-list-container">
             {this.state.kits.length ? (
-              <List>
+              <ListCard>
                 {this.state.kits.map((kit, index) => (
                 <KitCard kit={kit} />
                 ))}
-              </List>
+              </ListCard>
             ) : (
                 <h3>No Results to Display</h3>
               )}
+          </div>
 
-          </Col>
+
+        </Col>
         </Row>
+
         <Row>
-          <Col size="md-2">
-            <Link to="/createKit">← Back to Create Kit</Link>
-          </Col>
+        <Col size="md-2">
+                <Link to="/createKit">← Back to Create Kit</Link>
+        </Col>
         </Row>
-      </Container>
+
+
+       </Container>
+
     );
   }
 }

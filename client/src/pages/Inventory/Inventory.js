@@ -14,6 +14,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import './Inventory.css';
+import InventoryTable from "./InventoryTable/InventoryTable";
 
 class Inventory extends Component {
   state = {
@@ -120,41 +121,16 @@ class Inventory extends Component {
           {this.state.inventory.length ? (
             <div id='inventoryTable'>
               <div className="table-responsive">
-                <table className="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>Qty</th>
-                      <th>MPN</th>
-                      <th>Snippet</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      this.state.inventory.map( item => {
-                        return (
-                          <tr>
-                            <td>
-                              <input type="number" className="form-control text-center"
-                              defaultValue={item.Qty}
-                              onChange={this.handleQtyInputChange}
-                              data-part-id={item.MPN}
-                              />
-                            </td>
-                            <td>{item.MPN}</td>
-                            <td>{item.Snippet}</td>
-                            <td><button onClick={() => this.deletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
-                          </tr>
-                        )
-                      })
-                    }
-                  </tbody>
-                </table>
+                <InventoryTable
+                  inventory={this.state.inventory}
+                  handleQtyInputChange={this.handleQtyInputChange}
+                  handleDeletePart={this.deletePart}
+                />
               </div>
             </div>
           ) : (
               <h3>No Results to Display</h3>
-            )}
+          )}
         </Col>
 
       </Container>

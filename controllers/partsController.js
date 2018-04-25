@@ -52,10 +52,23 @@ module.exports = {
     },
 
   update: function (req, res) {
-    db.Part
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log('Update part route hit');
+    var partId = req.body.id;
+    var newQty = req.body.qty;
+    
+    db.User.findById(req.user.id).then(dbUser => {
+      dbUser.inventory.forEach( item => {
+        if (item.MPN === partId) {
+          item.Qty = newQty;
+        }
+      });
+
+      dbUser.save();
+      res.json({msg: 'Qty updated'});
+    })
+    .catch( error => {
+      res.json({error: 'failed'});
+    })
   },
 
   remove: function (req, res) {
