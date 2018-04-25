@@ -1,5 +1,9 @@
+/* navbar background color 
+#2d3e4f to match side nav active color*/
+
 .navbar-inverse {
-    background-color: #15202e;
+    background-color:
+    #2d3e4f;
     border:0;
     box-sizing: border-box;
   }
