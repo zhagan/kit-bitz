@@ -15,9 +15,7 @@ class Detail extends Component {
       faceplateUrl: "",
       createdBy: "",
     },
-    inventory: "",
-    matchedPart: [],
-    unmatchedPart: ""
+    inventory: ""
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
@@ -64,14 +62,13 @@ class Detail extends Component {
       INVarray.push(INVobject);
     });
 
-    // return BOM with 
+    // return BOM with qtys user needs
     const itemsNeedToFulfill = BOMarray.map(BOMitem => {
       return {
         MPN: BOMitem.MPN,
         Qty: ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0) - BOMitem.Qty
       };
     });
-
 
     console.log(itemsNeedToFulfill);
   }
