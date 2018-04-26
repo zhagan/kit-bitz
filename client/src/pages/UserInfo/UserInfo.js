@@ -9,7 +9,7 @@ import './UserInfo.css';
 
 class UserInfo extends Component {
   state = {
-    userInfo:{},
+    userInfo: {},
     edit: false
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
@@ -26,16 +26,16 @@ class UserInfo extends Component {
   }
 
   importAll = (r) => {
-      let images = {};
-      r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-      return images;
-    }
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
 
   setEdit = () => {
-      if(!this.state.edit){
-      this.setState({edit:true});
-    }else{
-      this.setState({edit:false});
+    if (!this.state.edit) {
+      this.setState({ edit: true });
+    } else {
+      this.setState({ edit: false });
     }
   }
 
@@ -56,14 +56,22 @@ class UserInfo extends Component {
           <Col size="md-10 md-offset-1">
 
             {!this.state.edit ? (
-                  <div>
-                  <p>
-                  Username: {this.state.userInfo.username} <br/>
+              <div>
+                <p>
+                  Username: {this.state.userInfo.username}
+                  <br />
                   Email: {this.state.userInfo.email}
-                  </p>
-                  </div>
+                </p>
+              </div>
             ) : (
-                <h3>edit on</h3>
+                <div>
+                  <h3>edit on</h3>
+                  <p>
+                    Username: {this.state.userInfo.username}
+                    <br />
+                    Email: {this.state.userInfo.email}
+                  </p>
+                </div>
               )}
 
           </Col>

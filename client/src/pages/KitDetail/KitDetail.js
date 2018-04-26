@@ -6,12 +6,13 @@ import API from "../../utils/API";
 import { Button } from 'react-bootstrap';
 import './KitDetail.css';
 import cardImage from '../../components/KitCard/kit-image-1.jpg';
+import KitDetailTable from "./KitDetailTable/KitDetailTable";
 
 class Detail extends Component {
   state = {
     kit: {
       kitName: "",
-      bom: null,
+      bom: "",
       designer: "",
       kitUrl: "",
       pcbUrl: "",
@@ -19,7 +20,10 @@ class Detail extends Component {
       createdBy: "",
     },
     inventory: "",
-    bomComparisonArray: []
+    bomComparisonArray: [],
+    tableView: "noView",
+    tableData: [],
+    tableHeader: ""
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
@@ -38,7 +42,7 @@ class Detail extends Component {
     API.getParts()
       .then(res =>
         this.setState({ inventory: res.data })
-      )
+    )
       .catch(err => console.log(err));
   };
 
@@ -70,13 +74,46 @@ class Detail extends Component {
     const itemsNeedToFulfill = BOMarray.map(BOMitem => {
       return {
         MPN: BOMitem.MPN,
-        Qty: ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0) - BOMitem.Qty
+        Qty: BOMitem.Qty - ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0) 
       };
     });
 
     this.setState({ bomComparisonArray: itemsNeedToFulfill }, () => {
       console.log(this.state.bomComparisonArray)
     })
+  }
+
+  tableView = () => {
+
+    this.compareInventory();
+
+    switch (this.state.tableView) {
+      case "noView":
+        this.setState({ tableData: [], tableHeader: "" });
+        break;
+      case "bomView":
+        this.setState({ tableData: this.state.kit.bom, tableHeader: "Bill of Materials" });
+        break; 
+      case "compareView":
+        this.setState({ tableData: this.state.bomComparisonArray, tableHeader: "Parts you need" });
+        break;  
+    }
+  }
+
+  toggleTable = () => {
+    if (this.state.tableView === "noView") {
+      this.setState({ tableView: "bomView" });
+      console.log("bomView"); 
+    }
+    else if (this.state.tableView === "bomView") {
+      this.setState({ tableView: "compareView" });
+      console.log("compareView");  
+    }
+    else {
+      this.setState({ tableView: "noView" });
+      console.log("noView");
+    }
+    this.tableView();
   }
 
 
@@ -109,69 +146,56 @@ class Detail extends Component {
                   <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a>
                   <br />
                 </p>
-                <h5>
+                  <h5>
                   <Button
-                    onClick={this.compareInventory}
-                  > Compare to Inventory
+                    onClick={this.toggleTable}
+                    > Toggle BOM
                   </Button>
-                </h5>
+                  </h5>
               </div>
               <div className="details-summary">
-                <p><small>A power switch using a push button. It turns on with a single press and only turns off when you hold the button down. This could be used to get functionality similar to most laptops where a single press when on will initiate a "soft" shutdown but you can force a "hard" shutdown by holding it down.
-
-                The circuit is from this article.
-                The board is my own design and features:
+                  <p><small>A power switch using a push button. It turns on with a single press and only turns off when you hold the button down. This could be used to get functionality similar to most laptops where a single press when on will initiate a "soft" shutdown but you can force a "hard" shutdown by holding it down.
+  
+                  The circuit is from this article.
+                  The board is my own design and features:
             </small></p>
-                <ul><small>
-                  <li>Standard 0.1" spacing, fits neatly onto a breadboard</li>
-                  <li>On-board button (and pins to connect your own)</li>
-                  <li>Can switch 3-20V and up to 4A</li>
-                  <li>Two LEDs indicate input and output power</li>
-                </small></ul>
+                  <ul><small>
+                    <li>Standard 0.1" spacing, fits neatly onto a breadboard</li>
+                    <li>On-board button (and pins to connect your own)</li>
+                    <li>Can switch 3-20V and up to 4A</li>
+                    <li>Two LEDs indicate input and output power</li>
+                  </small></ul>
 
-              </div>
-            </div>
-            <h3>Parts I have in this kit</h3>
-            {this.state.bomComparisonArray.length ? (
-              <div id='comparisonTable'>
-                <div className="table-responsive">
-                  <table className="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>MPN</th>
-                        <th>Qty</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        this.state.bomComparisonArray.map(item => {
-                          return (
-                            <tr>
-                              <td>{item.MPN}</td>
-                              <td>{item.Qty}</td>
-                            </tr>
-                          )
-                        })
-                      }
-                    </tbody>
-                  </table>
                 </div>
+                <Col size="md-12">
+                  {this.state.tableData.length ? (
+                    <div>
+                      <h3>{this.state.tableHeader}</h3>
+                      <div id='kitDetailTable'>
+                        <div className="table-responsive">
+                          <KitDetailTable
+                            inventory={this.state.tableData}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                      <h3></h3>
+                    )}
+                </Col>
               </div>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
           </Col>
         </Row>
 
 
-        <Row>
-          <Col size="md-4">
-            <Link to="/createKit">← Back to Create Kit</Link>
-          </Col>
-        </Row>
+          <Row>
+            <Col size="md-4">
+              <Link to="/createKit">← Back to Create Kit</Link>
+            </Col>
+          </Row>
       </CenterContainer>
-    );
-  }
-}
-
-export default Detail;
+        );
+      }
+    }
+    
+    export default Detail;
