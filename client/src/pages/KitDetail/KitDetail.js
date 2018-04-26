@@ -167,7 +167,7 @@ class Detail extends Component {
                   </small></ul>
 
                 </div>
-                <Col size="md-9">
+                <Col size="md-12">
                   {this.state.tableData.length ? (
                     <div>
                       <h3>{this.state.tableHeader}</h3>
