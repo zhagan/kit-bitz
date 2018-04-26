@@ -5,7 +5,6 @@ import FontAwesome from "react-fontawesome";
 import "./SideBar.css";
 
 import { withRouter,  } from 'react-router-dom';
-
 import { circuitBoard } from 'react-icons-kit/oct/circuitBoard';
 import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
 import { ic_business } from 'react-icons-kit/md/ic_business';
@@ -52,7 +51,7 @@ render () {
             <Nav id='createkit'>
                 <NavIcon><SvgIcon size={20} icon={plusCircle}/></NavIcon>
                 <NavText> Create Kits </NavText>
-                
+
             </Nav>
             <hr style={{width: 200}}/>
 

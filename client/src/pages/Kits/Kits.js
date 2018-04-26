@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container, CenterContainer } from "../../components/Grid";
 
 import KitCard from "../../components/KitCard";
-
+import SideNav from "../../components/SideNav";
 import API from "../../utils/API";
 import { ListCard, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
@@ -79,8 +79,10 @@ class Kits extends Component {
   render() {
     return (
       <Container fluid>
-      <Row>
-      <Col size="md-12">
+      <Col size="md-2">
+       <SideNav />
+      </Col>
+      <Col size="md-10">
 
         <div className="card-list-container">
             {this.state.kits.length ? (
@@ -96,12 +98,8 @@ class Kits extends Component {
 
 
         </Col>
-        </Row>
 
         <Row>
-        <Col size="md-2">
-                <Link to="/createKit">← Back to Create Kit</Link>
-        </Col>
         </Row>
 
 
