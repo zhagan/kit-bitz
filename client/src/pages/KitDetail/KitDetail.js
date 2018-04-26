@@ -5,8 +5,10 @@ import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Button } from 'react-bootstrap';
 import './KitDetail.css';
+
 import cardImage from '../../components/KitCard/kit-image-1.jpg';
 import KitDetailTable from "./KitDetailTable/KitDetailTable";
+
 
 class Detail extends Component {
   state = {
@@ -18,6 +20,12 @@ class Detail extends Component {
       pcbUrl: "",
       faceplateUrl: "",
       createdBy: "",
+      kitImgPath: {
+        path: "",
+        name: "",
+        originalname: ""
+      }
+
     },
     inventory: "",
     bomComparisonArray: [],
@@ -116,10 +124,18 @@ class Detail extends Component {
     this.tableView();
   }
 
+  importAll = (r) => {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
+
 
   render() {
+    const images = this.importAll(require.context('../../../../uploads/kit-pics', false, /\.(png|jpe?g|svg)$/));
     return (
       <CenterContainer>
+
 
         <Row>
           <Col size="md-12">
@@ -158,6 +174,7 @@ class Detail extends Component {
   
                   The circuit is from this article.
                   The board is my own design and features:
+
             </small></p>
                   <ul><small>
                     <li>Standard 0.1" spacing, fits neatly onto a breadboard</li>

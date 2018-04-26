@@ -9,7 +9,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
-import SideBar from "../../components/SideBar";
+import SideNav from "../../components/SideNav";
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import './PartSearch.css';
@@ -97,10 +97,11 @@ class PartSearch extends Component {
      }];
 
     return (
-      <Container fluid>
-      <Col size="md-2">
-      <SideBar />
-      </Col>
+      <Row>
+     <Col size="md-3">
+      <SideNav />
+     </Col> 
+   
 
 
           <Col size="md-9">
@@ -149,7 +150,7 @@ class PartSearch extends Component {
             )}
             </div>
           </Col>
-      </Container>
+           </Row> 
     );
   }
 }
