@@ -117,13 +117,13 @@ class CreateKit extends Component {
 
   render() {
     return (
-      
+
       <Row>
         <Col size="md-3">
           <SideNav />
         </Col>
 
-        
+
           <Col size="md-4">
 
             <h3>Create a Kit</h3>
@@ -207,11 +207,11 @@ class CreateKit extends Component {
                 ))}
               </List>
             ) : (
-                <h3>No Results to Display</h3>
+                <h4>No Results to Display</h4>
               )}
           </Col>
         </Row>
-      
+
     );
   }
 }

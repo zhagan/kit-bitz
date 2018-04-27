@@ -47,7 +47,9 @@ class Kits extends Component {
     return (
       <Row>
       <Col size="md-3">
+      { this.props.user ?(
        <SideNav />
+      ) : (<div></div>) }
       </Col>
       <Col size="md-9">
 

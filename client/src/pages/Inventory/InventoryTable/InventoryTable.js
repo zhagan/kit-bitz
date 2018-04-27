@@ -27,7 +27,7 @@ class InventoryTable extends Component {
                     </td>
                     <td>{item.MPN}</td>
                     <td>{item.Snippet}</td>
-                    <td><button onClick={() => this.props.deletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
+                    <td><button onClick={(e) => this.props.handleDeletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
                   </tr>
                 )
               })
