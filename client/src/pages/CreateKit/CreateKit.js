@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
-import SideBar from "../../components/SideBar";
+import SideNav from "../../components/SideNav";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -115,8 +115,8 @@ class CreateKit extends Component {
   render() {
     return (
       <Container fluid>
-        <Col size="md-2">
-          <SideBar />
+        <Col size="md-3">
+         <SideNav />
         </Col>
 
         <Row>

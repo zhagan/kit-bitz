@@ -98,10 +98,12 @@ class PartSearch extends Component {
 
     return (
       <Row>
-     <Col size="md-3">
-      <SideNav />
-     </Col> 
-   
+      <Col size="md-3">
+        { this.props.user ?(
+         <SideNav />
+       ) : (<div></div>) }
+
+       </Col>
 
 
           <Col size="md-9">
@@ -141,7 +143,9 @@ class PartSearch extends Component {
                       </strong>
                     <p>{part.snippet}</p>
                     </a>
+                    { this.props.user ?(
                     <AddBtn onClick={() => this.addPart(part)} />
+                  ) : (<div></div>) }
                   </ListItem>
                 ))}
               </List>
@@ -150,7 +154,7 @@ class PartSearch extends Component {
             )}
             </div>
           </Col>
-           </Row> 
+           </Row>
     );
   }
 }
