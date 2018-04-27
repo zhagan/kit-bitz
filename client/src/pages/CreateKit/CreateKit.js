@@ -24,8 +24,8 @@ class CreateKit extends Component {
     kitUrl: "",
     pcbUrl: "",
     faceplateUrl: "",
-    imgFile: {}
-
+    imgFile: {},
+    description: ""
   };
 
   componentDidMount() {
@@ -72,6 +72,7 @@ class CreateKit extends Component {
     const formData = new FormData();
 
     formData.append('kitName', this.state.kitName);
+    formData.append('description', this.state.description);
     formData.append('BOM', JSON.stringify(parsedBOM)); // send BOM as a string
     formData.append('designer', this.state.designer);
     formData.append('kitUrl', this.state.kitUrl);
@@ -100,6 +101,7 @@ class CreateKit extends Component {
       complete: function (results) {
         // Store parsed data in global variable
         parsedBOM = results.data.splice(1, results.data.length - 1);
+        let pop = parsedBOM.pop();
       }
     })
   }
@@ -132,6 +134,12 @@ class CreateKit extends Component {
                 onChange={this.handleInputChange}
                 name="kitName"
                 placeholder="Kit Name (required)"
+              />
+              <Input
+                value={this.state.description}
+                onChange={this.handleInputChange}
+                name="description"
+                placeholder="Description..."
               />
               <Input
                 value={this.state.designer}

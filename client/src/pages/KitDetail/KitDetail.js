@@ -14,6 +14,7 @@ class Detail extends Component {
   state = {
     kit: {
       kitName: "",
+      description: "",
       bom: "",
       designer: "",
       kitUrl: "",
@@ -170,18 +171,8 @@ class Detail extends Component {
                   </h5>
               </div>
               <div className="details-summary">
-                  <p><small>A power switch using a push button. It turns on with a single press and only turns off when you hold the button down. This could be used to get functionality similar to most laptops where a single press when on will initiate a "soft" shutdown but you can force a "hard" shutdown by holding it down.
-  
-                  The circuit is from this article.
-                  The board is my own design and features:
 
-                  </small></p>
-                  <ul><small>
-                    <li>Standard 0.1" spacing, fits neatly onto a breadboard</li>
-                    <li>On-board button (and pins to connect your own)</li>
-                    <li>Can switch 3-20V and up to 4A</li>
-                    <li>Two LEDs indicate input and output power</li>
-                  </small></ul>
+                  <p><small>{this.state.kit.description}</small></p>
 
                 </div>
                 
