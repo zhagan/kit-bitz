@@ -46,7 +46,7 @@ class KitCard extends Component
                 </div>
 
                 <div className="kit-summary">
-                    <p><small>A specific bootloader (TinyAudioBoot) has to be installed on the chip to be able to do so.</small></p>
+                    <p><small>{this.props.kit.description}</small></p>
                 </div>
 
 
