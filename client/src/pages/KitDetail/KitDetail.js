@@ -51,7 +51,7 @@ class Detail extends Component {
     API.getParts()
       .then(res =>
         this.setState({ inventory: res.data })
-    )
+      )
       .catch(err => console.log(err));
   };
 
@@ -83,7 +83,7 @@ class Detail extends Component {
     const itemsNeedToFulfill = BOMarray.map(BOMitem => {
       return {
         MPN: BOMitem.MPN,
-        Qty: BOMitem.Qty - ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0) 
+        Qty: BOMitem.Qty - ((INVarray.find(INVitem => INVitem.MPN === BOMitem.MPN) || {}).Qty || 0)
       };
     });
 
@@ -102,21 +102,21 @@ class Detail extends Component {
         break;
       case "bomView":
         this.setState({ tableData: this.state.kit.bom, tableHeader: "Bill of Materials" });
-        break; 
+        break;
       case "compareView":
         this.setState({ tableData: this.state.bomComparisonArray, tableHeader: "Parts you need" });
-        break;  
+        break;
     }
   }
 
   toggleTable = () => {
     if (this.state.tableView === "noView") {
       this.setState({ tableView: "bomView" });
-      console.log("bomView"); 
+      console.log("bomView");
     }
     else if (this.state.tableView === "bomView") {
       this.setState({ tableView: "compareView" });
-      console.log("compareView");  
+      console.log("compareView");
     }
     else {
       this.setState({ tableView: "noView" });
@@ -149,7 +149,8 @@ class Detail extends Component {
 
               <div className="details-image-container">
                 <img
-                  src={cardImage}
+                  id="kitImage"
+                  src={images[this.state.kit.kitImgPath.name]}
                   alt="Kit-Bitz"
                 />
               </div>
@@ -163,48 +164,48 @@ class Detail extends Component {
                   <a href={this.state.kit.faceplateUrl} target="_blank">Faceplate Link</a>
                   <br />
                 </p>
-                  <h5>
+                <h5>
                   <Button
                     onClick={this.toggleTable}
-                    > Toggle BOM
+                  > Toggle BOM
                   </Button>
-                  </h5>
+                </h5>
               </div>
               <div className="details-summary">
 
-                  <p><small>{this.state.kit.description}</small></p>
+                <p><small>{this.state.kit.description}</small></p>
 
-                </div>
-                
-                <div id="bom-panel">
-                  {this.state.tableData.length ? (
-                    <div>
-                      <h3>{this.state.tableHeader}</h3>
-                      <div id='kitDetailTable'>
-                        <div className="table-responsive">
-                          <KitDetailTable
-                            inventory={this.state.tableData}
-                          />
-                        </div>
+              </div>
+
+              <div id="bom-panel">
+                {this.state.tableData.length ? (
+                  <div>
+                    <h3>{this.state.tableHeader}</h3>
+                    <div id='kitDetailTable'>
+                      <div className="table-responsive">
+                        <KitDetailTable
+                          inventory={this.state.tableData}
+                        />
                       </div>
                     </div>
-                  ) : (
-                      <h3></h3>
-                    )}
-                </div>
+                  </div>
+                ) : (
+                    <h3></h3>
+                  )}
               </div>
+            </div>
           </Col>
         </Row>
 
 
-          <Row>
-            <Col size="md-4">
-              <Link to="/createKit">← Back to Create Kit</Link>
-            </Col>
-          </Row>
+        <Row>
+          <Col size="md-4">
+            <Link to="/createKit">← Back to Create Kit</Link>
+          </Col>
+        </Row>
       </CenterContainer>
-        );
-      }
-    }
-    
-    export default Detail;
+    );
+  }
+}
+
+export default Detail;
