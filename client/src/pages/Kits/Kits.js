@@ -36,39 +36,6 @@ class Kits extends Component {
       .catch(err => console.log(err));
   };
 
-  compareInventory = () => {
-
-    // set empty arrays
-    let BOMarray = [];
-    let INVarray = [];
-    let matchedArray = [];
-    let unmatchedArray = [];
-
-    // store BOM MPN's in array
-    this.state.kit.bom.forEach(element => {
-      BOMarray.push(element.MPN);
-    });
-
-    // store inventory MPN's in array
-    this.state.inventory.forEach(element => {
-      INVarray.push(element.item.mpn);
-    });
-
-    // if MPN in both inventory and BOM push to matchedArray
-    BOMarray.forEach((BOMelement, index) => {
-      if (INVarray.includes(BOMelement)) {
-        matchedArray.push(BOMelement);
-      } else {
-        unmatchedArray.push(BOMelement);
-      }
-    });
-
-    this.setState({ matchedPart: matchedArray, unmatchedPart: unmatchedArray }, () => {
-      console.log("State: " + this.state.matchedPart);
-      console.log("State: " + this.state.unmatchedPart);
-    });
-  }
-
   importAll = (r) => {
       let images = {};
       r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });

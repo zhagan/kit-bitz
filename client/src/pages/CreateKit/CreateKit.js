@@ -100,6 +100,7 @@ class CreateKit extends Component {
       complete: function (results) {
         // Store parsed data in global variable
         parsedBOM = results.data.splice(1, results.data.length - 1);
+        let pop = parsedBOM.pop();
       }
     })
   }
