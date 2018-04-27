@@ -2,11 +2,52 @@
 #2d3e4f */
 
 /* Using react-bootstrap Nav components, stacked pills */
-
+.navbar {
+    margin-bottom: 10px;
+}
 .nav {
     line-height: 2.0;
-    margin-right: 5%;
+    margin-right: 5%; 
     background-color: #2e3e4e;
     border-radius: 5px;
-
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
+    -webkit-transition: background-color 2s;
+    transition: background-color 2s;
 }
+
+.sidenav-container {
+    margin-bottom: 50px;
+}
+
+a {
+    color: #697886;
+}
+
+.nav-pills {
+    margin-bottom: -1px;
+}
+
+.nav > li > a {
+    background-color:  #2e3e4e;
+    -webkit-transition: background-color .5s ease-in;
+    -webkit-transition: color .5s ease-in;
+    transition: background-color .5s ease-in;
+    transition: color .5s ease-in;
+}
+
+.nav > li {
+    background-color:  #2e3e4e;
+}
+
+.nav > li > a:hover, 
+.nav > li > a:focus {
+    color: rgb(79, 236, 205);
+    background-color:  #2e3e4e;
+}
+
+.nav-pills > li.active > a {
+    color: white;
+    background-color: #394d61;
+    box-shadow: 1px 5px 8px 3px rgba(0,0,0, 0.2);
+}
+

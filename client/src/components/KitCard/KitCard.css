@@ -8,27 +8,94 @@
     border-radius: 4px;
     cursor: pointer;
     display: inline-table;
-    margin: 8px;
-    overflow: hidden;
+    margin: 10px;
     height: 370px;
+    max-height: 370px;
     width: 250px;
     color: #7e8196;
     background-color: rgb(247, 245, 245);
-    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
+    background: radial-gradient(closest-side, #fcfaf9, #eeeded, #e0e0e0);
+    box-shadow: 0 8px 10px 0 rgba(0,0,0, 0.3), 0 17px 25px 0 rgba(0,0,0, 0.30);
+    overflow-y: hidden;
 }
 
 /* hover */
-.kit-card:hover {
-    box-shadow: 0 5px 10px 0 rgba(0,0,0, 0.2), 0 7px 25px 0 rgba(0,0,0, 0.20);
+.kit-card:hover { 
+    -webkit-transition: box-shadow 0.5s;
+    transition: box-shadow 0.5s; 
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
+    background: radial-gradient(closest-side, #fcfaf9, #e7e7e7, #dddddd);
+    
+}
+
+.kit-title {
+    position: relative;
+    top: 0px;
+    z-index: 10;
+    padding-top: 5px;
+    background: rgb(255,255,255);
+    background: #2d3e4f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #47607a, #324658);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #465f7a, #384e64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 250px;
+    font-size: 22px;
+    font-weight: bold;
+    height: 50px;
+    opacity: 1;  
+    text-align: center;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: 3px 4px 5px #000; 
+    font-family: 'Raleway', sans-serif;
+}
+
+.kit-title-style {
+    color: white;
+    text-shadow: 2px 2px 2px rgb(63, 63, 63);
+    padding: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    text-align: center;
 }
 
 .kit-image-div {
-  margin: 10px 10px 25px 10px;
-  height: 180px;
+  margin: 0px;
   text-align: center;
 }
 
-#kitImage {
+.kitdetails {
+    position: relative;
+    bottom: 0px;
+    max-height: 200px;
+    width: 248px;
+    overflow-y: hidden;
+}
 
+#kitImage {
     width:100%;
+}
+
+#pop-blue {
+    color: #56BBAE;
+}
+
+.kit-owner-style {
+    font-family: 'Acme', sans-serif;
+    margin: 3px;
+    color: black;
+}
+
+
+.kit-summary-style {
+    color: black;
+    overflow: hidden;
+    font-family: 'Dosis', sans-serif;
+    line-height: 110%;
+}
+
+small {
+    color: #373737;
+    text-overflow: ellipsis;
 }

@@ -10,8 +10,7 @@
   letter-spacing: 0.05em;
   text-shadow: 0px 0px 1px rgb(40, 191, 146);
   border-radius: 0px;
-  background: linear-gradient(45deg,#7eadcf,teal,#221ef5);
-  background-size: 400% 400%;
+  background: linear-gradient(45deg,#31b88f,teal);
   box-shadow: .5vw .5vw 0 #b1b3bd;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
