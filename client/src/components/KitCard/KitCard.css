@@ -17,6 +17,7 @@
     box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
 }
 
+/* hover */
 .kit-card:hover {
     box-shadow: 0 5px 10px 0 rgba(0,0,0, 0.2), 0 7px 25px 0 rgba(0,0,0, 0.20);
 }
