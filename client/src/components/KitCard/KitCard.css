@@ -11,10 +11,14 @@
     margin: 8px;
     overflow: hidden;
     height: 370px;
-    width: 290px;
+    width: 250px;
     color: #7e8196;
     background-color: rgb(247, 245, 245);
-    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
+}
+
+.kit-card:hover {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0, 0.2), 0 7px 25px 0 rgba(0,0,0, 0.20);
 }
 
 .kit-image-div {
