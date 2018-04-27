@@ -1,5 +1,8 @@
 
 /* card dimensions 290x380 */
+
+/* most styles are located in parent css file - Kits.css  */
+
 .kit-card {
     border: 1px solid #cfcfcf;
     border-radius: 4px;

@@ -10,10 +10,14 @@ import './UserInfo.css';
 class UserInfo extends Component {
   state = {
     userInfo: {},
+<<<<<<< HEAD
     edit: false,
     newUsername: "",
     newEmail: "",
     imgFile: {}
+=======
+    edit: false
+>>>>>>> master
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
@@ -96,13 +100,19 @@ class UserInfo extends Component {
             {!this.state.edit ? (
               <div>
                 <p>
+<<<<<<< HEAD
                   Username: {this.state.userInfo.username} <br />
+=======
+                  Username: {this.state.userInfo.username}
+                  <br />
+>>>>>>> master
                   Email: {this.state.userInfo.email}
                 </p>
               </div>
             ) : (
                 <div>
                   <h3>edit on</h3>
+<<<<<<< HEAD
                   <form>
                     <Input
                       defaultValue={this.state.userInfo.username}
@@ -126,6 +136,13 @@ class UserInfo extends Component {
                       Save changes
                     </FormBtn>
                   </form>
+=======
+                  <p>
+                    Username: {this.state.userInfo.username}
+                    <br />
+                    Email: {this.state.userInfo.email}
+                  </p>
+>>>>>>> master
                 </div>
               )}
 

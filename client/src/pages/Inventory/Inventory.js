@@ -9,7 +9,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
-import SideBar from "../../components/SideBar";
+import SideNav from "../../components/SideNav";
 import BootstrapTable from 'react-bootstrap-table-next';
 import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
@@ -109,9 +109,9 @@ class Inventory extends Component {
     }];
 
     return (
-      <Container fluid>
-        <Col size="md-2">
-          <SideBar />
+      <Row>
+        <Col size="md-3">
+          <SideNav />
         </Col>
 
 
@@ -133,7 +133,7 @@ class Inventory extends Component {
           )}
         </Col>
 
-      </Container>
+      </Row>
     );
   }
 }

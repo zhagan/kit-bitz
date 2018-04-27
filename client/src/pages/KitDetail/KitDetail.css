@@ -2,10 +2,10 @@
     padding-bottom: 2%;
     margin-top: 4%;
     margin-bottom: 2%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20%;
+    margin-right: 20%;
     overflow: ellipse;
-    margin: auto;
+    /* margin: auto; */
     border-radius: 5px;
     border: 1px solid #cfcfcf;
     background-color: rgb(247, 245, 245); 
@@ -23,20 +23,23 @@
 
 .details-image-container {
     display: flex;
+    margin: 10px 10px 25px 10px;
+    height: 180px;
     justify-content: center;
-    border-top: 1px solid #cfcfcf;
-    border-bottom: 1px solid #cfcfcf;
+    text-align: center;
+    /* border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf; */
     background-color:  #cfcfcf;
     
 }
 
-.details-image-container .img{
-    
-    
-
+.details-image-container > img{
+    width: 100%;
+    min-height: 180px;
 }
 
 .details-content {
+    
     border-top: 1px solid #cfcfcf;
     border-bottom: 1px solid #cfcfcf;
     margin-top: 10px;

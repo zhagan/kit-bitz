@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 import './KitCard.css';
-import cardImage from './kit-image-1.jpg';
+// import cardImage from './kit-image-1.jpg';
 
 
 class KitCard extends Component
