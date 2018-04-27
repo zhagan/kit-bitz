@@ -171,10 +171,12 @@ class Detail extends Component {
                   </h5>
               </div>
               <div className="details-summary">
+
                   <p><small>{this.state.kit.description}</small></p>
 
                 </div>
-                <Col size="md-12">
+                
+                <div id="bom-panel">
                   {this.state.tableData.length ? (
                     <div>
                       <h3>{this.state.tableHeader}</h3>
@@ -189,7 +191,7 @@ class Detail extends Component {
                   ) : (
                       <h3></h3>
                     )}
-                </Col>
+                </div>
               </div>
           </Col>
         </Row>
