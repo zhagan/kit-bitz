@@ -109,8 +109,8 @@ class Inventory extends Component {
     }];
 
     return (
-      <Container fluid>
-        <Col size="md-2">
+      <Row>
+        <Col size="md-3">
           <SideNav />
         </Col>
 
@@ -133,7 +133,7 @@ class Inventory extends Component {
           )}
         </Col>
 
-      </Container>
+      </Row>
     );
   }
 }
