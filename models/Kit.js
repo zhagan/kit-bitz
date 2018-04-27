@@ -11,7 +11,9 @@ var KitSchema = new Schema({
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    default: null},
+    default: null
+  },
+  description: String,
   designer: String,
   kitUrl: String,
   pcbUrl: String,
