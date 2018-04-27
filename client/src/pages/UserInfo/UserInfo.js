@@ -66,6 +66,7 @@ class UserInfo extends Component {
     formData.append('email', this.state.newEmail);
     formData.append('file', this.state.imgFile);
 
+    console.log(this.state);
     // API.updateUser(formData)
     //   .then(API.getUser()
     //     .then(res => {
