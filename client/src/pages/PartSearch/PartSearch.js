@@ -78,6 +78,11 @@ class PartSearch extends Component {
     }
   };
 
+  handleAddBtnClick = (e, part) => {
+    this.addPart(part);
+    e.target.innerText = "Added!";
+  }
+
 
    cellEditProp = event => {
       mode: 'dbclick'
@@ -85,17 +90,6 @@ class PartSearch extends Component {
 
 
   render() {
-    const columns = [{
-       dataField: 'quantity',
-       text: 'Product ID'
-     }, {
-       dataField: 'mpn',
-       text: 'Product Name'
-     }, {
-       dataField: 'snippet',
-       text: 'Product Price'
-     }];
-
     return (
       <Row>
      <Col size="md-3">
@@ -141,7 +135,7 @@ class PartSearch extends Component {
                       </strong>
                     <p>{part.snippet}</p>
                     </a>
-                    <AddBtn onClick={() => this.addPart(part)} />
+                    <AddBtn onClick={(e) => this.handleAddBtnClick(e, part)} />
                   </ListItem>
                 ))}
               </List>
