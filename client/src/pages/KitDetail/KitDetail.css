@@ -1,5 +1,5 @@
 .details-center {
-    padding-bottom: 2%;
+    /* padding-bottom: 2%; */
     margin-top: 4%;
     margin-bottom: 2%;
     margin-left: 20%;
@@ -63,6 +63,10 @@
     text-overflow: ellipsis;
 }
 
+.details-summary {
+    margin-bottom: 6%;
+}
+
 small {
     color: #373737;
     text-overflow: ellipsis;
@@ -74,6 +78,14 @@ small {
 
 ul {
     margin-left: 20px;
+}
+
+#bom-panel {
+    border-top: 1px solid #373737;
+    border-bottom: 1px solid #373737;
+    margin: auto;
+    padding: 5%;
+    background-color: #fff;
 }
 
 
