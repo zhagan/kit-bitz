@@ -207,11 +207,11 @@ class CreateKit extends Component {
                 ))}
               </List>
             ) : (
-                <h3>No Results to Display</h3>
+                <h4>No Results to Display</h4>
               )}
           </Col>
         </Row>
-      
+
     );
   }
 }
