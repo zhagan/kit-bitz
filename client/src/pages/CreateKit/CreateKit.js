@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import AddBtn from "../../components/AddBtn";
 import Jumbotron from "../../components/Jumbotron";
-import SideBar from "../../components/SideBar";
+import SideNav from "../../components/SideNav";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -10,6 +10,7 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import Papa from 'papaparse';
+import './CreateKit.css';
 
 //variable to store parsed BOM from file upload
 let parsedBOM;
@@ -117,11 +118,12 @@ class CreateKit extends Component {
   render() {
     return (
       <Container fluid>
-        <Col size="md-2">
-          <SideBar />
+      <Row>
+        <Col size="md-3">
+          <SideNav />
         </Col>
 
-        <Row>
+        
           <Col size="md-4">
 
             <h3>Create a Kit</h3>
@@ -188,11 +190,8 @@ class CreateKit extends Component {
                 Create Kit
               </FormBtn>
             </form>
-            <Row />
-
-
           </Col>
-          <Col size="md-5 sm-10">
+          <Col size="md-5">
             <h3>My Kits</h3>
             {this.state.MyKits.length ? (
               <List>

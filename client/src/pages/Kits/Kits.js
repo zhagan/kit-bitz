@@ -45,11 +45,11 @@ class Kits extends Component {
 
   render() {
     return (
-      <Container fluid>
-      <Col size="md-2">
+      <Row>
+      <Col size="md-3">
        <SideNav />
       </Col>
-      <Col size="md-10">
+      <Col size="md-9">
 
         <div className="card-list-container">
             {this.state.kits.length ? (
@@ -70,7 +70,7 @@ class Kits extends Component {
         </Row>
 
 
-       </Container>
+       </Row>
 
     );
   }
