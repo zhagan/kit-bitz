@@ -10,6 +10,7 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Axios from 'axios';
 import Papa from 'papaparse';
+import './CreateKit.css';
 
 //variable to store parsed BOM from file upload
 let parsedBOM;
@@ -23,8 +24,8 @@ class CreateKit extends Component {
     kitUrl: "",
     pcbUrl: "",
     faceplateUrl: "",
-    imgFile: {}
-
+    imgFile: {},
+    description: ""
   };
 
   componentDidMount() {
@@ -71,6 +72,7 @@ class CreateKit extends Component {
     const formData = new FormData();
 
     formData.append('kitName', this.state.kitName);
+    formData.append('description', this.state.description);
     formData.append('BOM', JSON.stringify(parsedBOM)); // send BOM as a string
     formData.append('designer', this.state.designer);
     formData.append('kitUrl', this.state.kitUrl);
@@ -99,6 +101,7 @@ class CreateKit extends Component {
       complete: function (results) {
         // Store parsed data in global variable
         parsedBOM = results.data.splice(1, results.data.length - 1);
+        let pop = parsedBOM.pop();
       }
     })
   }
@@ -115,11 +118,13 @@ class CreateKit extends Component {
   render() {
     return (
       <Container fluid>
+
+      <Row>
         <Col size="md-3">
-         <SideNav />
+          <SideNav />
         </Col>
 
-        <Row>
+
           <Col size="md-4">
 
             <h3>Create a Kit</h3>
@@ -130,6 +135,12 @@ class CreateKit extends Component {
                 onChange={this.handleInputChange}
                 name="kitName"
                 placeholder="Kit Name (required)"
+              />
+              <Input
+                value={this.state.description}
+                onChange={this.handleInputChange}
+                name="description"
+                placeholder="Description..."
               />
               <Input
                 value={this.state.designer}
@@ -180,11 +191,8 @@ class CreateKit extends Component {
                 Create Kit
               </FormBtn>
             </form>
-            <Row />
-
-
           </Col>
-          <Col size="md-5 sm-10">
+          <Col size="md-5">
             <h3>My Kits</h3>
             {this.state.MyKits.length ? (
               <List>
