@@ -175,7 +175,7 @@ class Detail extends Component {
                   The circuit is from this article.
                   The board is my own design and features:
 
-            </small></p>
+                  </small></p>
                   <ul><small>
                     <li>Standard 0.1" spacing, fits neatly onto a breadboard</li>
                     <li>On-board button (and pins to connect your own)</li>
@@ -184,7 +184,8 @@ class Detail extends Component {
                   </small></ul>
 
                 </div>
-                <Col size="md-12">
+                
+                <div id="bom-panel">
                   {this.state.tableData.length ? (
                     <div>
                       <h3>{this.state.tableHeader}</h3>
@@ -199,7 +200,7 @@ class Detail extends Component {
                   ) : (
                       <h3></h3>
                     )}
-                </Col>
+                </div>
               </div>
           </Col>
         </Row>
