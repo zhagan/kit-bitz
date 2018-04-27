@@ -48,7 +48,7 @@ export default {
      };
     return axios.post("/api/createkit/", kitData, config);
   },
-  
+
   getUser: function() {
     return axios.get("/api/users/getuser/");
   }
