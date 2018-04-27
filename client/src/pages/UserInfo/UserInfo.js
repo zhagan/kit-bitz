@@ -10,14 +10,11 @@ import './UserInfo.css';
 class UserInfo extends Component {
   state = {
     userInfo: {},
-<<<<<<< HEAD
     edit: false,
     newUsername: "",
     newEmail: "",
-    imgFile: {}
-=======
+    imgFile: {},
     edit: false
->>>>>>> master
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
