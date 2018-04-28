@@ -1,9 +1,9 @@
-const db = require("../models");
+const db = require('../models');
 
-// Defining methods for the booksController
+// Defining methods for the kitsController
 module.exports = {
   findAll: function(req, res) {
-    console.log("getting all of my kits");
+    console.log('getting all of my kits');
     db.Kit.find({ }).populate('createdBy').then( dbKit => {
 
       res.json(dbKit);
@@ -11,18 +11,14 @@ module.exports = {
 
   },
   findById: function(req, res) {
-  //  console.log("get PAAAAART");
     db.Kit
       .findById(req.params.id).populate('createdBy')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    //var kitId;
     db.Kit.create(req.body)
       .then( dbKit => {
-        // return db.User.findOneAndUpdate({"_id":req.user.id}, {$push: {"inventory":dbPart._id}});
-      //  kitId = dbKit.id;
         return db.Kit.findOne({ _id: dbKit.id });
       })
       .then(dbKit => {

@@ -1,15 +1,10 @@
-const db = require("../models");
-var fs = require('fs');
+const db = require('../models');
 var uuid = require('node-uuid');
-
-// Generate a v4 (random) UUID
-
-
 
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    console.log("getting all of my kits");
+    console.log('getting all of my kits');
     db.Kit.find({ createdBy: req.user.id }).populate('createdBy').then( dbKit => {
 
       res.json(dbKit);
@@ -26,7 +21,7 @@ module.exports = {
   create: function(req, res) {
     //var kitId;
 
-    console.log("file " + req.files);
+    console.log('file ' + req.files);
 
     //save files to server upload folder
 
@@ -35,31 +30,22 @@ module.exports = {
     console.log(uniqueName);
     var imgPath = './uploads/kit-pics/' + uniqueName;
     imgFile.file.mv(imgPath, function(err) {
-    if (err)
-      return res.status(500).send(err);
+      if (err)
+        return res.status(500).send(err);
 
-    console.log('File uploaded!');
+      console.log('File uploaded!');
     });
-    // fs.writeFile("/"+imgFile.name, imgFile, function(err) {
-    //     if(err) {
-    //         return console.log(err);
-    //     }
-    //
-    //     console.log("The file was saved!");
-    // });
 
-     var kitImg = {};
+    var kitImg = {};
 
-         kitImg['path'] = imgPath;
-         kitImg['name'] = uniqueName;
-         kitImg['originalname'] = imgFile.file.name;
+    kitImg['path'] = imgPath;
+    kitImg['name'] = uniqueName;
+    kitImg['originalname'] = imgFile.file.name;
 
 
 
     db.Kit.create(req.body)
       .then( dbKit => {
-        // return db.User.findOneAndUpdate({"_id":req.user.id}, {$push: {"inventory":dbPart._id}});
-      //  kitId = dbKit.id;
         return db.Kit.findOne({ _id: dbKit.id });
       })
       .then(dbKit => {

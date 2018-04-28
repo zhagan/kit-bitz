@@ -1,8 +1,6 @@
-const router = require("express").Router();
-const partsController = require("../../controllers/partsController");
-const octopartjs = require('octopartjs');
+const router = require('express').Router();
+const partsController = require('../../controllers/partsController');
 const Axios = require('axios');
-
 const mustBeLoggedIn = require('../../middleware/mustBeLoggedIn');
 
 function getParts(req, res) {
@@ -15,7 +13,7 @@ function getParts(req, res) {
     limit: 10
   };
 
-  var url = "http://octopart.com/api/v3/parts/search?";
+  var url = 'http://octopart.com/api/v3/parts/search?';
   url += '&apikey=d7585fa3';
   url += '&include[]=specs';
   url += '&include[]=imagesets';
@@ -38,17 +36,17 @@ function getParts(req, res) {
     });
 }
 
-router.route("/")
+router.route('/')
   .get(mustBeLoggedIn(), partsController.findAll)
   .post(mustBeLoggedIn(), partsController.create);
 
-router.route("/search/")
+router.route('/search/')
   .post(getParts);
 
 
 // Matches with "/api/parts/:id"
 router
-  .route("/:id")
+  .route('/:id')
   .get(mustBeLoggedIn(), partsController.findById)
   .put(mustBeLoggedIn(), partsController.update)
   .delete(mustBeLoggedIn(), partsController.remove);

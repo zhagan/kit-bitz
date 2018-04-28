@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
@@ -14,7 +14,7 @@ var BOMSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Bom = mongoose.model("Bom", BOMSchema);
+var Bom = mongoose.model('Bom', BOMSchema);
 
 // Export the Note model
 module.exports = Bom;

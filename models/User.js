@@ -1,6 +1,4 @@
-var mongoose = require("mongoose");
-var filePluginLib = require('mongoose-file');
-var filePlugin = filePluginLib.filePlugin;
+var mongoose = require('mongoose');
 
 // bcrypt is the hashing algorithm we'll use to protect stored credentials.
 const bcrypt = require('bcrypt');
@@ -23,19 +21,19 @@ var UserSchema = new Schema({
   password: String,
   website: String,
   userImgPath: {
-        path: {
-          type: String,
-         //required: true,
-          trim: true
-        },
-        name: {
-          type: String
-        //  required: true
-        },
-        originalname: {
-          type: String
+    path: {
+      type: String,
+      //required: true,
+      trim: true
+    },
+    name: {
+      type: String
       //  required: true
-        }
+    },
+    originalname: {
+      type: String
+      //  required: true
+    }
   },
   createdAt: Date,
   kitsCreated: Array,
@@ -85,7 +83,7 @@ UserSchema.methods.validatePassword = function (candidatePassword) {
 
 
 // This creates our model from the above schema, using mongoose's model method
-var User = mongoose.model("User", UserSchema);
+var User = mongoose.model('User', UserSchema);
 
 // Export the Note model
 module.exports = User;

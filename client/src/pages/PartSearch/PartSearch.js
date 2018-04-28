@@ -1,26 +1,20 @@
-import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import AddBtn from "../../components/AddBtn";
-import QtyBox from "../../components/QtyBox";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import React, { Component } from 'react';
+import AddBtn from '../../components/AddBtn';
+import API from '../../utils/API';
+import { Col, Row } from '../../components/Grid';
+import { List, ListItem } from '../../components/List';
+import { Input, FormBtn } from '../../components/Form';
 import Axios from 'axios';
-import SideNav from "../../components/SideNav";
-import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
+import SideNav from '../../components/SideNav';
 import './PartSearch.css';
 
 class PartSearch extends Component {
   state = {
     PartSearch: [],
-    mfrNum: "",
-    keyword: "",
+    mfrNum: '',
+    keyword: '',
     inventory:[],
-    setQty: ""
+    setQty: ''
   };
 
   componentDidMount() {
@@ -30,7 +24,7 @@ class PartSearch extends Component {
   loadInventory = () => {
     API.getParts()
       .then( res =>
-         this.setState({ inventory: res.data})
+        this.setState({ inventory: res.data})
       )
       .catch(err => console.log(err));
   };
@@ -69,40 +63,40 @@ class PartSearch extends Component {
     if (this.state.mfrNum || this.state.keyword) {
       if(this.state.keyword){
         Axios.post('/api/parts/search/', { keyword: this.state.keyword })
-        .then(res => {
-          this.setState({ PartSearch: res.data.results });
-        //  this.loadPartSearch();
-        })
-        .catch(err => console.log(err));
+          .then(res => {
+            this.setState({ PartSearch: res.data.results });
+            //  this.loadPartSearch();
+          })
+          .catch(err => console.log(err));
       }
     }
   };
 
   handleAddBtnClick = (e, part) => {
     this.addPart(part);
-    e.target.innerText = "Added!";
+    e.target.innerText = 'Added!';
     e.target.style.color = 'red';
     e.target.style.fontWeight = 'bold';
   }
 
 
-   cellEditProp = event => {
-      mode: 'dbclick'
-    };
+  cellEditProp = event => {
+    'dbclick';
+  };
 
 
   render() {
     return (
       <Row>
-     <Col size="md-3">
-      <SideNav />
-     </Col> 
-   
+        <Col size="md-3">
+          <SideNav />
+        </Col> 
+  
 
 
-          <Col size="md-9">
-            <div id='inputeSeacrForm'>
-              <h3>Search Octopart For a Part</h3>
+        <Col size="md-9">
+          <div id='inputeSeacrForm'>
+            <h3>Search Octopart For a Part</h3>
 
             <form style={{padding:'0px 0px 25px 0px'}}>
 
@@ -118,24 +112,24 @@ class PartSearch extends Component {
                 onClick={this.handleFormSubmit}
               >  Search Part
               </FormBtn>
-                <br />
+              <br />
             </form>
-            </div>
+          </div>
 
-            <div id='searchResults'>
+          <div id='searchResults'>
             {this.state.PartSearch.length ? (
               <List id='searchResultsList'>
                 {this.state.PartSearch.map((part, index) => (
 
                   <ListItem key={index}>
-                  {part.item.imagesets.length > 0 &&
-                    <img src={part.item.imagesets[0].small_image.url} alt=""></img>
-                  }
+                    {part.item.imagesets.length > 0 &&
+                  <img src={part.item.imagesets[0].small_image.url} alt=""></img>
+                    }
                     <a href={part.item.octopart_url} target="_blank">
                       <strong>
-                         {part.item.mpn}
+                        {part.item.mpn}
                       </strong>
-                    <p>{part.snippet}</p>
+                      <p>{part.snippet}</p>
                     </a>
                     <AddBtn onClick={(e) => this.handleAddBtnClick(e, part)} />
                   </ListItem>
@@ -144,9 +138,9 @@ class PartSearch extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-            </div>
-          </Col>
-           </Row> 
+          </div>
+        </Col>
+      </Row> 
     );
   }
 }
