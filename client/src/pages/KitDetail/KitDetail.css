@@ -1,11 +1,11 @@
 .details-center {
     /* padding-bottom: 2%; */
+    min-width: 600px;
     margin-top: 4%;
     margin-bottom: 2%;
     margin-left: 20%;
     margin-right: 20%;
     overflow: ellipse;
-    /* margin: auto; */
     border-radius: 5px;
     border: 1px solid #cfcfcf;
     background-color: rgb(247, 245, 245); 
@@ -15,33 +15,28 @@
 
 .details-title {
     padding: 0 10%;
-    color:  #101648;
+    color:  #171b46bb;
     text-align: center;
-
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 
 .details-image-container {
     display: flex;
     margin: 10px 10px 25px 10px;
-    width: 98%;
-    overflow-y: hidden;
-    max-height: 500px;
     justify-content: center;
     text-align: center;
-    /* border-top: 1px solid #cfcfcf;
-    border-bottom: 1px solid #cfcfcf; */
     background-color:  #cfcfcf;
     
 }
 
 .details-image-container > img{
     width: 100%;
-    min-height: 180px;
+    height: auto;
+    max-height: 600px;
 }
 
 .details-content {
-    
     border-top: 1px solid #cfcfcf;
     border-bottom: 1px solid #cfcfcf;
     margin-top: 10px;
@@ -69,13 +64,19 @@
     margin-bottom: 6%;
 }
 
+.bottomdragonfly {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+}
+
 small {
     color: #373737;
     text-overflow: ellipsis;
 }
 
 #pop-blue {
-    color: #7EADCF;
+    color: teal;
 }
 
 ul {
@@ -90,5 +91,16 @@ ul {
     background-color: #fff;
 }
 
+@media only screen and (max-width:700px){
+    .details-center {
+        justify-content: center;
+        min-width: 400px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
 
+
+}
 

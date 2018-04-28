@@ -13,6 +13,7 @@ import SideNav from "../../components/SideNav";
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import './PartSearch.css';
+import microchip from "./microchip.png"; 
 
 class PartSearch extends Component {
   state = {
@@ -100,7 +101,12 @@ class PartSearch extends Component {
 
           <Col size="md-9">
             <div id='inputeSeacrForm'>
-              <h3>Search Octopart For a Part</h3>
+            
+              <h3><img
+               src={microchip}
+               alt="Kit-Bitz"
+               className="microchip"
+             />Search Octopart For a Part</h3>
 
             <form style={{padding:'0px 0px 25px 0px'}}>
 

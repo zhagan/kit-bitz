@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 import './KitDetail.css';
 
 import cardImage from '../../components/KitCard/kit-image-1.jpg';
+import dragonflyimage from './bottomdragon.png';
 import KitDetailTable from "./KitDetailTable/KitDetailTable";
 
 
@@ -136,7 +137,11 @@ class Detail extends Component {
     const images = this.importAll(require.context('../../../../uploads/kit-pics', false, /\.(png|jpe?g|svg)$/));
     return (
       <CenterContainer>
-
+      <Row>
+          <Col size="md-4">
+            <Link to="/createKit">← Back to Create Kit</Link>
+          </Col>
+        </Row>
 
         <Row>
           <Col size="md-12">
@@ -193,16 +198,17 @@ class Detail extends Component {
                     <h3></h3>
                   )}
               </div>
+              <img
+               src={dragonflyimage}
+               alt="Kit-Bitz"
+               className="bottomdragonfly"
+             />
             </div>
           </Col>
         </Row>
 
 
-        <Row>
-          <Col size="md-4">
-            <Link to="/createKit">← Back to Create Kit</Link>
-          </Col>
-        </Row>
+        
       </CenterContainer>
     );
   }

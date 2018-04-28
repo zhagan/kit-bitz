@@ -9,6 +9,35 @@ p {
     color: black;
     text-overflow: ellipsis;
 }
+.dragonflypic {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+}
+
+.sidedecor {
+    position: fixed;
+    top: 0px;
+    right: 2%;
+    background-image: url("circuitbackground2.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: 300px 200px; 
+    z-index: -1;
+    height: 100%;
+    width: 2%;
+    box-shadow: inset 0 0px 8px #323b3b;
+}
+
+@media only screen and (max-width:700px){
+    .card-list-container {
+        justify-content: center;
+    }
+
+
+}
 
 
 

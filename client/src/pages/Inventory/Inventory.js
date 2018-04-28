@@ -15,6 +15,7 @@ import TableHeaderColumn from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import './Inventory.css';
 import InventoryTable from "./InventoryTable/InventoryTable";
+import microchip from "./microchip.png";  
 
 class Inventory extends Component {
   state = {
@@ -116,8 +117,12 @@ class Inventory extends Component {
 
 
         <Col size="md-9">
-
-          <h3>Parts in my Inventory</h3>
+        
+          <h3 className="table-title"><img
+               src={microchip}
+               alt="Kit-Bitz"
+               className="microchip"
+             />Parts in my Inventory</h3>
           {this.state.inventory.length ? (
             <div id='inventoryTable'>
               <div className="table-responsive">

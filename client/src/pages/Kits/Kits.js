@@ -9,7 +9,7 @@ import { ListCard, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 import './Kits.css';
 import '../../components/KitCard/KitCard';
-
+import dragonflypic from "./kits-page-dragonfly.jpg";
 
 class Kits extends Component {
   state = {
@@ -46,25 +46,33 @@ class Kits extends Component {
 
   render() {
     return (
-      <Row>
-      <Col size="md-3">
-      { this.props.user ?(
-       <SideNav />
-      ) : (<div></div>) }
-      </Col>
-      <Col size="md-9">
+      <div>
+          
+        <div className = "sidedecor">
+            
+        </div>
+        <Row>
+        
+        <Col size="md-3">
+        { this.props.user ?(
+        <SideNav />
+        ) : (<div></div>) }
+        </Col>
+        <Col size="md-9">
 
-        <div className="card-list-container">
-            {this.state.kits.length ? (
-              <ListCard>
-                {this.state.kits.map((kit, index) => (
-                <KitCard kit={kit} />
-                ))}
-              </ListCard>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
-          </div>
+          <div className="card-list-container">
+              {this.state.kits.length ? (
+                <ListCard>
+                  {this.state.kits.map((kit, index) => (
+                  <KitCard kit={kit} />
+                  ))}
+                </ListCard>
+              ) : (
+                  <h3>No Results to Display</h3>
+                )}
+            </div>
+
+          
 
 
         </Col>
@@ -74,6 +82,12 @@ class Kits extends Component {
 
 
        </Row>
+       <img
+            src={dragonflypic}
+            alt="Kit-Bitz"
+            className="dragonflypic"
+             />
+      </div>
 
     );
   }
