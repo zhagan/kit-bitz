@@ -61,4 +61,4 @@ typings/
 .DS_Store
 
 # kit images
-uploads/kit-pics/
+uploads/kit-pics/*
