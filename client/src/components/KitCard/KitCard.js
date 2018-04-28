@@ -21,38 +21,35 @@ class KitCard extends Component
         return (
             <Link to={"/createkit/" + this.props.kit._id}>
               <div className="kit-card">
+              
                 <div className="kit-image-div">
+                        <div className="kit-title">
+                            <p className="kit-title-style">
+                            {this.props.kit.kitName}
+                            </p>
+                        </div>
                         <img
                         id="kitImage"
                         src={images[this.props.kit.kitImgPath.name]}
                         alt="Kit-Bitz"
                         />
                 </div>
+                <div className="kitdetails">
+                    <div className="kit-owner">
+                        <p className="kit-owner-style">
+                        Created by <span id="pop-blue">{this.props.kit.createdBy.username} </span>
+                        </p>
+                    </div>
+                    {/* <div className="kit-designer">
+                        <p className="kit-designer-style">
+                        Kit designed by <span id="pop-blue">{this.props.kit.createdBy.designer} </span>
+                        </p>
+                    </div> */}
 
-                <div className="kit-title">
-                    <p>
-                    {this.props.kit.kitName}
-                    </p>
+                    <div className="kit-summary">
+                        <p><small className="kit-summary-style">{this.props.kit.description}</small></p>
+                    </div>
                 </div>
-                <div className="kit-owner">
-                     <p>
-                    Created by <span id="pop-blue">{this.props.kit.createdBy.username} </span>
-                    </p>
-                </div>
-                <div className="kit-designer">
-                    <p>
-                    Kit designed by <span id="pop-blue">{this.props.kit.createdBy.designer} </span>
-                    </p>
-                </div>
-
-                <div className="kit-summary">
-                    <p><small>{this.props.kit.description}</small></p>
-                </div>
-
-
-
-
-
               </div>
             </Link>
 

@@ -8,6 +8,7 @@ import API from "../../utils/API";
 import { ListCard, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 import './Kits.css';
+import '../../components/KitCard/KitCard';
 
 
 class Kits extends Component {

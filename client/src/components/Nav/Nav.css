@@ -6,20 +6,48 @@
     #2d3e4f;
     border:0;
     box-sizing: border-box;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2), 0 5px 15px 0 rgba(0,0,0, 0.15);
+    -webkit-transition: background-color .5s ease-in;
+    transition: background-color .5s ease-in;
   }
+
+  a {
+    color: #697886;
+}
+
+  .navbar-nav > li > a {
+    margin-bottom: -5px;
+  }
+
+  .navbar-inverse .navbar-nav > .active > a {
+    -webkit-transition: background-color 2s;
+    transition: background-color 2s; 
+    background-color: #6F7391;
+    color: white;
+    background: linear-gradient(45deg,#9cecd4,teal);
+    margin-bottom: -5px;
+    }
   
   .navbar-inverse .navbar-nav > li > a:hover {
+    -webkit-transition: background-color .5s ease-in;
+    transition: background-color .5s ease-in;
     background-color: #6F7391;
     color: #27dfa9;
+    margin-bottom: -5px; 
     }
   
     .navbar-inverse .navbar-nav > li > a:focus {
-    background-color: #6F7391;
+    -webkit-transition: background-color .5s ease-in;
+    transition: background-color .5s ease-in;
     color:#27dfa9;
+    margin-bottom: -5px; 
+    
     }
     .navbar-inverse .navbar-nav > li > a:active {
-    background-color: #6F7391;
+    -webkit-transition: background-color .5s ease-in;
+    transition: background-color .5s ease-in;
     color: white;
+    margin-bottom: -5px;
     }
   
   .navbar-brand {
