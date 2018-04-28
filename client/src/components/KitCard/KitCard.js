@@ -26,7 +26,7 @@ class KitCard extends Component
 
   render()
   {
-    const images = this.importAll(require.context('../../../../uploads/kit-pics', false, /\.(png|jpe?g|svg)$/));
+    // const images = this.importAll(require.context('../../../../uploads/kit-pics', false, /\.(png|jpe?g|svg)$/));
 
     return (
       <Link to={'/createkit/' + this.props.kit._id}>
@@ -40,7 +40,7 @@ class KitCard extends Component
             </div>
             <img
               id="kitImage"
-              src={this.selectRandImage()}
+              src="https://www.shenzhen2u.com/image/cache/catalog/PCB/PCB%20Detail-500x500.jpg"
               alt="Kit-Bitz"
             />
           </div>
