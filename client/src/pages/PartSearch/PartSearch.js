@@ -81,6 +81,8 @@ class PartSearch extends Component {
   handleAddBtnClick = (e, part) => {
     this.addPart(part);
     e.target.innerText = "Added!";
+    e.target.style.color = 'red';
+    e.target.style.fontWeight = 'bold';
   }
 
 
