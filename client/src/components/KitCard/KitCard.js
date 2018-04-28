@@ -13,6 +13,16 @@ class KitCard extends Component
     return images;
   }
 
+  selectRandImage = () => {
+    var images = [
+      'https://www.shenzhen2u.com/image/cache/catalog/PCB/PCB%20Detail-500x500.jpg',
+      'http://www.circuitbasics.com/wp-content/uploads/2016/06/How-to-Make-a-Custom-PCB-PCB-Final-Image.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjJgO2deXyuRoAXCZeSciWFN3UmJwnMvuvm0jQUgkt0V-kYKIP1w',
+      'https://sc01.alicdn.com/kf/HTB1UMwcNpXXXXa0XVXXq6xXFXXXX/High-Quality-inverter-welding-pcb-board-inverter.jpg_350x350.jpg'
+    ];
+
+    return (images[ Math.floor(Math.random() * images.length) ]);
+  }
 
   render()
   {
@@ -30,7 +40,7 @@ class KitCard extends Component
             </div>
             <img
               id="kitImage"
-              src={images[this.props.kit.kitImgPath.name]}
+              src={this.selectRandImage()}
               alt="Kit-Bitz"
             />
           </div>
