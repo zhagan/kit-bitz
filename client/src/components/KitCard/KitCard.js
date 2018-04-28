@@ -40,7 +40,7 @@ class KitCard extends Component
             </div>
             <img
               id="kitImage"
-              src="https://www.shenzhen2u.com/image/cache/catalog/PCB/PCB%20Detail-500x500.jpg"
+              src={this.selectRandImage()}
               alt="Kit-Bitz"
             />
           </div>
