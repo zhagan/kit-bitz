@@ -60,4 +60,5 @@ typings/
 # mac crap
 .DS_Store
 
+# kit images
 uploads/kit-pics/
