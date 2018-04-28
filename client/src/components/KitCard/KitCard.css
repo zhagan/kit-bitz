@@ -2,6 +2,14 @@
 /* card dimensions 290x380 */
 
 /* most styles are located in parent css file - Kits.css  */
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
 
 .kit-card {
     border: 1px solid #cfcfcf;
@@ -17,6 +25,7 @@
     background: radial-gradient(closest-side, #fcfaf9, #eeeded, #e0e0e0);
     box-shadow: 0 8px 10px 0 rgba(0,0,0, 0.3), 0 17px 25px 0 rgba(0,0,0, 0.30);
     overflow-y: hidden;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 
