@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import AddBtn from "../../components/AddBtn";
-import Jumbotron from "../../components/Jumbotron";
-import SideNav from "../../components/SideNav";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import Axios from 'axios';
+import React, { Component } from 'react';
+import DeleteBtn from '../../components/DeleteBtn';
+import SideNav from '../../components/SideNav';
+import API from '../../utils/API';
+import { Link } from 'react-router-dom';
+import { Col, Row } from '../../components/Grid';
+import { List, ListItem } from '../../components/List';
+import { Input, FormBtn } from '../../components/Form';
 import Papa from 'papaparse';
 import './CreateKit.css';
 
@@ -18,14 +15,14 @@ let parsedBOM;
 class CreateKit extends Component {
   state = {
     MyKits: [],
-    kitName: "",
+    kitName: '',
     BOM: null,
-    designer: "",
-    kitUrl: "",
-    pcbUrl: "",
-    faceplateUrl: "",
+    designer: '',
+    kitUrl: '',
+    pcbUrl: '',
+    faceplateUrl: '',
     imgFile: {},
-    description: ""
+    description: ''
   };
 
   componentDidMount() {
@@ -101,9 +98,9 @@ class CreateKit extends Component {
       complete: function (results) {
         // Store parsed data in global variable
         parsedBOM = results.data.splice(1, results.data.length - 1);
-        let pop = parsedBOM.pop();
+        parsedBOM.pop();
       }
-    })
+    });
   }
 
   onChangeImgFile = event => {
@@ -124,93 +121,93 @@ class CreateKit extends Component {
         </Col>
 
 
-          <Col size="md-4">
+        <Col size="md-4">
 
-            <h3>Create a Kit</h3>
+          <h3>Create a Kit</h3>
 
-            <form>
-              <Input
-                value={this.state.kitName}
-                onChange={this.handleInputChange}
-                name="kitName"
-                placeholder="Kit Name (required)"
-              />
-              <Input
-                value={this.state.description}
-                onChange={this.handleInputChange}
-                name="description"
-                placeholder="Description..."
-              />
-              <Input
-                value={this.state.designer}
-                onChange={this.handleInputChange}
-                name="designer"
-                placeholder="Designer Name"
-              />
-              <Input
-                value={this.state.kitUrl}
-                onChange={this.handleInputChange}
-                name="kitUrl"
-                placeholder="Kit Url"
-              />
-              <Input
-                value={this.state.pcbUrl}
-                onChange={this.handleInputChange}
-                name="pcbUrl"
-                placeholder="PCB Url"
-              />
-              <Input
-                value={this.state.faceplateUrl}
-                onChange={this.handleInputChange}
-                name="faceplateUrl"
-                placeholder="Faceplate Url"
-              />
-              <label>
+          <form>
+            <Input
+              value={this.state.kitName}
+              onChange={this.handleInputChange}
+              name="kitName"
+              placeholder="Kit Name (required)"
+            />
+            <Input
+              value={this.state.description}
+              onChange={this.handleInputChange}
+              name="description"
+              placeholder="Description..."
+            />
+            <Input
+              value={this.state.designer}
+              onChange={this.handleInputChange}
+              name="designer"
+              placeholder="Designer Name"
+            />
+            <Input
+              value={this.state.kitUrl}
+              onChange={this.handleInputChange}
+              name="kitUrl"
+              placeholder="Kit Url"
+            />
+            <Input
+              value={this.state.pcbUrl}
+              onChange={this.handleInputChange}
+              name="pcbUrl"
+              placeholder="PCB Url"
+            />
+            <Input
+              value={this.state.faceplateUrl}
+              onChange={this.handleInputChange}
+              name="faceplateUrl"
+              placeholder="Faceplate Url"
+            />
+            <label>
                 Upload BOM:
-                <input
-                  type="file"
-                  name="file"
-                  onChange={this.onChangeFile}
-                />
-              </label>
-              <br />
-              <label>
+              <input
+                type="file"
+                name="file"
+                onChange={this.onChangeFile}
+              />
+            </label>
+            <br />
+            <label>
                 Upload Kit Image:
-                <input
-                  type="file"
-                  name="imgFile"
-                  onChange={this.onChangeImgFile}
-                />
-              </label>
-              <br />
-              <FormBtn
-                disabled={!(this.state.kitName)}
-                onClick={this.handleFormSubmit}
-              >
+              <input
+                type="file"
+                name="imgFile"
+                onChange={this.onChangeImgFile}
+              />
+            </label>
+            <br />
+            <FormBtn
+              disabled={!(this.state.kitName)}
+              onClick={this.handleFormSubmit}
+            >
                 Create Kit
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-5">
-            <h3>My Kits</h3>
-            {this.state.MyKits.length ? (
-              <List>
-                {this.state.MyKits.map((kit, index) => (
-                  <ListItem key={index}>
-                    <Link to={"/createkit/" + kit._id}>
-                      <strong>
-                        {kit.kitName} created by {kit.createdBy.username}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteKit(kit._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-                <h4>No Results to Display</h4>
-              )}
-          </Col>
-        </Row>
+            </FormBtn>
+          </form>
+        </Col>
+        <Col size="md-5">
+          <h3>My Kits</h3>
+          {this.state.MyKits.length ? (
+            <List>
+              {this.state.MyKits.map((kit, index) => (
+                <ListItem key={index}>
+                  <Link to={'/createkit/' + kit._id}>
+                    <strong>
+                      {kit.kitName} created by {kit.createdBy.username}
+                    </strong>
+                  </Link>
+                  <DeleteBtn onClick={() => this.deleteKit(kit._id)} />
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <h4>No Results to Display</h4>
+          )}
+        </Col>
+      </Row>
 
     );
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // checks to see if the session storage already has a user key
 // if it does, try to parse it as JSON string into an object, and use

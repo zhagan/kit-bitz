@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container, CenterContainer } from "../../components/Grid";
+import React, { Component } from 'react';
+import { Col, Row } from '../../components/Grid';
 
-import KitCard from "../../components/KitCard";
-import SideNav from "../../components/SideNav";
-import API from "../../utils/API";
-import { ListCard, ListItem } from "../../components/List";
-import DeleteBtn from "../../components/DeleteBtn";
+import KitCard from '../../components/KitCard';
+import SideNav from '../../components/SideNav';
+import API from '../../utils/API';
+import { ListCard } from '../../components/List';
 import './Kits.css';
 import '../../components/KitCard/KitCard';
 
@@ -38,42 +36,40 @@ class Kits extends Component {
   };
 
   importAll = (r) => {
-      let images = {};
-      r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-      return images;
-    }
+    let images = {};
+    r.keys().forEach((item) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
 
 
   render() {
     return (
       <Row>
-      <Col size="md-3">
-      { this.props.user ?(
-       <SideNav />
-      ) : (<div></div>) }
-      </Col>
-      <Col size="md-9">
+        <Col size="md-3">
+          { this.props.user ?(
+            <SideNav />
+          ) : (<div></div>) }
+        </Col>
+        <Col size="md-9">
 
-        <div className="card-list-container">
+          <div className="card-list-container">
             {this.state.kits.length ? (
               <ListCard>
-                {this.state.kits.map((kit, index) => (
-                <KitCard kit={kit} />
+                {this.state.kits.map((kit) => (
+                  <KitCard kit={kit} />
                 ))}
               </ListCard>
             ) : (
-                <h3>No Results to Display</h3>
-              )}
+              <h3>No Results to Display</h3>
+            )}
           </div>
 
-
         </Col>
-
+        
         <Row>
         </Row>
 
-
-       </Row>
+      </Row>
 
     );
   }

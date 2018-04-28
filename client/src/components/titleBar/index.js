@@ -1,1 +1,1 @@
-export { default } from "./titleBar";
+export { default } from './titleBar';

@@ -1,38 +1,36 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, CenterContainer } from "../../components/Grid";
-import { FormBtn } from "../../components/Form";
-import API from "../../utils/API";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Col, Row, CenterContainer } from '../../components/Grid';
+import API from '../../utils/API';
 import { Button } from 'react-bootstrap';
 import './KitDetail.css';
 
-import cardImage from '../../components/KitCard/kit-image-1.jpg';
-import KitDetailTable from "./KitDetailTable/KitDetailTable";
+import KitDetailTable from './KitDetailTable/KitDetailTable';
 
 
 class Detail extends Component {
   state = {
     kit: {
-      kitName: "",
-      description: "",
-      bom: "",
-      designer: "",
-      kitUrl: "",
-      pcbUrl: "",
-      faceplateUrl: "",
-      createdBy: "",
+      kitName: '',
+      description: '',
+      bom: '',
+      designer: '',
+      kitUrl: '',
+      pcbUrl: '',
+      faceplateUrl: '',
+      createdBy: '',
       kitImgPath: {
-        path: "",
-        name: "",
-        originalname: ""
+        path: '',
+        name: '',
+        originalname: ''
       }
 
     },
-    inventory: "",
+    inventory: '',
     bomComparisonArray: [],
-    tableView: "noView",
+    tableView: 'noView',
     tableData: [],
-    tableHeader: ""
+    tableHeader: ''
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
   // e.g. localhost:3000/parts/599dcb67f0f16317844583fc
@@ -62,7 +60,7 @@ class Detail extends Component {
     let INVarray = [];
 
     // store BOM MPN's in array
-    this.state.kit.bom.map(element => {
+    this.state.kit.bom.forEach(element => {
       let BOMobject = {
         MPN: element.MPN,
         Qty: element.Qty
@@ -71,7 +69,7 @@ class Detail extends Component {
     });
 
     // store inventory MPN's in array
-    this.state.inventory.map(element => {
+    this.state.inventory.forEach(element => {
       let INVobject = {
         MPN: element.MPN,
         Qty: element.Qty
@@ -88,8 +86,8 @@ class Detail extends Component {
     });
 
     this.setState({ bomComparisonArray: itemsNeedToFulfill }, () => {
-      console.log(this.state.bomComparisonArray)
-    })
+      console.log(this.state.bomComparisonArray);
+    });
   }
 
   tableView = () => {
@@ -97,37 +95,39 @@ class Detail extends Component {
     this.compareInventory();
 
     switch (this.state.tableView) {
-      case "noView":
-        this.setState({ tableData: [], tableHeader: "" });
-        break;
-      case "bomView":
-        this.setState({ tableData: this.state.kit.bom, tableHeader: "Bill of Materials" });
-        break;
-      case "compareView":
-        this.setState({ tableData: this.state.bomComparisonArray, tableHeader: "Parts you need" });
-        break;
+    case 'noView':
+      this.setState({ tableData: [], tableHeader: '' });
+      break;
+    case 'bomView':
+      this.setState({ tableData: this.state.kit.bom, tableHeader: 'Bill of Materials' });
+      break;
+    case 'compareView':
+      this.setState({ tableData: this.state.bomComparisonArray, tableHeader: 'Parts you need' });
+      break;
+    default:
+      break;
     }
   }
 
   toggleTable = () => {
-    if (this.state.tableView === "noView") {
-      this.setState({ tableView: "bomView" });
-      console.log("bomView");
+    if (this.state.tableView === 'noView') {
+      this.setState({ tableView: 'bomView' });
+      console.log('bomView');
     }
-    else if (this.state.tableView === "bomView") {
-      this.setState({ tableView: "compareView" });
-      console.log("compareView");
+    else if (this.state.tableView === 'bomView') {
+      this.setState({ tableView: 'compareView' });
+      console.log('compareView');
     }
     else {
-      this.setState({ tableView: "noView" });
-      console.log("noView");
+      this.setState({ tableView: 'noView' });
+      console.log('noView');
     }
     this.tableView();
   }
 
   importAll = (r) => {
     let images = {};
-    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    r.keys().forEach((item) => { images[item.replace('./', '')] = r(item); });
     return images;
   }
 
@@ -190,8 +190,8 @@ class Detail extends Component {
                     </div>
                   </div>
                 ) : (
-                    <h3></h3>
-                  )}
+                  <div></div>
+                )}
               </div>
             </div>
           </Col>

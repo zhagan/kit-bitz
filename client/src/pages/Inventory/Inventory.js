@@ -1,25 +1,15 @@
-import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import AddBtn from "../../components/AddBtn";
-import QtyBox from "../../components/QtyBox";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import React, { Component } from 'react';
+import API from '../../utils/API';
+import { Col, Row } from '../../components/Grid';
 import Axios from 'axios';
-import SideNav from "../../components/SideNav";
-import BootstrapTable from 'react-bootstrap-table-next';
-import TableHeaderColumn from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
+import SideNav from '../../components/SideNav';
 import './Inventory.css';
-import InventoryTable from "./InventoryTable/InventoryTable";
+import InventoryTable from './InventoryTable/InventoryTable';
 
 class Inventory extends Component {
   state = {
-    mfrNum: "",
-    keyword: "",
+    mfrNum: '',
+    keyword: '',
     inventory: [],
   };
 
@@ -88,26 +78,11 @@ class Inventory extends Component {
     API.changeQtyPart(itemMPN, newQty).then( response => {
       console.log(response.data);
       this.loadInventory();
-    })
+    });
   }
 
 
   render() {
-    const columns = [{
-      dataField: 'Qty',
-      text: 'Qty'
-    }, {
-      dataField: 'MPN',
-      text: 'MPN'
-    }, {
-      dataField: 'Snippet',
-      text: 'Description'
-    }, {
-      dataField: 'button',
-      dataFormat: this.cellButton,
-      text: 'x'
-    }];
-
     return (
       <Row>
         <Col size="md-3">
@@ -129,7 +104,7 @@ class Inventory extends Component {
               </div>
             </div>
           ) : (
-              <h3>No Results to Display</h3>
+            <h3>No Results to Display</h3>
           )}
         </Col>
 

@@ -1,1 +1,1 @@
-export { default } from "./KitCard";
+export { default } from './KitCard';

@@ -14,12 +14,9 @@ class PartSearch extends Component {
     mfrNum: '',
     keyword: '',
     inventory:[],
+
     setQty: ''
   };
-
-  componentDidMount() {
-  //  this.loadInventory();
-  }
 
   loadInventory = () => {
     API.getParts()
@@ -33,16 +30,6 @@ class PartSearch extends Component {
     API.deletePart(id)
       .then(res => this.loadInventory())
       .catch(err => console.log(err));
-  };
-
-  changeQtyPart = (id) => {
-    // let newQty = this.target.value;
-    // console.log(newQty);
-
-    // this.setState({ setQty: newQty });
-    // API.changeQtyPart(id, newQty)
-    //   .then(res => this.loadInventory())
-    //   .catch(err => console.log(err));
   };
 
   addPart = part => {
@@ -80,19 +67,12 @@ class PartSearch extends Component {
   }
 
 
-  cellEditProp = event => {
-    'dbclick';
-  };
-
-
   render() {
     return (
       <Row>
         <Col size="md-3">
           <SideNav />
         </Col> 
-  
-
 
         <Col size="md-9">
           <div id='inputeSeacrForm'>

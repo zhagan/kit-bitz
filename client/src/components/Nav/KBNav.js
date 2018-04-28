@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 import { withRouter,  } from 'react-router-dom';
 
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
@@ -9,7 +8,7 @@ import { update } from '../../services/withUser';
 
 import axios from 'axios';
 
-import "./Nav.css";
+import './Nav.css';
 import logo from './kit-bitz-logo-white.png';
 
 
@@ -17,21 +16,21 @@ class KBNav extends Component {
   handleLogoutClick = (e) => {
     e.preventDefault();
     axios.delete('/api/auth')
-    .then(result => {
+      .then(result => {
       // successful logout
-      update(null);
-      this.props.history.push('/');
-    })
-    .catch(error => {
+        update(null);
+        this.props.history.push('/');
+      })
+      .catch(error => {
       // failed logout
-      console.log('Error logging out:', error);
-    });
+        console.log('Error logging out:', error);
+      });
   }
 
   handleAccountClick = (e) => {
     e.preventDefault();
 
-      this.props.history.push('/UserInfo')
+    this.props.history.push('/UserInfo');
 
   }
 
@@ -43,16 +42,16 @@ class KBNav extends Component {
         <Navbar.Header>
           <Navbar.Brand>
             <LinkContainer to="/">
-            <a href="#">
-            <img
-               src={logo}
-               alt="Kit-Bitz"
-               style={{height:'50px',
-                        align:'top',
-                        padding:'0px',
-                        border:'0px'}}
-             />
-            </a>
+              <a href="">
+                <img
+                  src={logo}
+                  alt="Kit-Bitz"
+                  style={{height:'50px',
+                    align:'top',
+                    padding:'0px',
+                    border:'0px'}}
+                />
+              </a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />
@@ -74,17 +73,17 @@ class KBNav extends Component {
           <Nav pullRight>
             {
               user
-              ?
-              <NavDropdown eventKey={3} title={`Logged in as: ${user.username}`} id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1} onClick={this.handleLogoutClick}>Logout</MenuItem>
-                <MenuItem eventKey={3.2} onClick={this.handleAccountClick}>Account</MenuItem>
-              </NavDropdown>
-              :
-              <LinkContainer to="/login">
-                <NavItem eventKey={3} href="#">
+                ?
+                <NavDropdown eventKey={3} title={`Logged in as: ${user.username}`} id="basic-nav-dropdown">
+                  <MenuItem eventKey={3.1} onClick={this.handleLogoutClick}>Logout</MenuItem>
+                  <MenuItem eventKey={3.2} onClick={this.handleAccountClick}>Account</MenuItem>
+                </NavDropdown>
+                :
+                <LinkContainer to="/login">
+                  <NavItem eventKey={3} href="#">
                   Login
-                </NavItem>
-              </LinkContainer>
+                  </NavItem>
+                </LinkContainer>
             }
           </Nav>
         </Navbar.Collapse>

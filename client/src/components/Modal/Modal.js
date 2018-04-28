@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import Axios from "axios";
-import { update } from "../../services/withUser";
-import { withRouter, Redirect } from "react-router-dom";
+import { Input, FormBtn } from '../../components/Form';
+import Axios from 'axios';
+import { update } from '../../services/withUser';
+import { withRouter } from 'react-router-dom';
 import './Modal.css';
 import modalimage from './kit-bitz-modal.png';
 
@@ -17,34 +17,29 @@ const backdropStyle = {
   right: 0,
   backgroundColor: 'rgba(0,0,0,0.6)',
   padding: 50
-}
-
-const footerStyle = {
-  position: "absolute",
-  bottom: 20,
 };
 
-const modalRoot = document.getElementById("modal-root");
+const modalRoot = document.getElementById('modal-root');
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
     this.state = {
-      username: "",
-      password: "",
-      newUserName: "",
-      newPassword: "",
-      email: "",
+      username: '',
+      password: '',
+      newUserName: '',
+      newPassword: '',
+      email: '',
       loginFailed: false
     };
 
     this.initState = {
-      username: "",
-      password: "",
-      newUserName: "",
-      newPassword: "",
-      email: "",
+      username: '',
+      password: '',
+      newUserName: '',
+      newPassword: '',
+      email: '',
       loginFailed: false
     };
   }
@@ -60,7 +55,7 @@ class Modal extends React.Component {
     event.preventDefault();
     if (this.state.newUserName && this.state.newPassword && this.state.email) {
       try {
-        var register = await Axios.post('/api/users', {
+        await Axios.post('/api/users', {
           username: this.state.newUserName,
           password: this.state.newPassword,
           email: this.state.email
@@ -93,7 +88,7 @@ class Modal extends React.Component {
   };
 
   onClose = (e) => {
-    console.log("BUTTON CLICKED");
+    console.log('BUTTON CLICKED');
     e.stopPropagation();
     this.props.onClose && this.props.onClose(e);
   }
@@ -106,12 +101,12 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener('keyup', this.onKeyUp);
     modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keyup", this.onKeyUp);
+    document.removeEventListener('keyup', this.onKeyUp);
     modalRoot.removeChild(this.el);
   }
 
@@ -120,7 +115,7 @@ class Modal extends React.Component {
       <div style={backdropStyle}>
         <div className="modal-box">
 
-          <button type="button" className="close" aria-label="Close" onClick={(e) => { this.onClose(e) }}><span aria-hidden="true">&times;</span></button>
+          <button type="button" className="close" aria-label="Close" onClick={(e) => { this.onClose(e); }}><span aria-hidden="true">&times;</span></button>
 
           <div className="col-md-12">
             {this.props.children}
@@ -178,6 +173,6 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired
-}
+};
 
 export default withRouter(Modal);
