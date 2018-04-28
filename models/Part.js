@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -24,7 +24,7 @@ var PartSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Part = mongoose.model("Part", PartSchema);
+var Part = mongoose.model('Part', PartSchema);
 
 // Export the Note model
 module.exports = Part;

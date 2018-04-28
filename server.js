@@ -1,8 +1,8 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const routes = require("./routes");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const routes = require('./routes');
 const fileUpload = require('express-fileupload');
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(fileUpload()); ///file upload
 app.use(cors()); // allow cross origin requests
 
 // Serve up static assets
-app.use(express.static("client/build"));
+app.use(express.static('client/build'));
 
 // use passport
 require('./passport')(app);
@@ -27,7 +27,7 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/kit-bitzDB");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/kit-bitzDB');
 
 // Start the API server
 app.listen(PORT, function() {

@@ -1,1 +1,1 @@
-export { default } from "./PartSearch.js";
+export { default } from './PartSearch.js';

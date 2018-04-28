@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const passport = require('passport');
 
 
@@ -19,7 +19,7 @@ router.route('/')
     if (!req.user) {
       return res.status(401).json({
         message: 'You are not currently logged in.'
-      })
+      });
     }
 
     getCurrentUser(req, res);
@@ -29,7 +29,7 @@ router.route('/')
     if (!req.user) {
       return res.status(401).json({
         message: 'Invalid username or password.'
-      })
+      });
     }
 
     getCurrentUser(req, res);

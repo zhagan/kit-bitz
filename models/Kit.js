@@ -1,6 +1,4 @@
-var mongoose = require("mongoose");
-var filePluginLib = require('mongoose-file');
-var filePlugin = filePluginLib.filePlugin;
+var mongoose = require('mongoose');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -19,25 +17,25 @@ var KitSchema = new Schema({
   pcbUrl: String,
   faceplateUrl: String,
   kitImgPath: {
-        path: {
-          type: String,
-         //required: true,
-          trim: true
-        },
-        name: {
-          type: String
-        //  required: true
-        },
-        originalname: {
-          type: String
+    path: {
+      type: String,
+      //required: true,
+      trim: true
+    },
+    name: {
+      type: String
       //  required: true
-        }
+    },
+    originalname: {
+      type: String
+      //  required: true
+    }
   },
   bom: Array
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Kit = mongoose.model("Kit", KitSchema);
+var Kit = mongoose.model('Kit', KitSchema);
 
 // Export the Note model
 module.exports = Kit;

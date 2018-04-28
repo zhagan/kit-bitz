@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -9,14 +9,14 @@ var InventorySchema = new Schema({
   
   parts: [{
     type: Schema.Types.ObjectId,
-    ref: "Part",
+    ref: 'Part',
     default: []
   }],
 
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Inventory = mongoose.model("Inventory", InventorySchema);
+var Inventory = mongoose.model('Inventory', InventorySchema);
 
 // Export the Article model
 module.exports = Inventory;

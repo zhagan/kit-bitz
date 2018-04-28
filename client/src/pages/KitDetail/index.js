@@ -1,1 +1,1 @@
-export { default } from "./KitDetail";
+export { default } from './KitDetail';

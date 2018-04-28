@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Col, Row, Container } from '../../components/Grid';
+import Jumbotron from '../../components/Jumbotron';
+import API from '../../utils/API';
 
 class Detail extends Component {
   state = {
     part: {
 
-      _id:"",
+      _id:'',
       item:{
         imagesets:[{
           small_image:{
-            url:"",
+            url:'',
           },
           medium_image:{
-            url:"",
+            url:'',
           }
         }],
       },
-      snippet:""
+      snippet:''
     }
   };
   // When this component mounts, grab the part with the _id of this.props.match.params.id
@@ -45,11 +45,8 @@ class Detail extends Component {
                 {this.state.part.item.imagesets[0].medium_image &&
                   <img src={this.state.part.item.imagesets[0].medium_image.url} alt=""></img>
                 }
-                  {this.state.part.item.mpn}
+                {this.state.part.item.mpn}
               </h1>
-
-
-
 
             </Jumbotron>
           </Col>

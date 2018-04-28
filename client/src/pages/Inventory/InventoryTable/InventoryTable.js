@@ -29,7 +29,7 @@ class InventoryTable extends Component {
                     <td>{item.Snippet}</td>
                     <td><button onClick={(e) => this.props.handleDeletePart(item.MPN)} className="btn btn-danger btn-sm">✘</button></td>
                   </tr>
-                )
+                );
               })
             }
           </tbody>

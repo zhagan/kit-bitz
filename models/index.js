@@ -2,7 +2,7 @@
 
 module.exports = {
   // Inventory: require("./Inventory"),
-  Part: require("./Part"),
-  Kit: require("./Kit"),
-  User: require("./User")
+  Part: require('./Part'),
+  Kit: require('./Kit'),
+  User: require('./User')
 };
